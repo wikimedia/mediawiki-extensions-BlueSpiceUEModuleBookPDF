@@ -12,7 +12,9 @@
 		"MediaWiki": ">= 1.35.0",
 		"extensions": {
 			"BlueSpiceFoundation": ">= 3.3",
-			"BlueSpiceUniversalExport": ">= 3.3"
+			"BlueSpiceUniversalExport": ">= 3.3",
+			"BlueSpiceBookshelf": ">= 3.3",
+			"BlueSpiceUEModulePDF": ">= 3.3"
 		}
 	},
 	"type": "bluespice",
