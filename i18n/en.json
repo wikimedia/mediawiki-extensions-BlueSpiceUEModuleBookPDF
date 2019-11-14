@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Muggli <muggli@hallowelt.biz>"
+		]
+	},
+	"bs-uemodulebookpdf-extension-description": "Enables BlueSpice export hierarchical collections of articles to Adobe&reg; Portable Document Format (PDF).",
+	"prefs-UEModuleBookPDF": "UniversalExport Book PDF Module",
+	"prefs-uemodulebookpdf": "UniversalExport Book PDF Module",
+	"bs-bookshelf-pref-BookExportTOC": "Table of Contents",
+	"bs-bookshelf-bookexporttoc-only-articles": "Only article titles (indent by grade)",
+	"bs-bookshelf-bookexporttoc-article-tocs": "Embed article TOCs (No indent of article titles)",
+	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Portable Document Format (PDF) for Bookshelf",
+	"bs-uemodulebookpdf-overview-description": "Exports a book to Adobe PDF.",
+	"bs-uemodulebookpdf-overview-bodycontent": "This Module is provided by the  &quot;Bookshelf&quot; Extension and enables export to PDF.",
+	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
+	"bs-uemodulebookpdf-export-book": "PDF book",
+	"bs-uemodulebookpdf-export-book-title": "Export the linked pages in one document and with a proper numberation to PDF",
+	"bs-uemodulebookpdf-template": "Template (PDF)",
+	"bs-uemodulebookpdf-bookshelfimage": "Bookshelf Image",
+	"action-uemodulebookpdf-export": "exporting a page to PDF as part of a book",
+	"right-uemodulebookpdf-export": "Export a page to PDF as part of a book",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Table of contents"
+}

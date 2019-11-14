@@ -1,0 +1,12 @@
+{
+	"name": "bluespice/uemodulebookpdf",
+	"type": "mediawiki-extension",
+	"description": "Enables export of Bookshelf collections to PDF",
+	"license": "GPL-3.0-only",
+	"extra": {
+		"installer-name": "BlueSpiceUEModuleBookPDF"
+	},
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}

@@ -1,0 +1,103 @@
+{
+	"name": "BlueSpiceUEModuleBookPDF",
+	"version": "3.2.0-alpha",
+	"license-name": "GPL-3.0-only",
+	"url": "https://en.wiki.bluespice.com/wiki/Reference:UEModuleBookPDF",
+	"author": [
+		"Robert Vogel",
+		"Sebastian Ulbricht"
+	],
+	"descriptionmsg": "bs-uemodulebookpdf-extension-description",
+	"type": "bluespice",
+	"attributes": {
+		"BlueSpiceFoundation": {
+			"Extensions": {
+				"BlueSpiceUEModuleBookPDF": {
+					"className": "UEModuleBookPDF",
+					"extPath": "/BlueSpiceUEModuleBookPDF",
+					"package": "BlueSpice Pro",
+					"status": "stable",
+					"configDefinitions": {
+						"UEModuleBookPDFBookExportTOC": "\\BlueSpice\\UEModuleBookPDF\\ConfigDefinition\\BookExportTOC::getInstance"
+					}
+				}
+			},
+			"PermissionRegistry": {
+				"uemodulebookpdf-export": {
+					"type": "namespace",
+					"roles": [
+						"reader"
+					]
+				}
+			}
+		}
+	},
+	"GroupPermissions": {
+		"*": {
+			"uemodulebookpdf-export": true
+		}
+	},
+	"AvailableRights": [
+		"uemodulebookpdf-export"
+	],
+	"MessagesDirs": {
+		"BlueSpiceUEModuleBookPDF": [
+			"i18n"
+		]
+	},
+	"AutoloadNamespaces": {
+		"BlueSpice\\UEModuleBookPDF\\": "src/"
+	},
+	"AutoloadClasses": {
+		"UEModuleBookPDF": "UEModuleBookPDF.class.php",
+		"BsBookExportModulePDF": "/includes/BookExportModulePDF.class.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.ueModuleBookPDF": {
+			"scripts": [
+				"bluespice.ueModuleBookPDF.js"
+			],
+			"styles": [
+				"bluespice.ueModuleBookPDF.css"
+			],
+			"messages": [
+				"bs-uemodulebookpdf-btn-export"
+			]
+		},
+		"ext.bluespice.ueModuleBookPDF.contextMenu": {
+			"scripts": [
+				"bluespice.ueModuleBookPDF.contextMenu.js"
+			],
+			"messages": [
+				"bs-uemodulebookpdf-btn-export"
+			],
+			"dependencies": [
+				"ext.bluespice"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceUEModuleBookPDF/resources"
+	},
+	"config_prefix": "bsg",
+	"config": {
+		"UEModuleBookPDFBookExportTOC": {
+			"value": "only-articles",
+			"descriptionmsg": "bs-bookshelf-pref-BookExportTOC",
+			"public": true
+		},
+		"UEModuleBookPDFTemplatePath": {
+			"value": "extensions/BlueSpiceUEModuleBookPDF/data/PDFTemplates"
+		},
+		"UEModuleBookPDFDefaultTemplate": {
+			"value": "BlueSpice Book"
+		}
+	},
+	"Hooks": {
+		"BeforePageDisplay": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BeforePageDisplay\\AddResources::callback",
+		"BSMigrateSettingsFromDeviatingNames": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSMigrateSettingsFromDeviatingNames\\SkipServiceSettings::callback"
+	},
+	"load_composer_autoloader": true,
+	"manifest_version": 2
+}
