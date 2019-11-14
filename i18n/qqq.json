@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Patric Wirth"
+		]
+	},
+	"bs-uemodulebookpdf-extension-description": "{{desc|name=BlueSpiceUEModulePDF}}",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Label for the header of the table of contents select input setting.\n{{Identical|Table of contents}}",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Label of the \"only-articles\" option for the table of contents select input setting",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Label of the \"article-tocs\" option for the table of contents select input setting",
+	"bs-uemodulebookpdf-overview-title": "Title for the \"bookpdf\" export module",
+	"bs-uemodulebookpdf-overview-description": "Short description for the \"bookpdf\" export module",
+	"bs-uemodulebookpdf-overview-bodycontent": "Full description for the \"bookpdf\" export module",
+	"bs-uemodulebookpdf-btn-export": "Label for the button, that triggers the export to PDF.\n{{Identical|Portable Document Format (PDF)}}",
+	"bs-uemodulebookpdf-template": "Template display name.\n{{Identical|Template (PDF)}}",
+	"bs-uemodulebookpdf-bookshelfimage": "Image display name. Bookshelf is the short name of the BlueSpiceBookshelf extension and should not be translated.\n{{Identical|Bookshelf Image}}",
+	"action-uemodulebookpdf-export": "{{doc-action|uemodulebookpdf-export}}",
+	"right-uemodulebookpdf-export": "{{doc-right|uemodulebookpdf-export}}",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Header for the table of contents section.\n{{Identical|Table of contents}}"
+}
