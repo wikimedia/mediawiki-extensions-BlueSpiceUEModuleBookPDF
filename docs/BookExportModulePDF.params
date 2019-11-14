@@ -1,0 +1,56 @@
+==Case: Bookeditor==
+array (
+  'format' => 'pdf',
+  'pdf-merging' => '0',
+  'attachments' => '0',
+  'recursive' => false,
+  'filter' => 'use-all',
+  'webroot-filesystempath' => 'F:/_d',
+  'module' => 'bookpdf',
+  'articles' => '[{"number":"0","title":":Datei:01ol-greenlist-10-p 494885a.jpg","display-title":"494885a.jpg"},{"number":"0.0","title":"Gibt\'s nicht","display-title":"Gibt\'s nicht"},{"number":"0.0.0","title":"Franz jagt im komplett verwahrlosten Taxi quer durch Bayern.","display-title":"Franz jagt im komplett verwahrlosten Taxi quer durch Bayern."}]',
+  'use-serverside-caching' => false,
+  'pdf-attachment-formats' => 
+  array (
+    0 => 'doc',
+    1 => 'docx',
+    2 => 'xls',
+    3 => 'xlsx',
+    4 => 'ppt',
+    5 => 'pptx',
+    6 => 'odt',
+    7 => 'ods',
+    8 => 'odp',
+    9 => 'odg',
+    10 => 'svg',
+  ),
+  'oldid' => '0',
+)
+
+
+==Case: Bookmanager==
+array (
+  'format' => 'pdf',
+  'pdf-merging' => '0',
+  'attachments' => '0',
+  'recursive' => false,
+  'filter' => 'use-all',
+  'webroot-filesystempath' => 'F:/_d',
+  'module' => 'bookpdf',
+  'use-serverside-caching' => false,
+  'pdf-attachment-formats' => 
+  array (
+    0 => 'doc',
+    1 => 'docx',
+    2 => 'xls',
+    3 => 'xlsx',
+    4 => 'ppt',
+    5 => 'pptx',
+    6 => 'odt',
+    7 => 'ods',
+    8 => 'odp',
+    9 => 'odg',
+    10 => 'svg',
+  ),
+  'oldid' => '0',
+)
+

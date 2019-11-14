@@ -1,0 +1,10 @@
+'BSBookshelfExportArticle'
+&$aPage, 
+&$aTemplate, 
+&$aBookPage, 
+&$aArticle
+
+'BSBookshelfExportBeforeArticles'
+&$aTemplate, 
+&$aBookPage, 
+&$aArticles 

@@ -1,0 +1,7 @@
+.svn
+*~
+*.kate-swp
+.*.swp
+*.diff
+vendor
+composer.lock

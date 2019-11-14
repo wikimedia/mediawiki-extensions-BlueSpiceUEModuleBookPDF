@@ -1,0 +1,43 @@
+<html xmlns:bs="http://www.blue-spice.org/XML/Schema-2011-09">
+	<head>
+		<title></title>
+		<link href="stylesheets/page.css" type="text/css" rel="stylesheet" />
+		<link href="stylesheets/mediawiki.css" type="text/css" rel="stylesheet" />
+		<link href="stylesheets/tables.css" type="text/css" rel="stylesheet" />
+		<link href="stylesheets/styles.css" type="text/css" rel="stylesheet" />
+		<link href="stylesheets/geshi-php.css" type="text/css" rel="stylesheet" />
+		<link href="stylesheets/fonts.css" type="text/css" rel="stylesheet" />
+		<!-- This is where additional resources and meta information is appended to -->
+	</head>
+	<body>
+
+	<div class="bs-coverpage">
+	    <div style="position:absolute; top: 14cm; left: 2.5cm; width: 13cm">
+			<div id="bs-booktitle"><bs:meta key="title" /></div>
+			<br />
+			<div id="bs-booksubtitle"><bs:meta key="subtitle" /></div>
+	    </div>
+	</div>
+
+	<div id="bs-runningheaderfix">
+		<!-- <h1><bs:meta key="title" /></h1> <bs:meta key="does-not-exist" /> -->
+	</div>
+
+	<div id="bs-runningfooterleft">
+		<bs:msg key="exportdate" /> <bs:meta key="exportdate" />
+	</div>
+
+	<div id="bs-runningfootercenter">
+		<bs:msg key="disclaimer" /> <bs:msg key="does-not-exist" />
+	</div>
+
+	<div id="bs-runningfooterright">
+		<div style="float:right">
+			<bs:msg key="page" /> <span class="bs-currentpagenumber"></span> <bs:msg key="of" /> <span class="bs-totalpagescount"></span>
+		</div>
+	</div>
+
+		<bs:content key="content" /> <!-- This is where the content is inserted before -->
+
+	</body>
+</html>
