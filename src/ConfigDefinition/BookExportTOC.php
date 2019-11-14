@@ -13,7 +13,7 @@ class BookExportTOC extends \BlueSpice\ConfigDefinition\ArraySetting {
 	}
 
 	public function getLabelMessageKey() {
-		return 'bs-bookshelf-pref-BookExportTOC';
+		return 'bs-uemodulebookpdf-pref-bookexporttoc';
 	}
 
 	public function getHtmlFormField() {
@@ -22,8 +22,8 @@ class BookExportTOC extends \BlueSpice\ConfigDefinition\ArraySetting {
 
 	protected function getOptions() {
 		return [
-			wfMessage( 'bs-bookshelf-bookexporttoc-only-articles' )->text() => 'only-articles',
-			wfMessage( 'bs-bookshelf-bookexporttoc-article-tocs' )->text()  => 'article-tocs'
+			wfMessage( 'bs-uemodulebookpdf-bookexporttoc-only-articles' )->text() => 'only-articles',
+			wfMessage( 'bs-uemodulebookpdf-bookexporttoc-article-tocs' )->text()  => 'article-tocs'
 		];
 	}
 }

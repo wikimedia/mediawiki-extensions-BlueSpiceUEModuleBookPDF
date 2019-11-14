@@ -64,7 +64,7 @@ class UEModuleBookPDF extends BsExtensionMW {
 			'displayName' => wfMessage('bs-uemodulebookpdf-template')->text()
 		);
 		$oData->bookMetaConfig['bookpdf-export-toc'] = array(
-			'displayName' => wfMessage('bs-bookshelf-pref-BookExportTOC')->text()
+			'displayName' => wfMessage('bs-uemodulebookpdf-pref-bookexporttoc')->text()
 		);
 		$aTemplates = BsPDFTemplateProvider::getTemplatesForSelectOptions([
 			'template-path' => $this->getConfig()->get(
@@ -88,11 +88,11 @@ class UEModuleBookPDF extends BsExtensionMW {
 			'bsUEModuleBookPDFExportTOCOptions',
 			array(
 				array(
-					'name' => wfMessage( 'bs-bookshelf-bookexporttoc-only-articles' )->text(),
+					'name' => wfMessage( 'bs-uemodulebookpdf-bookexporttoc-only-articles' )->text(),
 					'value' => 'only-articles'
 				),
 				array(
-					'name' => wfMessage( 'bs-bookshelf-bookexporttoc-article-tocs' )->text(),
+					'name' => wfMessage( 'bs-uemodulebookpdf-bookexporttoc-article-tocs' )->text(),
 					'value' => 'article-tocs'
 				)
 			)

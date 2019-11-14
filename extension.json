@@ -93,7 +93,7 @@
 	"config": {
 		"UEModuleBookPDFBookExportTOC": {
 			"value": "only-articles",
-			"descriptionmsg": "bs-bookshelf-pref-BookExportTOC",
+			"descriptionmsg": "bs-uemodulebookpdf-pref-bookexporttoc",
 			"public": true
 		},
 		"UEModuleBookPDFTemplatePath": {
