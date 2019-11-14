@@ -1,0 +1,113 @@
+/******* PAGE LAYOUT ELEMENTS *******/
+
+.bs-coverpage {
+	margin: 0; padding: 0; border:0;
+	width: 21cm;
+	height: 29.7cm;
+	page: coverpage;
+	color: #3E538A;
+	font-family: Arial,Tahoma,sans-serif;
+	page-break-after: always;
+}
+
+#bs-booktitle {
+	font-size: 21pt;
+	color: #6c6d6f;
+}
+
+#bs-booksubtitle {
+	font-size: 16pt;
+	color: #6c6d6f;
+}
+
+#bs-runningheaderfix {
+	position: running( topleft );
+	margin: 0 0 0 -2.5cm;
+	background: url('../images/bs-header.jpg') no-repeat 0 0;
+	background-size: 21cm;
+	height: 3.5cm;
+	width: 21cm;
+}
+
+#bs-runningheaderfix h1 {
+	margin: 2.3cm 0 0 2.5cm;
+	font: small;
+	color:#6c6d6f;
+	border: none;
+}
+
+.bs-runningheader {
+	position: running( topright );
+	margin: 0 0 0 -21cm; /* move the header to the left considering the left page-margin */
+	width: 21cm;
+	vertical-align: bottom;
+}
+
+.bs-runningheader table{
+	width: 13cm;
+	border: none;
+	border-collapse: collapse;
+	position: relative;
+	left: 7cm;
+	background:transparent;
+}
+
+.bs-runningheader table td{
+	vertical-align: bottom;
+}
+
+.bs-booktitle {
+	font-weight: bold;
+}
+
+td.bs-ancestors-left {
+	vertical-align: bottom;
+}
+
+td.bs-ancestors-right {
+	text-align: right;
+	vertical-align: bottom;
+}
+
+.bs-ancestor:first-child {
+	font-weight: bold;
+}
+/*
+.bs-runningfooter {
+	position: running( bottomleft );
+	margin: 0.5cm 0 0 -2.5cm;
+	padding-top: 0.5cm;
+	font: x-small sans-serif;
+	height: 1.5cm;
+	width: 100%;
+}
+*/
+
+#bs-runningfooterleft {
+	position: running( bottomleft );
+	color:#6c6d6f;
+}
+
+#bs-runningfootercenter {
+	position: running( bottomcenter );
+	margin: 0 0.5cm;
+	color:#6c6d6f;
+}
+
+#bs-runningfooterright {
+	position: running( bottomright );
+	color:#6c6d6f;
+}
+
+div.bs-tableofcontentspage { margin-top: 1cm; }
+div.bs-tableofcontentspage .toclevel-1, .toclevel-1 { margin-left: 0cm; }
+div.bs-tableofcontentspage .toclevel-2, .toclevel-2 { margin-left: 0.1cm; }
+div.bs-tableofcontentspage .toclevel-3, .toclevel-3 { margin-left: 0.2cm; }
+div.bs-tableofcontentspage .toclevel-4, .toclevel-4 { margin-left: 0.3cm; }
+div.bs-tableofcontentspage .toclevel-5, .toclevel-5 { margin-left: 0.4cm; }
+div.bs-tableofcontentspage .toclevel-6, .toclevel-6 { margin-left: 0.5cm; }
+
+td.bs-wiki-article-ancestors-table-left,
+td.bs-wiki-article-ancestors-table-right { width: 50%;}
+td.bs-wiki-article-ancestors-table-right { text-align: right; }
+
