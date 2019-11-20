@@ -1,4 +1,7 @@
 <?php
+
+use BlueSpice\Services;
+
 class BsBookExportModulePDF implements BsUniversalExportModule {
 
 	/**
@@ -78,9 +81,9 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			}
 
 			if ( $aArticle['is-redirect'] === true ) {
-				$dbr = \MediaWiki\MediaWikiServices::getInstance()
-					->getDBLoadBalancer()
-					->getConnection( DB_REPLICA );
+				$dbr = Services::getInstance()->getDBLoadBalancer()->getConnection(
+					DB_REPLICA
+				);
 
 				$oRedirectTitle = $this->searchLastRedirect( $aArticle['article-id'], $dbr );
 				if ( $oRedirectTitle !== false ) {
