@@ -10,7 +10,7 @@ class AddResources extends \BlueSpice\Hook\BeforePageDisplay {
 		$onBookUI = $this->out->getTitle()->isSpecial( 'BookshelfBookUI' );
 		$onBookManager = $this->out->getTitle()->isSpecial( 'BookshelfBookManager' );
 
-		if( $onBookUI || $onBookManager ){
+		if ( $onBookUI || $onBookManager ) {
 			$this->out->addModules( 'ext.bluespice.ueModuleBookPDF' );
 		}
 
