@@ -41,7 +41,7 @@ class UEModuleBookPDF extends BsExtensionMW {
 	 * Adds the Bookshelf export module to UniversalExport
 	 * @param SpecialUniversalExport $oSpecialPage
 	 * @param string $sParam
-	 * @param array $aModules
+	 * @param array &$aModules
 	 * @return true
 	 */
 	public function onBSUniversalExportSpecialPageExecute( $oSpecialPage, $sParam, &$aModules ) {
@@ -54,31 +54,31 @@ class UEModuleBookPDF extends BsExtensionMW {
 	 * @param SpecialBookshelfBookUI $oSpecialPage
 	 * @param OutputPage $oOutputPage
 	 * @param object $oData
-	 * @return boolean Always true to keep hook running
+	 * @return bool Always true to keep hook running
 	 */
 	public function onBSBookshelfBookUI( $oSpecialPage, $oOutputPage, $oData ) {
-	    $oData->bookMetaConfig['bookshelfimage'] = array(
-			'displayName' => wfMessage('bs-uemodulebookpdf-bookshelfimage')->text()
-		);
-		$oData->bookMetaConfig['template'] = array(
-			'displayName' => wfMessage('bs-uemodulebookpdf-template')->text()
-		);
-		$oData->bookMetaConfig['bookpdf-export-toc'] = array(
-			'displayName' => wfMessage('bs-uemodulebookpdf-pref-bookexporttoc')->text()
-		);
-		$aTemplates = BsPDFTemplateProvider::getTemplatesForSelectOptions([
+		$oData->bookMetaConfig['bookshelfimage'] = [
+			'displayName' => wfMessage( 'bs-uemodulebookpdf-bookshelfimage' )->text()
+		];
+		$oData->bookMetaConfig['template'] = [
+			'displayName' => wfMessage( 'bs-uemodulebookpdf-template' )->text()
+		];
+		$oData->bookMetaConfig['bookpdf-export-toc'] = [
+			'displayName' => wfMessage( 'bs-uemodulebookpdf-pref-bookexporttoc' )->text()
+		];
+		$aTemplates = BsPDFTemplateProvider::getTemplatesForSelectOptions( [
 			'template-path' => $this->getConfig()->get(
 				'UEModuleBookPDFTemplatePath'
 			)
-		]);
+		] );
 
-		//Make ExtJS ComboBox data format
-		$aTemplatesDataSet = array();
-		foreach( $aTemplates as $sName => $Id) {
-			$aTemplatesDataSet[] = array(
+		// Make ExtJS ComboBox data format
+		$aTemplatesDataSet = [];
+		foreach ( $aTemplates as $sName => $Id ) {
+			$aTemplatesDataSet[] = [
 				'name' => $sName,
 				'value' => $Id
-			);
+			];
 		}
 		$oOutputPage->addJsConfigVars(
 			'bsUEModuleBookPDFTemplates',
@@ -86,16 +86,16 @@ class UEModuleBookPDF extends BsExtensionMW {
 		);
 		$oOutputPage->addJsConfigVars(
 			'bsUEModuleBookPDFExportTOCOptions',
-			array(
-				array(
+			[
+				[
 					'name' => wfMessage( 'bs-uemodulebookpdf-bookexporttoc-only-articles' )->text(),
 					'value' => 'only-articles'
-				),
-				array(
+				],
+				[
 					'name' => wfMessage( 'bs-uemodulebookpdf-bookexporttoc-article-tocs' )->text(),
 					'value' => 'article-tocs'
-				)
-			)
+				]
+			]
 		);
 		return true;
 	}
@@ -105,7 +105,7 @@ class UEModuleBookPDF extends BsExtensionMW {
 	 * @param SpecialBookshelfBookUI $oSpecialPage
 	 * @param OutputPage $oOutputPage
 	 * @param object $oConfig
-	 * @return boolean Always true to keep hook running
+	 * @return bool Always true to keep hook running
 	 */
 	public function onBSBookshelfBookManager( $oSpecialPage, $oOutputPage, $oConfig ) {
 		$oConfig->dependencies[] = 'ext.bluespice.ueModuleBookPDF';

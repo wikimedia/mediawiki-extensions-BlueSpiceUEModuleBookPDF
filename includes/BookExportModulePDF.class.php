@@ -4,9 +4,12 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 	/**
 	 * Implementation of BsUniversalExportModule interface. Uses the
 	 * PdfWebservice BN2PDF-light to create a PDF file.
-	 * @global User $wgUser
-	 * @param SpecialUniversalExport $oCaller
-	 * @return array array( 'mime-type' => 'application/pdf', 'filename' => 'Filename.pdf', 'content' => '8F3BC3025A7...' );
+	 * @param SpecialUniversalExport &$oCaller
+	 * @return array array(
+	 *     'mime-type' => 'application/pdf',
+	 *     'filename' => 'Filename.pdf',
+	 *     'content' => '8F3BC3025A7...'
+	 * );
 	 */
 	public function createExportFile( &$oCaller ) {
 		// Prepare response
@@ -21,21 +24,27 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 		);
 		$aBookMeta = $oPHP->getBookMeta();
 
-		$aArticles = []; // "articles" is legacy naming. Should be 'nodes'
-		if ( isset( $oCaller->aParams['articles'] ) ) { // Call from BookEditor
+		// "articles" is legacy naming. Should be 'nodes'
+		$aArticles = [];
+		if ( isset( $oCaller->aParams['articles'] ) ) {
+			// Call from BookEditor
 			$aArticles = FormatJson::decode(
 				$oCaller->aParams['articles'], true
 			);
-		} else { // Call from Bookmanager or somewhere else
+		} else {
+			// Call from Bookmanager or somewhere else
 			$aArticles = $oPHP->getExtendedTOCArray();
 		}
 
-		$aBookPage = BsPDFPageProvider::getPage(
-			[ 'article-id' => $oCaller->oRequestedTitle->getArticleId(), 'follow-redirects' => true ]
-		);
+		$aBookPage = BsPDFPageProvider::getPage( [
+			'article-id' => $oCaller->oRequestedTitle->getArticleId(),
+			'follow-redirects' => true
+		] );
 
 		$aTemplate = $this->getTemplate( $oCaller, $aBookPage, $aBookMeta );
-		if ( isset( $aTemplate['title-element'] ) && count( $aTemplate['title-element']->childNodes ) === 0 ) { // <title> not set by template
+		if ( isset( $aTemplate['title-element'] )
+			&& count( $aTemplate['title-element']->childNodes ) === 0 ) {
+			// <title> not set by template
 			$aTemplate['title-element']->appendChild(
 				$aTemplate['dom']->createTextNode( $oCaller->oRequestedTitle->getPrefixedText() )
 			);
@@ -56,7 +65,10 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 		);
 		$oTOCTitleDiv->setAttribute( 'class', 'toctitle' );
 		$oTOCTitleDiv->appendChild(
-			$aTemplate['dom']->createElement( 'h2', wfMessage( 'bs-uemodulebookpdf-table-of-contents-heading' )->text() )
+			$aTemplate['dom']->createElement(
+				'h2',
+				wfMessage( 'bs-uemodulebookpdf-table-of-contents-heading' )->text()
+			)
 		);
 		$oTOCList = $oTOCDiv->appendChild(
 			$aTemplate['dom']->createElement( 'ul' )
@@ -96,13 +108,34 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			$oDOMNode = null;
 			switch ( $aArticle['bookshelf']['type'] ) {
 				case 'wikipage':
-					$oDOMNode = $this->getDOMNodeForWikiPage( $aArticle, $aTemplate, $oTOCList, $aBookMeta, $aLinkMap, $aBookPage );
+					$oDOMNode = $this->getDOMNodeForWikiPage(
+						$aArticle,
+						$aTemplate,
+						$oTOCList,
+						$aBookMeta,
+						$aLinkMap,
+						$aBookPage
+					);
 					break;
 				case 'text':
-					$oDOMNode = $this->getDOMNodeForText( $aArticle, $aTemplate, $oTOCList, $aBookMeta, $aLinkMap, $aBookPage );
+					$oDOMNode = $this->getDOMNodeForText(
+						$aArticle,
+						$aTemplate,
+						$oTOCList,
+						$aBookMeta,
+						$aLinkMap,
+						$aBookPage
+					);
 					break;
 				case 'tag':
-					$oDOMNode = $this->getDOMNodeForTag( $aArticle, $aTemplate, $oTOCList, $aBookMeta, $aLinkMap, $aBookPage );
+					$oDOMNode = $this->getDOMNodeForTag(
+						$aArticle,
+						$aTemplate,
+						$oTOCList,
+						$aBookMeta,
+						$aLinkMap,
+						$aBookPage
+					);
 					break;
 				default:
 					Hooks::run(
@@ -121,15 +154,11 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 		}
 		// Don't forget to remove the remaining content elements
 		foreach ( $aTemplate['content-elements'] as $sKey => $oNode ) {
-			if ( !( $oNode instanceof DOMNode ) ) { continue; // Got deleted earlier
+			if ( !$oNode instanceof DOMNode ) {
+				// Got deleted earlier
+				continue;
 			}
-			/*if( $oNode->hasChildNodes() ) { //Preserve contents and move them out of the element before removal
-				$oDummyNode = $aTemplate['dom']->createTextNode('');
-				$oNode->parentNode->insertBefore( $oDummyNode, $oNode );
-				foreach( $oNode->childNodes as $oChildNode ) {
-					$oDummyNode->appendChild( $oChildNode );
-				}
-			}*/
+
 			$oNode->parentNode->removeChild( $oNode );
 		}
 
@@ -140,8 +169,9 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			$sHref  = $oAnchor->getAttribute( 'href' );
 			$sClass = $oAnchor->getAttribute( 'class' );
 
-			if ( empty( $sHref ) ) {
-				continue; // Jumplink targets
+			if ( empty( $Href ) ) {
+				// Jumplink targets
+				continue;
 			}
 
 			$aClasses = explode( ' ', $sClass );
@@ -165,18 +195,8 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 
 			$sPathBasename = str_replace( '_', ' ', $sPathBasename );
 
-			// Seems unneccessary because in $aLinkMap the original name is used
-			/*if( in_array( 'mw-redirect', $aClasses ) ) {
-				$oTitle = Title::newFromText( $sPathBasename );
-				$oArticle = new Article($oTitle);
-				$oRTitle = Title::newFromRedirectRecurse(
-					$oArticle->fetchContent() // TODO RBV (29.08.12 11:47): FlaggedRevs compat??
-				);
-				$sPathBasename = $oRTitle->getPrefixedText();
-				wfDebugLog( 'BS::Bookshelf', __METHOD__.': Resolving redirect '.$oTitle->getPrefixedText().' to '.$sPathBasename );
-			}*/
-
-			if ( !isset( $aLinkMap[$sPathBasename] ) ) { // Do we have a mapping?
+			// Do we have a mapping?
+			if ( !isset( $aLinkMap[$sPathBasename] ) ) {
 				/*
 				 * The following logic is an alternative way of creating internal links
 				 * in case of poorly splitted up URLs like mentioned above
@@ -203,12 +223,13 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
 		// Set params for PDF creation
-		$oCaller->aParams['document-token']   = md5( $oCaller->oRequestedTitle->getPrefixedText() ) . '-' . $oCaller->aParams['oldid'];
+		$oCaller->aParams['document-token']
+			= md5( $oCaller->oRequestedTitle->getPrefixedText() ) . '-' . $oCaller->aParams['oldid'];
 		$oCaller->aParams['soap-service-url'] = $config->get(
 			'UEModulePDFPdfServiceURL'
 		);
-		$oCaller->aParams['resources']        = $aTemplate['resources'];
-		$oCaller->aParams['attachments']      = '1';
+		$oCaller->aParams['resources'] = $aTemplate['resources'];
+		$oCaller->aParams['attachments'] = '1';
 
 		$oPdfService = new BsPDFServlet( $oCaller->aParams );
 		$aResponse['content'] = $oPdfService->createPDF( $aTemplate['dom'] );
@@ -260,6 +281,7 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 	}
 
 	// <editor-fold desc="Interface BsUniversalExportModule --> getOverview" default-state="collapsed">
+
 	/**
 	 * Implementation of BsUniversalExportModule interface. Creates an overview
 	 * over the BookshelfExportModule
@@ -269,13 +291,29 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 		$UEModulePDF = new BsExportModulePDF();
 		$oModuleOverviewView = $UEModulePDF->getOverview();
 
-		$oModuleOverviewView->setOption( 'module-title', wfMessage( 'bs-uemodulebookpdf-overview-title' )->text() );
-		$oModuleOverviewView->setOption( 'module-description', wfMessage( 'bs-uemodulebookpdf-overview-description' )->text() );
-		$oModuleOverviewView->setOption( 'module-bodycontent', wfMessage( 'bs-uemodulebookpdf-overview-bodycontent' )->text() . '<br/>' );
+		$oModuleOverviewView->setOption(
+			'module-title',
+			wfMessage( 'bs-uemodulebookpdf-overview-title' )->text()
+		);
+		$oModuleOverviewView->setOption(
+			'module-description',
+			wfMessage( 'bs-uemodulebookpdf-overview-description' )->text()
+		);
+		$oModuleOverviewView->setOption(
+			'module-bodycontent',
+			wfMessage( 'bs-uemodulebookpdf-overview-bodycontent' )->text() . '<br/>'
+		);
 
 		return $oModuleOverviewView;
 	}
 
+	/**
+	 *
+	 * @param SpecialUniversalExport $oCaller
+	 * @param array $aBookPage
+	 * @param array $aBookMeta
+	 * @return array
+	 */
 	public function getTemplate( $oCaller, $aBookPage, $aBookMeta ) {
 		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
@@ -350,7 +388,8 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			if ( $config->get( 'UEModuleBookPDFBookExportTOC' ) == 'article-tocs' ) {
 				$bIncludeArticleTOC = true;
 			}
-			if ( isset( $aBookMeta['bookpdf-export-toc'] ) && $aBookMeta['bookpdf-export-toc'] == 'article-tocs' ) {
+			if ( isset( $aBookMeta['bookpdf-export-toc'] )
+				&& $aBookMeta['bookpdf-export-toc'] == 'article-tocs' ) {
 				$bIncludeArticleTOC = true;
 			}
 		}
@@ -374,7 +413,18 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 		return $iLevel;
 	}
 
-	public function getDOMNodeForWikiPage( $aArticle, &$aTemplate, $oTOCList, $aBookMeta, &$aLinkMap, &$aBookPage ) {
+	/**
+	 *
+	 * @param array $aArticle
+	 * @param array &$aTemplate
+	 * @param DOMElement $oTOCList
+	 * @param array $aBookMeta
+	 * @param array &$aLinkMap
+	 * @param array &$aBookPage
+	 * @return DOMElement
+	 */
+	public function getDOMNodeForWikiPage( $aArticle, &$aTemplate, $oTOCList, $aBookMeta,
+		&$aLinkMap, &$aBookPage ) {
 		$aBS = $aArticle['bookshelf'];
 
 		$aPage = BsPDFPageProvider::getPage( $aArticle );
@@ -402,14 +452,20 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			? $aPage['number'] . ' ' . $aArticle['display-title']
 			: $aArticle['display-title'];
 
-		$oTitleText = $aPage['firstheading-element']->ownerDocument->createTextNode( $sDisplayTitle );
+		$oTitleText = $aPage['firstheading-element']->ownerDocument->createTextNode(
+			$sDisplayTitle
+		);
 		$aPage['firstheading-element']->nodeValue = '';
-		$aPage['firstheading-element']->replaceChild( $oTitleText, $aPage['firstheading-element']->firstChild );
+		$aPage['firstheading-element']->replaceChild(
+			$oTitleText,
+			$aPage['firstheading-element']->firstChild
+		);
 
 		$numNode = $aPage['dom']->createElement( 'span' );
 		$numNode->setAttribute( 'class', 'bs-chapter-number' );
 
-		$aPage['firstheading-element']->insertBefore( // Prepend
+		// Prepend
+		$aPage['firstheading-element']->insertBefore(
 			$numNode,
 			$aPage['firstheading-element']->firstChild
 		);
@@ -421,7 +477,18 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 		return $aPage['dom']->documentElement;
 	}
 
-	public function getDOMNodeForText( $aArticle, &$aTemplate, $oTOCList, $aBookMeta, &$aLinkMap, &$aBookPage ) {
+	/**
+	 *
+	 * @param array $aArticle
+	 * @param array &$aTemplate
+	 * @param DOMElement $oTOCList
+	 * @param array $aBookMeta
+	 * @param array &$aLinkMap
+	 * @param array &$aBookPage
+	 * @return DOMElement
+	 */
+	public function getDOMNodeForText( $aArticle, &$aTemplate, $oTOCList, $aBookMeta,
+		&$aLinkMap, &$aBookPage ) {
 		$sDisplayTitle = $aArticle['display-title'];
 		$sNumber = '';
 		if ( isset( $aArticle['number'] ) ) {
@@ -435,7 +502,9 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 <xml>
 	<div>
 		<a name="bs-ue-jumpmark-$sId" id="bs-ue-jumpmark-$sId" />
-		<h1 class="firstHeading"><span class="bs-chapter-number">$sNumber</span>{$aArticle['display-title']}</h1>
+		<h1 class="firstHeading">
+			<span class="bs-chapter-number">$sNumber</span>{$aArticle['display-title']}
+		</h1>
 	</div>
 </xml>
 HERE
@@ -455,7 +524,8 @@ HERE
 			'number' => trim( $aArticle['number'] ),
 			'bookmarks-dom' => $oBooksmarksDOM,
 			'bookmark-element' => $oBooksmarksDOM->getElementsByTagName( 'bookmark' )->item( 0 ),
-			'toc-ul-element' => '' // Dummy
+			// Dummy
+			'toc-ul-element' => ''
 		];
 		$iLevel = $this->buildTOC( $aDummyPage, $aTemplate, $oTOCList, $aArticle, $aBookMeta );
 		$oHeading->setAttribute( 'class', 'booklevel-' . $iLevel );
@@ -468,7 +538,18 @@ HERE
 		return $oDOM->getElementsByTagName( 'div' )->item( 0 );
 	}
 
-	public function getDOMNodeForTag( $aArticle, &$aTemplate, $oTOCList, $aBookMeta, &$aLinkMap, &$aBookPage ) {
+	/**
+	 *
+	 * @param array $aArticle
+	 * @param array &$aTemplate
+	 * @param DOMElement $oTOCList
+	 * @param array $aBookMeta
+	 * @param array &$aLinkMap
+	 * @param array &$aBookPage
+	 * @return DOMElement
+	 */
+	public function getDOMNodeForTag( $aArticle, &$aTemplate, $oTOCList, $aBookMeta,
+		&$aLinkMap, &$aBookPage ) {
 		$sDisplayTitle = $aArticle['display-title'];
 		$sNumber = '';
 		if ( isset( $aArticle['number'] ) ) {
@@ -482,7 +563,9 @@ HERE
 <xml>
 	<div class="bs-tag-content">
 		<a name="bs-ue-jumpmark-$sId" id="bs-ue-jumpmark-$sId" />
-		<h1 class="firstHeading"><span class="bs-chapter-number">$sNumber</span>{$aArticle['display-title']}</h1>
+		<h1 class="firstHeading">
+			<span class="bs-chapter-number">$sNumber</span>{$aArticle['display-title']}
+		</h1>
 		<div class="bodyContent">
 		</div>
 	</div>
@@ -513,9 +596,16 @@ HERE
 			'toc-ul-element' => ''
 		];
 
-		Hooks::run( 'BSBookshelfExportTag',
-			[ &$aDummyPage, &$aArticle, &$aTemplate, $oTOCList, $aBookMeta, &$aLinkMap, &$aBookPage, $oDOMXPath ]
-		);
+		Hooks::run( 'BSBookshelfExportTag', [
+			&$aDummyPage,
+			&$aArticle,
+			&$aTemplate,
+			$oTOCList,
+			$aBookMeta,
+			&$aLinkMap,
+			&$aBookPage,
+			$oDOMXPath
+		] );
 
 		$iLevel = $this->buildTOC( $aDummyPage, $aTemplate, $oTOCList, $aArticle, $aBookMeta );
 		$oFirstHeading->setAttribute( 'class', 'booklevel-' . $iLevel );
@@ -528,5 +618,4 @@ HERE
 		return $aDummyPage['dom']->documentElement;
 	}
 
-	// </editor-fold>
 }
