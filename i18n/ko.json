@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ykhwong"
+		]
+	},
+	"bs-uemodulebookpdf-pref-bookexporttoc": "목차",
+	"bs-uemodulebookpdf-overview-description": "어도비 PDF로 책을 내보냅니다.",
+	"bs-uemodulebookpdf-btn-export": "이동 가능 문서 형식 (PDF)",
+	"bs-uemodulebookpdf-template": "틀 (PDF)",
+	"right-uemodulebookpdf-export": "책의 일부를 PDF로 페이지를 내보냅니다",
+	"bs-uemodulebookpdf-table-of-contents-heading": "목차"
+}

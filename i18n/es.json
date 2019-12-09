@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Sumario",
+	"bs-uemodulebookpdf-btn-export": "Formato de documento portátil (PDF)",
+	"bs-uemodulebookpdf-template": "Plantilla (PDF)",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Sumario"
+}

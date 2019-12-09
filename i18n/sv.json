@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Innehållsförteckning",
+	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
+	"bs-uemodulebookpdf-template": "Mall (PDF)",
+	"right-uemodulebookpdf-export": "Exportera en sida till PDF som del av en bok",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Innehållsförteckning"
+}
