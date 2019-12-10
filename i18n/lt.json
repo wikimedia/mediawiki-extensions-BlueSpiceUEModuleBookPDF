@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Turinys",
+	"bs-uemodulebookpdf-overview-description": "Eksportuoti knygą į Adobe PDF.",
+	"bs-uemodulebookpdf-template": "Šablonas (PDF)",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Turinys"
+}
