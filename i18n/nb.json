@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"bs-uemodulebookpdf-extension-description": "Lar BlueSpice eksportere hierarkiske samlinger av artikler til PDF.",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Innholdsfortegnelse",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Bare artikkeltitler (rykk inn etter gradering)",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Bygg inn airtklers innholdsfortegnelser (ingen innrykk på artikkeltitler)",
+	"bs-uemodulebookpdf-overview-title": "PDF for bokhylle",
+	"bs-uemodulebookpdf-overview-description": "Eksporterer ei bok til PDF.",
+	"bs-uemodulebookpdf-overview-bodycontent": "Denne modulen gis av «Bookshelf»-utvidelsen og gjør det mulig å eksportere til PDF.",
+	"bs-uemodulebookpdf-btn-export": "PDF",
+	"bs-uemodulebookpdf-template": "Mal (PDF)",
+	"bs-uemodulebookpdf-bookshelfimage": "Bokhyllebilde",
+	"action-uemodulebookpdf-export": "eksportere en side til PDF som del av ei bok",
+	"right-uemodulebookpdf-export": "Eksportere ei side til PDF som del av ei bok",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Innholdsfortegnelse"
+}
