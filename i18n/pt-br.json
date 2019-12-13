@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Addad de Oliveira"
+		]
+	},
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Índice",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Apenas títulos de artigos (recuo por nota)",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Incorporar TOCs de artigo (sem recuo dos títulos dos artigos)",
+	"bs-uemodulebookpdf-overview-description": "Exporta um livro para Adobe PDF.",
+	"bs-uemodulebookpdf-btn-export": "Formato Portátil de Documento (PDF)",
+	"bs-uemodulebookpdf-template": "Predefinição (PDF)",
+	"bs-uemodulebookpdf-bookshelfimage": "Imagem de Bookshelf",
+	"action-uemodulebookpdf-export": "exportando uma página para PDF como parte de um livro",
+	"right-uemodulebookpdf-export": "Exportar uma página para PDF como parte de um livro",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Índice"
+}
