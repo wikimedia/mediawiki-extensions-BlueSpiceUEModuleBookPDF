@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Patric Wirth"
+			"Patric Wirth",
+			"Umherirrender"
 		]
 	},
-	"bs-uemodulebookpdf-extension-description": "{{desc|name=BlueSpiceUEModulePDF}}",
+	"bs-uemodulebookpdf-extension-description": "{{desc|name=BlueSpiceUEModuleBookPDF}}",
 	"bs-uemodulebookpdf-pref-bookexporttoc": "Label for the header of the table of contents select input setting.\n{{Identical|Table of contents}}",
 	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Label of the \"only-articles\" option for the table of contents select input setting",
 	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Label of the \"article-tocs\" option for the table of contents select input setting",
