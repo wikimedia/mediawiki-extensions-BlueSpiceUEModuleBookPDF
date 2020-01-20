@@ -55,7 +55,8 @@
 		]
 	},
 	"AutoloadNamespaces": {
-		"BlueSpice\\UEModuleBookPDF\\": "src/"
+		"BlueSpice\\UEModuleBookPDF\\": "src/",
+		"BlueSpice\\UEModuleBookPDF\\Test\\": "test/phpunit/"
 	},
 	"AutoloadClasses": {
 		"UEModuleBookPDF": "UEModuleBookPDF.class.php",
