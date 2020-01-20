@@ -1,8 +1,15 @@
 <?php
 
 use BlueSpice\Services;
+use BlueSpice\UEModuleBookPDF\BookmarksXMLBuilder;
 
 class BsBookExportModulePDF implements BsUniversalExportModule {
+
+	/**
+	 *
+	 * @var array
+	 */
+	private $flatBookmarksList = [];
 
 	/**
 	 * Implementation of BsUniversalExportModule interface. Uses the
@@ -164,6 +171,8 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 
 			$oNode->parentNode->removeChild( $oNode );
 		}
+
+		$this->replaceBookmarksElement( $aTemplate );
 
 		// Modify internal links
 		$oAnchors = $aTemplate['dom']->getElementsByTagName( 'a' );
@@ -413,6 +422,8 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			'class', $oTOCListItem->getAttribute( 'class' ) . ' ' . $sTOCLevelClass
 		);
 
+		$this->flatBookmarksList[$aPage['number']] = $aPage['bookmark-element'];
+
 		return $iLevel;
 	}
 
@@ -439,11 +450,6 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 
 		Hooks::run( 'BSBookshelfExportArticle',
 			[ &$aPage, &$aTemplate, &$aBookPage, &$aArticle ] );
-
-		// Add the bookmarks
-		$aTemplate['bookmarks-element']->appendChild(
-			$aTemplate['dom']->importNode( $aPage['bookmark-element'], true )
-		);
 
 		// Save jumplink to article for later link re-writing
 		$aLinkMap[$aArticle['title']] = $aPage['bookmark-element']->getAttribute( 'href' );
@@ -533,11 +539,6 @@ HERE
 		$iLevel = $this->buildTOC( $aDummyPage, $aTemplate, $oTOCList, $aArticle, $aBookMeta );
 		$oHeading->setAttribute( 'class', 'booklevel-' . $iLevel );
 
-		// Add the bookmarks
-		$aTemplate['bookmarks-element']->appendChild(
-			$aTemplate['dom']->importNode( $aDummyPage['bookmark-element'], true )
-		);
-
 		return $oDOM->getElementsByTagName( 'div' )->item( 0 );
 	}
 
@@ -613,12 +614,24 @@ HERE
 		$iLevel = $this->buildTOC( $aDummyPage, $aTemplate, $oTOCList, $aArticle, $aBookMeta );
 		$oFirstHeading->setAttribute( 'class', 'booklevel-' . $iLevel );
 
-		// Add the bookmarks
-		$aTemplate['bookmarks-element']->appendChild(
-			$aTemplate['dom']->importNode( $aDummyPage['bookmark-element'], true )
-		);
-
 		return $aDummyPage['dom']->documentElement;
 	}
 
+	/**
+	 * Replaces the default <bookmarks /> element from \PdfTemplateProvider with the one containing
+	 * the current contents references
+	 * @param array $aTemplate
+	 */
+	private function replaceBookmarksElement( $aTemplate ) {
+		$bookmarksXMLBuilder = new BookmarksXMLBuilder();
+		$bookmarksElement = $bookmarksXMLBuilder->buildFromFlatBookmarksList(
+			$this->flatBookmarksList
+		);
+
+		$importedNewBookmarksEl = $aTemplate['dom']->importNode( $bookmarksElement, true );
+
+		$aTemplate['head-element']->removeChild( $aTemplate['bookmarks-element'] );
+		$aTemplate['head-element']->appendChild( $importedNewBookmarksEl );
+		$aTemplate['bookmarks-element'] = $importedNewBookmarksEl;
+	}
 }
