@@ -172,7 +172,7 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			$oNode->parentNode->removeChild( $oNode );
 		}
 
-		$this->replaceBookmarksElement( $aTemplate );
+		$this->replaceBookmarksElement( $aTemplate, $oPHP );
 
 		// Modify internal links
 		$oAnchors = $aTemplate['dom']->getElementsByTagName( 'a' );
@@ -621,9 +621,14 @@ HERE
 	 * Replaces the default <bookmarks /> element from \PdfTemplateProvider with the one containing
 	 * the current contents references
 	 * @param array $aTemplate
+	 * @param PageHierarchyProvider $oPHP
 	 */
-	private function replaceBookmarksElement( $aTemplate ) {
-		$bookmarksXMLBuilder = new BookmarksXMLBuilder();
+	private function replaceBookmarksElement( $aTemplate, $oPHP ) {
+		$tree = FormatJson::decode(
+			FormatJson::encode( $oPHP->getExtendedTOCJSON() ),
+			true
+		);
+		$bookmarksXMLBuilder = new BookmarksXMLBuilder( $tree );
 		$bookmarksElement = $bookmarksXMLBuilder->buildFromFlatBookmarksList(
 			$this->flatBookmarksList
 		);
