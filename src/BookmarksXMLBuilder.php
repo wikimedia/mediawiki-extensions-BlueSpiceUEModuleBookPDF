@@ -11,13 +11,28 @@ class BookmarksXMLBuilder {
 	 *
 	 * @var DOMDocument
 	 */
-	protected $dom = null;
+	private $dom = null;
 
 	/**
 	 *
 	 * @var DOMElement[]
 	 */
-	protected $flatList = [];
+	private $flatList = [];
+
+	/**
+	 *
+	 * @var array
+	 */
+	private $tree = [];
+
+	/**
+	 *
+	 * @param array $tree Nested tree structure derived from
+	 * \PageHierarchyProvider::getExtendedTOCJSON
+	 */
+	public function __construct( $tree ) {
+		$this->tree = $tree;
+	}
 
 	/**
 	 * Items must be indexed by their hierarchial number
@@ -27,8 +42,10 @@ class BookmarksXMLBuilder {
 	 */
 	public function buildFromFlatBookmarksList( $list ) {
 		$this->flatList = $list;
-		ksort( $this->flatList );
+		$this->normalizeList();
 		$this->initDOM();
+		$this->fillGapsInList();
+		ksort( $this->flatList );
 		$this->buildTree();
 
 		return $this->dom->documentElement;
@@ -68,6 +85,63 @@ class BookmarksXMLBuilder {
 		$parts = explode( '.', $number );
 		$level = count( $parts );
 		return $level;
+	}
+
+	private function fillGapsInList() {
+		foreach ( $this->flatList as $number => $bookmarkElement ) {
+			$parts = explode( '.', $number );
+			while ( count( $parts ) > 1 ) {
+				array_pop( $parts );
+				$parentNumber = implode( '.', $parts );
+				if ( !isset( $this->flatList[$parentNumber] ) ) {
+					$this->addDummyParentToFlatList( $parentNumber );
+				}
+			}
+		}
+	}
+
+	/**
+	 *
+	 * @param string $parentNumber
+	 */
+	private function addDummyParentToFlatList( $parentNumber ) {
+		$treeNode = $this->findNumberInTree( $parentNumber, $this->tree );
+		$text = $treeNode['text'];
+
+		$dummyBookmarkElement = $this->dom->createElement( 'bookmark' );
+		$dummyBookmarkElement->setAttribute( 'name', $text );
+		$dummyBookmarkElement->setAttribute( 'href', '#' );
+
+		$this->flatList[$parentNumber] = $dummyBookmarkElement;
+	}
+
+	/**
+	 *
+	 * @param string $id
+	 * @param string $treeNode
+	 * @return array
+	 */
+	private function findNumberInTree( $id, $treeNode ) {
+		foreach ( $treeNode['children'] as $childNode ) {
+			if ( isset( $childNode['id'] ) && $childNode['id'] === $id ) {
+				return $childNode;
+			}
+			$recursiveChildNode = $this->findNumberInTree( $id, $childNode );
+			if ( !empty( $recursiveChildNode ) ) {
+				return $recursiveChildNode;
+			}
+		}
+		return [];
+	}
+
+	private function normalizeList() {
+		$normalizedList = [];
+		foreach ( $this->flatList as $number => $bookmarkEl ) {
+			// In some cases the number is not set as "1.1.1" but as "1.1.1." with a tailing dot.
+			$normalizedNumber = trim( $number, '.' );
+			$normalizedList[$normalizedNumber] = $bookmarkEl;
+		}
+		$this->flatList = $normalizedList;
 	}
 
 }
