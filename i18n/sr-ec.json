@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"BadDog"
+		]
+	},
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Садржај",
+	"bs-uemodulebookpdf-btn-export": "Преносиви формат документа (PDF)",
+	"bs-uemodulebookpdf-template": "Шаблон (PDF)",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Садржај"
+}

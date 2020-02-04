@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido",
+			"Ihojose"
+		]
+	},
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Sumario",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Sólo títutos de artículos (indentado por grado)",
+	"bs-uemodulebookpdf-overview-description": "Exporta un libro a Adobe PDF.",
+	"bs-uemodulebookpdf-overview-bodycontent": "Este módulo es proporcionado por la extensión &quot;Bookshelf&quot; y habilita la exportación a PDF.",
+	"bs-uemodulebookpdf-btn-export": "Formato de documento portátil (PDF)",
+	"bs-uemodulebookpdf-template": "Plantilla (PDF)",
+	"bs-uemodulebookpdf-bookshelfimage": "Imagen Bookshelf",
+	"action-uemodulebookpdf-export": "Exportando una página a PDF como parte de un libro",
+	"right-uemodulebookpdf-export": "Exportar una página a PDF como parte de un libro",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Sumario"
+}

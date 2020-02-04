@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xiplus"
+		]
+	},
+	"bs-uemodulebookpdf-extension-description": "讓BlueSpice將階層式條目集合匯出為Adobe&reg;可攜式文件格式（PDF）。",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "表格內容",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "只有條目標題（按等級縮進）",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "嵌入文章目錄（條目標題不縮進）",
+	"bs-uemodulebookpdf-overview-title": "Bookshelf的Adobe&reg;可攜式文件格式（PDF）",
+	"bs-uemodulebookpdf-overview-description": "匯出書籍為Adobe PDF。",
+	"bs-uemodulebookpdf-overview-bodycontent": "此模組由&quot;Bookshelf&quot;擴充功能提供並能夠匯出PDF。",
+	"bs-uemodulebookpdf-btn-export": "可攜式文件格式（PDF）",
+	"bs-uemodulebookpdf-template": "模板（PDF）",
+	"bs-uemodulebookpdf-bookshelfimage": "Bookshelf圖片",
+	"action-uemodulebookpdf-export": "將頁面以書籍的一部分匯出為PDF",
+	"right-uemodulebookpdf-export": "將頁面以書籍的一部分匯出為PDF",
+	"bs-uemodulebookpdf-table-of-contents-heading": "表格內容"
+}

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Innehållsförteckning",
+	"bs-uemodulebookpdf-overview-description": "Exporterar en bok till Adobe PDF.",
+	"bs-uemodulebookpdf-overview-bodycontent": "Denna modul tillhandahålls av tillägget &quot;Bookshelf&quot; och gör det möjligt att exportera till PDF.",
+	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
+	"bs-uemodulebookpdf-template": "Mall (PDF)",
+	"right-uemodulebookpdf-export": "Exportera en sida till PDF som del av en bok",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Innehållsförteckning"
+}
