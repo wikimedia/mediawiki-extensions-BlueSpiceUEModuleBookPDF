@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"BaRaN6161 TURK"
+		]
+	},
+	"bs-uemodulebookpdf-extension-description": "BlueSpice'in hiyerarşik makale koleksiyonlarını Adobe&reg; Portable Document Format'a (PDF) aktarmasını sağlar.",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "İçindekiler",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Sadece makale başlıkları (dereceye göre girinti)",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Makale TOC'lerini gömme (Makale başlıklarının girintisi yok)",
+	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Portable Document Format (PDF) için Kitaplık",
+	"bs-uemodulebookpdf-overview-description": "Bir kitabı Adobe PDF'ye dışa aktarır.",
+	"bs-uemodulebookpdf-overview-bodycontent": "Bu Modül &quot;Kitaplık&quot; Uzantısı tarafından sağlanmıştır ve PDF'ye aktarılmasını sağlar.",
+	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
+	"bs-uemodulebookpdf-template": "Şablon (PDF)",
+	"bs-uemodulebookpdf-bookshelfimage": "Kitaplık resmi",
+	"action-uemodulebookpdf-export": "sayfanın PDF olarak bir kitabın parçası olarak dışa aktarılması",
+	"right-uemodulebookpdf-export": "Bir sayfayı bir kitabın parçası olarak PDF'ye aktar",
+	"bs-uemodulebookpdf-table-of-contents-heading": "İçindekiler"
+}

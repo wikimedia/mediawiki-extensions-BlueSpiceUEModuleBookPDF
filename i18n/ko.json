@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ykhwong",
+			"Gongsoonyee"
+		]
+	},
+	"bs-uemodulebookpdf-pref-bookexporttoc": "목차",
+	"bs-uemodulebookpdf-overview-description": "어도비 PDF로 책을 내보냅니다.",
+	"bs-uemodulebookpdf-overview-bodycontent": "이 모듈은 &quot;Bookshelf&quot; 확장 기능에 의해 제공되며 PDF로 내보내기를 활성화합니다.",
+	"bs-uemodulebookpdf-btn-export": "이동 가능 문서 형식 (PDF)",
+	"bs-uemodulebookpdf-template": "틀 (PDF)",
+	"bs-uemodulebookpdf-bookshelfimage": "책장 이미지",
+	"right-uemodulebookpdf-export": "책의 일부를 PDF로 페이지를 내보냅니다",
+	"bs-uemodulebookpdf-table-of-contents-heading": "목차"
+}

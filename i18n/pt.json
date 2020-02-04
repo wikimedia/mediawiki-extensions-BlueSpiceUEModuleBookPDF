@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mansil"
+		]
+	},
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Tabela de conteúdos",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Apenas títulos de artigo (indentado por grau)",
+	"bs-uemodulebookpdf-overview-description": "Exporta um livro para Adobe PDF",
+	"bs-uemodulebookpdf-overview-bodycontent": "Este 'Módulo' é fornecido pela 'Extensão' &quot;Bookshelf&quot; que permite a exportação para PDF.",
+	"bs-uemodulebookpdf-btn-export": "Formato de Documento Portátil (PDF)",
+	"bs-uemodulebookpdf-template": "Modelo (PDF)",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Tabela de conteúdos"
+}

@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"ديفيد"
+		]
+	},
+	"bs-uemodulebookpdf-extension-description": "يمكن BlueSpice من تصدير مجموعات من المقالات هرميا إلى Adobe&reg; تنسيق المستند المحمول (PDF).",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "جدول المحتويات",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "عناوين المقالات فقط (المسافة البادئة حسب الدرجة)",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "تضمين جداول محتويات المقالات (لا توجد مسافة بادئة لعناوين المقالات)",
+	"bs-uemodulebookpdf-overview-title": "Adobe&reg; تنسيق المستند المحمول (PDF) لرف الكتب",
+	"bs-uemodulebookpdf-overview-description": "يصدر كتابا إلى Adobe PDF.",
+	"bs-uemodulebookpdf-overview-bodycontent": "يتم توفير هذه الوحدة من خلال ملحق \"Bookshelf\" ويمكن التصدير إلى PDF.",
+	"bs-uemodulebookpdf-btn-export": "تنسيق المستند المحمول (PDF)",
+	"bs-uemodulebookpdf-template": "قالب (PDF)",
+	"bs-uemodulebookpdf-bookshelfimage": "صورة رف الكتب",
+	"action-uemodulebookpdf-export": "تصدير صفحة إلى PDF كجزء من كتاب",
+	"right-uemodulebookpdf-export": "تصدير صفحة إلى PDF كجزء من كتاب",
+	"bs-uemodulebookpdf-table-of-contents-heading": "جدول المحتويات"
+}
