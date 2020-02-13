@@ -5,7 +5,7 @@ $(document).on('BSUniversalExportMenuItems', function(event, sender, exportMenuI
 			exportModule: 'bookpdf',
 			fileExtension: 'pdf',
 			text: mw.message('bs-uemodulebookpdf-btn-export').plain(),
-			iconCls: 'icon-page_white_acrobat'
+			iconCls: 'icon-file-pdf'
 		})
 	);
 });
