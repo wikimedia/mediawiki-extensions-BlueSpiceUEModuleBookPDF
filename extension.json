@@ -67,9 +67,6 @@
 			"scripts": [
 				"bluespice.ueModuleBookPDF.js"
 			],
-			"styles": [
-				"bluespice.ueModuleBookPDF.css"
-			],
 			"messages": [
 				"bs-uemodulebookpdf-btn-export"
 			]
