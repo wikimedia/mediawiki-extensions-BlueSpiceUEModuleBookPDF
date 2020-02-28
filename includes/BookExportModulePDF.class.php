@@ -181,17 +181,19 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			$sHref  = $oAnchor->getAttribute( 'href' );
 			$sClass = $oAnchor->getAttribute( 'class' );
 
-			if ( empty( $Href ) ) {
+			if ( empty( $sHref ) ) {
 				// Jumplink targets
 				continue;
 			}
 
 			$aClasses = explode( ' ', $sClass );
-			if ( in_array( 'external', $aClasses ) ) { continue;
+			if ( in_array( 'external', $aClasses ) ) {
+				continue;
 			}
 
 			$aHref = parse_url( $sHref );
-			if ( !isset( $aHref['path'] ) ) { continue;
+			if ( !isset( $aHref['path'] ) ) {
+				continue;
 			}
 
 			$sPathBasename = basename( $aHref['path'] );
@@ -199,7 +201,8 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 				$aQueryString = [];
 				parse_str( $aHref['query'], $aQueryString );
 
-				if ( !isset( $aQueryString['title'] ) ) { continue;
+				if ( !isset( $aQueryString['title'] ) ) {
+					continue;
 				}
 
 				$sPathBasename = $aQueryString['title'];
