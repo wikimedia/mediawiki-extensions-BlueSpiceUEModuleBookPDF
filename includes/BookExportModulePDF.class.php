@@ -91,11 +91,16 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 
 		$aLinkMap = [];
 
+		$user = $oCaller->getUser();
+		$pm = \MediaWiki\MediaWikiServices::getInstance()->getPermissionManager();
+
 		foreach ( $aArticles as $aArticle ) {
 
 			$aArticle['title'] = urldecode( $aArticle['title'] );
 			$oCurTitle = Title::newFromText( $aArticle['title'] );
-			if ( $oCurTitle instanceof Title && !$oCurTitle->userCan( 'uemodulebookpdf-export' ) ) {
+			if ( $oCurTitle instanceof Title &&
+				!$pm->userCan( 'uemodulebookpdf-export', $user, $oCurTitle )
+			) {
 				throw new PermissionsError( 'uemodulebookpdf-export' );
 			}
 
