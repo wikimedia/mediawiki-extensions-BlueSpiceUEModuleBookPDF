@@ -15,6 +15,6 @@
 	"bs-uemodulebookpdf-template": "Шаблон (PDF)",
 	"bs-uemodulebookpdf-bookshelfimage": "Зображення в Bookshelf",
 	"action-uemodulebookpdf-export": "експортування сторінки в PDF як частини книги",
-	"right-uemodulebookpdf-export": "експортування сторінки в PDF як частини книги",
+	"right-uemodulebookpdf-export": "Експортування сторінки в PDF як частини книги",
 	"bs-uemodulebookpdf-table-of-contents-heading": "Зміст"
 }
