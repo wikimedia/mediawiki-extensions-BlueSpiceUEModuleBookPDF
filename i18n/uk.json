@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Piramidion"
+		]
+	},
+	"bs-uemodulebookpdf-extension-description": "Надає BlueSpice можливість експортувати ієрархічні колекції статей у формат Adobe&reg; Portable Document Format (PDF).",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Зміст",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Лише назви статей (відступи за рангом)",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Вбудувати блоки зі змістом статей (без відступів перед назвами статей)",
+	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Portable Document Format (PDF) для Bookshelf",
+	"bs-uemodulebookpdf-overview-description": "Експортує книгу у форматі Adobe PDF.",
+	"bs-uemodulebookpdf-overview-bodycontent": "Цей модуль надається розширенням &quot;Bookshelf&quot; та уможливлює експорт у PDF.",
+	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
+	"bs-uemodulebookpdf-template": "Шаблон (PDF)",
+	"bs-uemodulebookpdf-bookshelfimage": "Зображення в Bookshelf",
+	"action-uemodulebookpdf-export": "експортування сторінки в PDF як частини книги",
+	"right-uemodulebookpdf-export": "Експортування сторінки в PDF як частини книги",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Зміст"
+}
