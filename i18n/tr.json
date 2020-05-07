@@ -4,10 +4,10 @@
 			"BaRaN6161 TURK"
 		]
 	},
-	"bs-uemodulebookpdf-extension-description": "BlueSpice'in hiyerarşik makale koleksiyonlarını Adobe&reg; Portable Document Format'a (PDF) aktarmasını sağlar.",
+	"bs-uemodulebookpdf-extension-description": "BlueSpice'in hiyerarşik madde koleksiyonlarını Adobe&reg; Portable Document Format'a (PDF) aktarmasını sağlar.",
 	"bs-uemodulebookpdf-pref-bookexporttoc": "İçindekiler",
-	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Sadece makale başlıkları (dereceye göre girinti)",
-	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Makale TOC'lerini gömme (Makale başlıklarının girintisi yok)",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Yalnızca madde başlıkları (dereceye göre girinti)",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Madde içindekileri gömme (Madde başlıklarının girintisi yok)",
 	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Portable Document Format (PDF) için Kitaplık",
 	"bs-uemodulebookpdf-overview-description": "Bir kitabı Adobe PDF'ye dışa aktarır.",
 	"bs-uemodulebookpdf-overview-bodycontent": "Bu Modül &quot;Kitaplık&quot; Uzantısı tarafından sağlanmıştır ve PDF'ye aktarılmasını sağlar.",
