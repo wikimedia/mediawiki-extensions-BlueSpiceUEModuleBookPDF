@@ -1,6 +1,6 @@
 {
 	"name": "BlueSpiceUEModuleBookPDF",
-	"version": "3.3.0-alpha",
+	"version": "3.4.0-alpha",
 	"license-name": "GPL-3.0-only",
 	"url": "https://en.wiki.bluespice.com/wiki/Reference:UEModuleBookPDF",
 	"author": [
@@ -9,12 +9,12 @@
 	],
 	"descriptionmsg": "bs-uemodulebookpdf-extension-description",
 	"requires": {
-		"MediaWiki": ">= 1.35.0",
+		"MediaWiki": ">= 1.36.0",
 		"extensions": {
-			"BlueSpiceFoundation": ">= 3.3",
-			"BlueSpiceUniversalExport": ">= 3.3",
-			"BlueSpiceBookshelf": ">= 3.3",
-			"BlueSpiceUEModulePDF": ">= 3.3"
+			"BlueSpiceFoundation": ">= 3.4",
+			"BlueSpiceUniversalExport": ">= 3.4",
+			"BlueSpiceBookshelf": ">= 3.4",
+			"BlueSpiceUEModulePDF": ">= 3.4"
 		}
 	},
 	"type": "bluespice",
