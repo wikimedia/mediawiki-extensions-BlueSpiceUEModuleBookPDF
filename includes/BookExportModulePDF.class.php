@@ -491,7 +491,12 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			'class', $aPage['firstheading-element']->getAttribute( 'class' ) . ' booklevel-' . $iLevel
 		);
 
-		return $aPage['dom']->documentElement;
+		/**
+		 * $aPage['dom']->documentElement is the <html> element with a nested
+		 * <body> with a single child `div.bs-page-content`
+		 */
+		$bodyEl = $aPage['dom']->getElementsByTagName( 'body' )->item( 0 );
+		return $bodyEl->childNodes[0];
 	}
 
 	/**
@@ -517,7 +522,7 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 		$oDOM = new DOMDocument();
 		$oDOM->loadXML( <<<HERE
 <xml>
-	<div>
+	<div class="bs-section bs-text-content">
 		<a name="bs-ue-jumpmark-$sId" id="bs-ue-jumpmark-$sId" />
 		<h1 class="firstHeading">
 			<span class="bs-chapter-number">$sNumber</span>{$aArticle['display-title']}
@@ -573,7 +578,7 @@ HERE
 		$oDOM = new DOMDocument();
 		$oDOM->loadXML( <<<HERE
 <xml>
-	<div class="bs-tag-content">
+	<div class="bs-section bs-tag-content">
 		<a name="bs-ue-jumpmark-$sId" id="bs-ue-jumpmark-$sId" />
 		<h1 class="firstHeading">
 			<span class="bs-chapter-number">$sNumber</span>{$aArticle['display-title']}
