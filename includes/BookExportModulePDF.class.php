@@ -88,6 +88,11 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 		// Insert TOC page as first page (but after external insertions)
 		$oMainContNode->parentNode->insertBefore( $oTOCPage, $oMainContNode );
 
+		$beforeContent = $aTemplate['dom']->createElement( 'div', 'Start of book content' );
+		$beforeContent->setAttribute( 'class', 'before-first-chapter' );
+		$beforeContent->setAttribute( 'style', 'display:none;' );
+		$oMainContNode->parentNode->insertBefore( $beforeContent, $oMainContNode );
+
 		$aLinkMap = [];
 
 		foreach ( $aArticles as $aArticle ) {
@@ -161,6 +166,12 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 				);
 			}
 		}
+
+		$afterContent = $aTemplate['dom']->createElement( 'div', 'End of book content' );
+		$afterContent->setAttribute( 'class', 'after-last-chapter' );
+		$afterContent->setAttribute( 'style', 'display:none;' );
+		$oMainContNode->parentNode->insertBefore( $afterContent, $oMainContNode );
+
 		// Don't forget to remove the remaining content elements
 		foreach ( $aTemplate['content-elements'] as $sKey => $oNode ) {
 			if ( !$oNode instanceof DOMNode ) {
@@ -391,7 +402,8 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 
 		$iLevel = 0;
 		if ( isset( $aPage['number'] ) ) {
-			$iLevel = count( explode( '.', $aPage['number'] ) );
+			$number = trim( '.', $aPage['number'] );
+			$iLevel = count( explode( '.', $number ) );
 		}
 
 		// Check wether to include the article's TOC into the book TOC or not
@@ -490,6 +502,9 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 		 * <body> with a single child `div.bs-page-content`
 		 */
 		$bodyEl = $aPage['dom']->getElementsByTagName( 'body' )->item( 0 );
+
+		$this->addBooklevelToSection( $bodyEl, $iLevel );
+
 		return $bodyEl->childNodes[0];
 	}
 
@@ -545,6 +560,8 @@ HERE
 		];
 		$iLevel = $this->buildTOC( $aDummyPage, $aTemplate, $oTOCList, $aArticle, $aBookMeta );
 		$oHeading->setAttribute( 'class', 'booklevel-' . $iLevel );
+
+		$this->addBooklevelToSection( $oDOM, $iLevel );
 
 		return $oDOM->getElementsByTagName( 'div' )->item( 0 );
 	}
@@ -621,6 +638,8 @@ HERE
 		$iLevel = $this->buildTOC( $aDummyPage, $aTemplate, $oTOCList, $aArticle, $aBookMeta );
 		$oFirstHeading->setAttribute( 'class', 'booklevel-' . $iLevel );
 
+		$this->addBooklevelToSection( $oDOM, $iLevel );
+
 		return $aDummyPage['dom']->documentElement;
 	}
 
@@ -645,5 +664,16 @@ HERE
 		$aTemplate['head-element']->removeChild( $aTemplate['bookmarks-element'] );
 		$aTemplate['head-element']->appendChild( $importedNewBookmarksEl );
 		$aTemplate['bookmarks-element'] = $importedNewBookmarksEl;
+	}
+
+	/**
+	 * @param \DOMDocument $node
+	 * @param int $level
+	 */
+	private function addBooklevelToSection( &$node, $level ) {
+		$section = $node->getElementsByTagName( 'div' )->item( 0 );
+		$section->setAttribute(
+			'class', $section->getAttribute( 'class' ) . ' booklevel-' . $level
+		);
 	}
 }
