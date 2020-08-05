@@ -402,7 +402,7 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 
 		$iLevel = 0;
 		if ( isset( $aPage['number'] ) ) {
-			$number = trim( '.', $aPage['number'] );
+			$number = trim( $aPage['number'], '.' );
 			$iLevel = count( explode( '.', $number ) );
 		}
 
@@ -667,7 +667,7 @@ HERE
 	}
 
 	/**
-	 * @param \DOMDocument $node
+	 * @param \DOMDocument &$node
 	 * @param int $level
 	 */
 	private function addBooklevelToSection( &$node, $level ) {
