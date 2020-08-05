@@ -408,7 +408,7 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 
 		$iLevel = 0;
 		if ( isset( $aPage['number'] ) ) {
-			$number = trim( '.', $aPage['number'] );
+			$number = trim( $aPage['number'], '.' );
 			$iLevel = count( explode( '.', $number ) );
 		}
 
