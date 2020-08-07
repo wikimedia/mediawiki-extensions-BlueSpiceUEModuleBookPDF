@@ -2,10 +2,10 @@
 
 namespace BlueSpice\UEModuleBookPDF\Test;
 
-use PHPUnit\Framework\TestCase;
 use BlueSpice\UEModuleBookPDF\BookmarksXMLBuilder;
 use DOMDocument;
 use DOMElement;
+use PHPUnit\Framework\TestCase;
 
 class BookmarksXMLBuilderTest extends TestCase {
 
