@@ -4,9 +4,11 @@
 			"Eduardo Addad de Oliveira"
 		]
 	},
+	"bs-uemodulebookpdf-extension-description": "Permite que o BlueSpice exporte coleções hierárquicas de artigos para Adobe&reg; Portable Document Format (PDF).",
 	"bs-uemodulebookpdf-pref-bookexporttoc": "Índice",
 	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Apenas títulos de artigos (recuo por nota)",
 	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Incorporar TOCs de artigo (sem recuo dos títulos dos artigos)",
+	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Formato de documento portátil (PDF) para a estante",
 	"bs-uemodulebookpdf-overview-description": "Exporta um livro para Adobe PDF.",
 	"bs-uemodulebookpdf-overview-bodycontent": "Este 'Módulo' é fornecido pela 'Extensão' &quot;Bookshelf&quot; que permite a exportação para PDF.",
 	"bs-uemodulebookpdf-btn-export": "Formato Portátil de Documento (PDF)",
