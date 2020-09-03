@@ -1,7 +1,7 @@
 <?php
 
-use BlueSpice\Services;
 use BlueSpice\UEModuleBookPDF\BookmarksXMLBuilder;
+use MediaWiki\MediaWikiServices;
 
 class BsBookExportModulePDF implements BsUniversalExportModule {
 
@@ -97,7 +97,7 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 		$aLinkMap = [];
 
 		$user = $oCaller->getUser();
-		$pm = \MediaWiki\MediaWikiServices::getInstance()->getPermissionManager();
+		$pm = MediaWikiServices::getInstance()->getPermissionManager();
 
 		foreach ( $aArticles as $aArticle ) {
 
@@ -110,7 +110,7 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			}
 
 			if ( $aArticle['is-redirect'] === true ) {
-				$dbr = Services::getInstance()->getDBLoadBalancer()->getConnection(
+				$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection(
 					DB_REPLICA
 				);
 
@@ -251,7 +251,7 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			$oAnchor->setAttribute( 'href', $aLinkMap[$sPathBasename] );
 		}
 
-		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
+		$config = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
 		// Set params for PDF creation
 		$oCaller->aParams['document-token']
@@ -346,7 +346,7 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 	 * @return array
 	 */
 	public function getTemplate( $oCaller, $aBookPage, $aBookMeta ) {
-		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
+		$config = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
 
 		$sTemplate = $config->get( 'UEModuleBookPDFDefaultTemplate' );
@@ -415,7 +415,7 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 		// Check wether to include the article's TOC into the book TOC or not
 		$bIncludeArticleTOC = false;
 		if ( $aPage['toc-ul-element'] instanceof DOMNode ) {
-			$config = \BlueSpice\Services::getInstance()->getConfigFactory()
+			$config = MediaWikiServices::getInstance()->getConfigFactory()
 				->makeConfig( 'bsg' );
 			if ( $config->get( 'UEModuleBookPDFBookExportTOC' ) == 'article-tocs' ) {
 				$bIncludeArticleTOC = true;
