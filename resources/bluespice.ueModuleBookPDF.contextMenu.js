@@ -4,6 +4,7 @@
 		if( !bsTitle ) {
 			return;
 		}
+
 		var title = new mw.Title( bsTitle );
 		if( title.getNamespaceId() === bs.ns.NS_BOOK ) {
 			items.push({

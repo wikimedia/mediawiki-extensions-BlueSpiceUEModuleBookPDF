@@ -71,6 +71,9 @@
 			],
 			"messages": [
 				"bs-uemodulebookpdf-btn-export"
+			],
+			"dependencies": [
+				"ext.bluespice.bookshelf.storageLocation"
 			]
 		},
 		"ext.bluespice.ueModuleBookPDF.contextMenu": {
@@ -105,7 +108,11 @@
 	},
 	"Hooks": {
 		"BeforePageDisplay": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BeforePageDisplay\\AddResources::callback",
-		"BSMigrateSettingsFromDeviatingNames": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSMigrateSettingsFromDeviatingNames\\SkipServiceSettings::callback"
+		"BSMigrateSettingsFromDeviatingNames": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSMigrateSettingsFromDeviatingNames\\SkipServiceSettings::callback",
+		"ChameleonSkinTemplateOutputPageBeforeExec": [
+			"BlueSpice\\UEModuleBookPDF\\Hook\\ChameleonSkinTemplateOutputPageBeforeExec\\AddBookExportAction::callback",
+			"BlueSpice\\UEModuleBookPDF\\Hook\\ChameleonSkinTemplateOutputPageBeforeExec\\AddBookExportActionBookPage::callback"
+		]
 	},
 	"load_composer_autoloader": true,
 	"manifest_version": 2

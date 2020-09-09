@@ -16,16 +16,25 @@ $(document).on('BSBookshelfUIManagerPanelInit', function(event, sender) {
 		glyph: true,
 		tooltip: mw.message('bs-uemodulebookpdf-btn-export').plain(),
 		handler: function( grid, rowIndex, colIndex ) {
-			var record = grid.getStore().getAt( rowIndex );
-			grid.getSelectionModel().select( record );
-
-			var url = bs.util.wikiGetlink(
-				{
+			var record = grid.getStore().getAt( rowIndex ),
+				title = record.get('book_prefixedtext'),
+				type = record.get( 'book_type' ),
+				location = bs.bookshelf.storageLocationRegistry.lookup( type ),
+				params = {
 					ue: {
 						module: 'bookpdf'
-					}
-				},
-				'Special:UniversalExport/'+record.get('book_prefixedtext')
+					},
+					book_type: record.get( 'book_type' )
+				};
+			grid.getSelectionModel().select( record );
+
+			if ( location && location.isTitleBased() === false ) {
+				params.content = location.getBookPageTextForTitle( title );
+			}
+
+			var url = bs.util.wikiGetlink(
+				params,
+				'Special:UniversalExport/' + title
 			);
 			window.open( url );
 		}
