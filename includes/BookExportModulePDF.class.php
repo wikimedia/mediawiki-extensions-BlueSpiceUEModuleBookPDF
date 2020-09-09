@@ -12,6 +12,16 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 	private $flatBookmarksList = [];
 
 	/**
+	 * @var string|bool
+	 */
+	protected $bookType = false;
+
+	/**
+	 * @var string|bool
+	 */
+	protected $content = false;
+
+	/**
 	 * Implementation of BsUniversalExportModule interface. Uses the
 	 * PdfWebservice BN2PDF-light to create a PDF file.
 	 * @param SpecialUniversalExport &$oCaller
@@ -29,9 +39,7 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			'content'   => ''
 		];
 
-		$oPHP = PageHierarchyProvider::getInstanceFor(
-			$oCaller->oRequestedTitle->getPrefixedText()
-		);
+		$oPHP = $this->getPageHierarchyProvider( $oCaller );
 		$aBookMeta = $oPHP->getBookMeta();
 
 		// "articles" is legacy naming. Should be 'nodes'
@@ -46,10 +54,16 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			$aArticles = $oPHP->getExtendedTOCArray();
 		}
 
-		$aBookPage = BsPDFPageProvider::getPage( [
-			'article-id' => $oCaller->oRequestedTitle->getArticleId(),
-			'follow-redirects' => true
-		] );
+		try {
+			$aBookPage = BsPDFPageProvider::getPage( [
+				'article-id' => $oCaller->oRequestedTitle->getArticleId(),
+				'follow-redirects' => true
+			] );
+		} catch ( Exception $ex ) {
+			$aBookPage = [
+				'meta' => [ 'title' => $oCaller->oRequestedTitle->getPrefixedText() ]
+			];
+		}
 
 		$aTemplate = $this->getTemplate( $oCaller, $aBookPage, $aBookMeta );
 		if ( isset( $aTemplate['title-element'] )
@@ -100,8 +114,12 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 		$pm = MediaWikiServices::getInstance()->getPermissionManager();
 
 		foreach ( $aArticles as $aArticle ) {
-
 			$aArticle['title'] = urldecode( $aArticle['title'] );
+			$aArticle['php'] = [
+				'title' => $oCaller->oRequestedTitle->getPrefixedText(),
+				'book_type' => $this->bookType,
+				'content' => $this->content,
+			];
 			$oCurTitle = Title::newFromText( $aArticle['title'] );
 			if ( $oCurTitle instanceof Title &&
 				!$pm->userCan( 'uemodulebookpdf-export', $user, $oCurTitle )
@@ -443,7 +461,6 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 		);
 
 		$this->flatBookmarksList[$aPage['number']] = $aPage['bookmark-element'];
-
 		return $iLevel;
 	}
 
@@ -459,13 +476,12 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 	 */
 	public function getDOMNodeForWikiPage( $aArticle, &$aTemplate, $oTOCList, $aBookMeta,
 		&$aLinkMap, &$aBookPage ) {
-		$aBS = $aArticle['bookshelf'];
-
 		$aPage = BsPDFPageProvider::getPage( $aArticle );
+
 		// If there is a number set in the data from the client, it overrides
 		// the saved one. This can still be overridden by the hook
-		if ( isset( $aBS['number'] ) ) {
-			$aPage['number'] = trim( $aBS['number'] );
+		if ( isset( $aArticle['number'] ) ) {
+			$aPage['number'] = trim( $aArticle['number'] );
 		}
 
 		Hooks::run( 'BSBookshelfExportArticle',
@@ -681,5 +697,23 @@ HERE
 		$section->setAttribute(
 			'class', $section->getAttribute( 'class' ) . ' booklevel-' . $level
 		);
+	}
+
+	/**
+	 * @param SpecialUniversalExport $ueSpecial
+	 * @return DynamicPageHierarchyProvider|PageHierarchyProvider
+	 * @throws MWException
+	 */
+	private function getPageHierarchyProvider( $ueSpecial ) {
+		$this->bookType = $ueSpecial->getRequest()->getText( 'book_type', false );
+		$this->content = $ueSpecial->getRequest()->getText( 'content', false );
+		$phpf = MediaWikiServices::getInstance()->getService(
+			'BSBookshelfPageHierarchyProviderFactory'
+		);
+
+		return $phpf->getInstanceFor( $ueSpecial->oRequestedTitle->getPrefixedText(), [
+			'book_type' => $this->bookType,
+			'content' => $this->content
+		] );
 	}
 }
