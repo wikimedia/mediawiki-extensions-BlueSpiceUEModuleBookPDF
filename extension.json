@@ -11,10 +11,10 @@
 	"requires": {
 		"MediaWiki": ">= 1.36.0",
 		"extensions": {
-			"BlueSpiceFoundation": ">= 3.4",
-			"BlueSpiceUniversalExport": ">= 3.4",
-			"BlueSpiceBookshelf": ">= 3.4",
-			"BlueSpiceUEModulePDF": ">= 3.4"
+			"BlueSpiceFoundation": ">= 4.1",
+			"BlueSpiceUniversalExport": ">= 4.1",
+			"BlueSpiceBookshelf": ">= 4.1",
+			"BlueSpiceUEModulePDF": ">= 4.1"
 		}
 	},
 	"type": "bluespice",
