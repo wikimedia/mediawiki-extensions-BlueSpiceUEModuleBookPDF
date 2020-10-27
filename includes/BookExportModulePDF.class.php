@@ -2,6 +2,7 @@
 
 use BlueSpice\Services;
 use BlueSpice\UEModuleBookPDF\BookmarksXMLBuilder;
+use MediaWiki\MediaWikiServices;
 
 class BsBookExportModulePDF implements BsUniversalExportModule {
 
@@ -110,6 +111,9 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 
 		$aLinkMap = [];
 
+		$config = $config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig(
+			'bsg'
+		);
 		foreach ( $aArticles as $aArticle ) {
 			$aArticle['title'] = urldecode( $aArticle['title'] );
 			$aArticle['php'] = [
@@ -119,7 +123,11 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			];
 			$oCurTitle = Title::newFromText( $aArticle['title'] );
 			if ( $oCurTitle instanceof Title && !$oCurTitle->userCan( 'uemodulebookpdf-export' ) ) {
-				throw new PermissionsError( 'uemodulebookpdf-export' );
+				// allow the PDFExport to export error messages and exceptions such
+				// as "Permission denied" instead of not delivering the book at all
+				if ( !$config->get( 'UEModulePDFAllowPartialExport' ) ) {
+					throw new PermissionsError( 'uemodulebookpdf-export' );
+				}
 			}
 
 			if ( $aArticle['is-redirect'] === true ) {
