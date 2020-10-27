@@ -112,7 +112,9 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 
 		$user = $oCaller->getUser();
 		$pm = MediaWikiServices::getInstance()->getPermissionManager();
-
+		$config = $config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig(
+			'bsg'
+		);
 		foreach ( $aArticles as $aArticle ) {
 			$aArticle['title'] = urldecode( $aArticle['title'] );
 			$aArticle['php'] = [
@@ -124,7 +126,11 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			if ( $oCurTitle instanceof Title &&
 				!$pm->userCan( 'uemodulebookpdf-export', $user, $oCurTitle )
 			) {
-				throw new PermissionsError( 'uemodulebookpdf-export' );
+				// allow the PDFExport to export error messages and exceptions such
+				// as "Permission denied" instead of not delivering the book at all
+				if ( !$config->get( 'UEModulePDFAllowPartialExport' ) ) {
+					throw new PermissionsError( 'uemodulebookpdf-export' );
+				}
 			}
 
 			if ( $aArticle['is-redirect'] === true ) {
