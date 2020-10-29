@@ -45,7 +45,7 @@ class BookmarksXMLBuilder {
 		$this->normalizeList();
 		$this->initDOM();
 		$this->fillGapsInList();
-		ksort( $this->flatList );
+		ksort( $this->flatList, SORT_NATURAL );
 		$this->buildTree();
 
 		return $this->dom->documentElement;
@@ -61,13 +61,18 @@ class BookmarksXMLBuilder {
 		$previousEl = $parentEl;
 		$previousLevel = 0;
 		foreach ( $this->flatList as $number => $bookmarkEl ) {
+			$number = trim( $number, '.' );
 			$currentLevel = $this->makeLevel( $number );
 			if ( $currentLevel > $previousLevel ) {
 				$parentEl = $previousEl;
 			}
 			if ( $currentLevel < $previousLevel ) {
-				$parentEl = $parentEl->parentNode;
+				$diff = $previousLevel - $currentLevel;
+				for ( $i = 0; $i < $diff; $i++ ) {
+					$parentEl = $parentEl->parentNode;
+				}
 			}
+
 			$importedBookmarkEl = $this->dom->importNode( $bookmarkEl, true );
 			$parentEl->appendChild( $importedBookmarkEl );
 
@@ -89,10 +94,10 @@ class BookmarksXMLBuilder {
 
 	private function fillGapsInList() {
 		foreach ( $this->flatList as $number => $bookmarkElement ) {
-			$parts = explode( '.', $number );
+			$parts = explode( '.', trim( $number, '.' ) );
 			while ( count( $parts ) > 1 ) {
 				array_pop( $parts );
-				$parentNumber = implode( '.', $parts );
+				$parentNumber = implode( '.', $parts ) . '.';
 				if ( !isset( $this->flatList[$parentNumber] ) ) {
 					$this->addDummyParentToFlatList( $parentNumber );
 				}
@@ -118,10 +123,11 @@ class BookmarksXMLBuilder {
 	/**
 	 *
 	 * @param string $id
-	 * @param string $treeNode
+	 * @param array $treeNode
 	 * @return array
 	 */
 	private function findNumberInTree( $id, $treeNode ) {
+		$id = trim( $id, '.' );
 		foreach ( $treeNode['children'] as $childNode ) {
 			if ( isset( $childNode['id'] ) && $childNode['id'] === $id ) {
 				return $childNode;
@@ -137,8 +143,8 @@ class BookmarksXMLBuilder {
 	private function normalizeList() {
 		$normalizedList = [];
 		foreach ( $this->flatList as $number => $bookmarkEl ) {
-			// In some cases the number is not set as "1.1.1" but as "1.1.1." with a tailing dot.
-			$normalizedNumber = trim( $number, '.' );
+			// In some cases the number is not set as "1.1.1." but as "1.1.1" with a tailing dot.
+			$normalizedNumber = trim( $number, '.' ) . '.';
 			$normalizedList[$normalizedNumber] = $bookmarkEl;
 		}
 		$this->flatList = $normalizedList;
