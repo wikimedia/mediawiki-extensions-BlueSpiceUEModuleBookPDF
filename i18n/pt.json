@@ -11,5 +11,11 @@
 	"bs-uemodulebookpdf-overview-bodycontent": "Este módulo é fornecido pela extensão &quot;Bookshelf&quot; e permite a exportação para formato PDF.",
 	"bs-uemodulebookpdf-btn-export": "Formato de Documento Portátil (PDF)",
 	"bs-uemodulebookpdf-template": "Modelo (PDF)",
-	"bs-uemodulebookpdf-table-of-contents-heading": "Índice"
+	"bs-uemodulebookpdf-table-of-contents-heading": "Índice",
+	"bs-uemodulebookpdf-extension-description": "Permite que o BlueSpice exporte coleções hierárquicas de artigos para Adobe&reg; Formato de Documento Portátil (PDF).",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Incorporar índices dos artigos (sem indentação dos títulos dos artigos)",
+	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Formato de Documento Portátil (PDF) para a extensão Bookshelf",
+	"bs-uemodulebookpdf-bookshelfimage": "Imagem da extensão Bookshelf",
+	"action-uemodulebookpdf-export": "exportar uma página para PDF como parte de um livro",
+	"right-uemodulebookpdf-export": "Exportar uma página para PDF como parte de um livro"
 }
