@@ -59,12 +59,27 @@ class BookmarksXMLBuilderTest extends TestCase {
 								[
 									'text' => 'Some Page 2.2.1',
 									'id' => '2.2.1',
-									'children' => []
+									'children' => [
+										[
+											'text' => 'Some Page 2.2.1.1',
+											'id' => '2.2.1.1',
+											'children' => []
+										]
+									]
 								]
 							]
 						]
 					]
-				]
+					],
+					[ 'text' => 'Some Page 3', 'id' => '3', 'children' => [] ],
+					[ 'text' => 'Some Page 4', 'id' => '4', 'children' => [] ],
+					[ 'text' => 'Some Page 5', 'id' => '5', 'children' => [] ],
+					[ 'text' => 'Some Page 6', 'id' => '6', 'children' => [] ],
+					[ 'text' => 'Some Page 7', 'id' => '7', 'children' => [] ],
+					[ 'text' => 'Some Page 8', 'id' => '8', 'children' => [] ],
+					[ 'text' => 'Some Page 9', 'id' => '9', 'children' => [] ],
+					[ 'text' => 'Some Page 10', 'id' => '10', 'children' => [] ],
+					[ 'text' => 'Some Page 11', 'id' => '11', 'children' => [] ],
 			]
 		];
 
@@ -137,6 +152,30 @@ class BookmarksXMLBuilderTest extends TestCase {
   <bookmark name="Some Page 2" href="#abc">
     <bookmark name="Some Page 2.1" href="#ghi" />
   </bookmark>
+</bookmarks>
+',
+				$dummyTree
+			],
+			'natsort-issue-ERM21412' => [
+				[
+					'1.' => $this->makeDummyBookmarkEl( 'Some Page 1', '#abc' ),
+					'2.1' => $this->makeDummyBookmarkEl( 'Some Page 2.1', '#def' ),
+					'10' => $this->makeDummyBookmarkEl( 'Some Page 10', '#ghi' ),
+					'11' => $this->makeDummyBookmarkEl( 'Some Page 11', '#jkl' ),
+					'2.2.1.1' => $this->makeDummyBookmarkEl( 'Some Page 2.2.1.1', '#mno' )
+				],
+'<bookmarks>
+  <bookmark name="Some Page 1" href="#abc" />
+  <bookmark name="Some Page 2" href="#">
+    <bookmark name="Some Page 2.1" href="#def" />
+    <bookmark name="Some Page 2.2" href="#">
+        <bookmark name="Some Page 2.2.1" href="#">
+            <bookmark name="Some Page 2.2.1.1" href="#mno" />
+        </bookmark>
+    </bookmark>
+  </bookmark>
+  <bookmark name="Some Page 10" href="#ghi" />
+  <bookmark name="Some Page 11" href="#jkl" />
 </bookmarks>
 ',
 				$dummyTree
