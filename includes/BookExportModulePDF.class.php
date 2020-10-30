@@ -273,6 +273,11 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			}
 
 			$oAnchor->setAttribute( 'href', $aLinkMap[$sPathBasename] );
+
+			if ( isset( $aHref['fragment'] ) ) {
+				$otherPageJumpmark = '#' . md5( $sPathBasename ) . '-' . md5( $aHref['fragment'] );
+				$oAnchor->setAttribute( 'href', $otherPageJumpmark );
+			}
 		}
 
 		$config = MediaWikiServices::getInstance()->getConfigFactory()
