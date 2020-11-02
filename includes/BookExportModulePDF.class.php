@@ -74,8 +74,14 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			);
 		}
 
-		Hooks::run( 'BSBookshelfExportBeforeArticles',
-			[ &$aTemplate, &$aBookPage, &$aArticles ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run(
+			'BSBookshelfExportBeforeArticles',
+			[
+				&$aTemplate,
+				&$aBookPage,
+				&$aArticles
+			]
+		);
 
 		// Prepare TOC Page
 		$oTOCPage = $aTemplate['dom']->createElement( 'div' );
@@ -182,10 +188,18 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 					);
 					break;
 				default:
-					Hooks::run(
+					MediaWikiServices::getInstance()->getHookContainer()->run(
 						'BSBookshelfExportUnknownNodeType',
-						[ $oDOMNode, $aArticle, &$aTemplate, $oTOCList, $aBookMeta, &$aLinkMap, &$aBookPage ]
-				);
+						[
+							$oDOMNode,
+							$aArticle,
+							&$aTemplate,
+							$oTOCList,
+							$aBookMeta,
+							&$aLinkMap,
+							&$aBookPage
+						]
+					);
 			}
 
 			// Add the content
@@ -490,8 +504,15 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			$aPage['number'] = trim( $aArticle['number'] );
 		}
 
-		Hooks::run( 'BSBookshelfExportArticle',
-			[ &$aPage, &$aTemplate, &$aBookPage, &$aArticle ] );
+		MediaWikiServices::getInstance()->getHookContainer()->run(
+			'BSBookshelfExportArticle',
+			[
+				&$aPage,
+				&$aTemplate,
+				&$aBookPage,
+				&$aArticle
+			]
+		);
 
 		// Save jumplink to article for later link re-writing
 		$aLinkMap[$aArticle['title']] = $aPage['bookmark-element']->getAttribute( 'href' );
@@ -652,7 +673,7 @@ HERE
 			'toc-ul-element' => ''
 		];
 
-		Hooks::run( 'BSBookshelfExportTag', [
+		MediaWikiServices::getInstance()->getHookContainer()->run( 'BSBookshelfExportTag', [
 			&$aDummyPage,
 			&$aArticle,
 			&$aTemplate,
