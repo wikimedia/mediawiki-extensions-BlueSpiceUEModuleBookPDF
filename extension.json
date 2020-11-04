@@ -39,6 +39,11 @@
 					]
 				}
 			}
+		},
+		"BlueSpiceUniversalExport": {
+			"ModuleRegistry": {
+				"bookpdf": "\\BsBookExportModulePDF::factory"
+			}
 		}
 	},
 	"GroupPermissions": {

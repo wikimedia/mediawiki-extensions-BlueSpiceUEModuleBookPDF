@@ -32,21 +32,8 @@
 class UEModuleBookPDF extends BsExtensionMW {
 
 	protected function initExt() {
-		$this->setHook( 'BSUniversalExportSpecialPageExecute' );
 		$this->setHook( 'BSBookshelfBookUI' );
 		$this->setHook( 'BSBookshelfBookManager' );
-	}
-
-	/**
-	 * Adds the Bookshelf export module to UniversalExport
-	 * @param SpecialUniversalExport $oSpecialPage
-	 * @param string $sParam
-	 * @param array &$aModules
-	 * @return true
-	 */
-	public function onBSUniversalExportSpecialPageExecute( $oSpecialPage, $sParam, &$aModules ) {
-		$aModules['bookpdf'] = new BsBookExportModulePDF();
-		return true;
 	}
 
 	/**
