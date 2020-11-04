@@ -2,9 +2,10 @@
 
 use BlueSpice\Services;
 use BlueSpice\UEModuleBookPDF\BookmarksXMLBuilder;
+use BlueSpice\UniversalExport\ExportModule;
 use MediaWiki\MediaWikiServices;
 
-class BsBookExportModulePDF implements BsUniversalExportModule {
+class BsBookExportModulePDF extends ExportModule {
 
 	/**
 	 *
@@ -348,7 +349,8 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 	 * @return ViewExportModuleOverview
 	 */
 	public function getOverview() {
-		$UEModulePDF = new BsExportModulePDF();
+		$UEModulePDF = MediaWikiServices::getInstance()
+			->getService( 'BSUniversalExportModuleFactory' )->newFromName( 'pdf' );
 		$oModuleOverviewView = $UEModulePDF->getOverview();
 
 		$oModuleOverviewView->setOption(
