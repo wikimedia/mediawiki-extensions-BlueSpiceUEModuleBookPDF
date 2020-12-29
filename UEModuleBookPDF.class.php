@@ -40,7 +40,7 @@ class UEModuleBookPDF extends BsExtensionMW {
 	 * Adds I18N for 'template' meta. The CellEditor is created in JS
 	 * @param SpecialBookshelfBookUI $oSpecialPage
 	 * @param OutputPage $oOutputPage
-	 * @param object $oData
+	 * @param stdClass $oData
 	 * @return bool Always true to keep hook running
 	 */
 	public function onBSBookshelfBookUI( $oSpecialPage, $oOutputPage, $oData ) {
@@ -91,7 +91,7 @@ class UEModuleBookPDF extends BsExtensionMW {
 	 * Adds module dependencies for the ExtJS Manager
 	 * @param SpecialBookshelfBookUI $oSpecialPage
 	 * @param OutputPage $oOutputPage
-	 * @param object $oConfig
+	 * @param stdClass $oConfig
 	 * @return bool Always true to keep hook running
 	 */
 	public function onBSBookshelfBookManager( $oSpecialPage, $oOutputPage, $oConfig ) {
