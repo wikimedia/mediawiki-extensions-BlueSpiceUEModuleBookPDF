@@ -140,7 +140,7 @@ class BsBookExportModulePDF extends ExportModule {
 				}
 			}
 
-			if ( $aArticle['is-redirect'] === true ) {
+			if ( isset( $aArticle['is-redirect'] ) && $aArticle['is-redirect'] === true ) {
 				$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection(
 					DB_REPLICA
 				);
