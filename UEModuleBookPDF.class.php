@@ -32,59 +32,7 @@
 class UEModuleBookPDF extends BsExtensionMW {
 
 	protected function initExt() {
-		$this->setHook( 'BSBookshelfBookUI' );
 		$this->setHook( 'BSBookshelfBookManager' );
-	}
-
-	/**
-	 * Adds I18N for 'template' meta. The CellEditor is created in JS
-	 * @param SpecialBookshelfBookUI $oSpecialPage
-	 * @param OutputPage $oOutputPage
-	 * @param stdClass $oData
-	 * @return bool Always true to keep hook running
-	 */
-	public function onBSBookshelfBookUI( $oSpecialPage, $oOutputPage, $oData ) {
-		$oData->bookMetaConfig['bookshelfimage'] = [
-			'displayName' => wfMessage( 'bs-uemodulebookpdf-bookshelfimage' )->text()
-		];
-		$oData->bookMetaConfig['template'] = [
-			'displayName' => wfMessage( 'bs-uemodulebookpdf-template' )->text()
-		];
-		$oData->bookMetaConfig['bookpdf-export-toc'] = [
-			'displayName' => wfMessage( 'bs-uemodulebookpdf-pref-bookexporttoc' )->text()
-		];
-		$aTemplates = BsPDFTemplateProvider::getTemplatesForSelectOptions( [
-			'template-path' => $this->getConfig()->get(
-				'UEModuleBookPDFTemplatePath'
-			)
-		] );
-
-		// Make ExtJS ComboBox data format
-		$aTemplatesDataSet = [];
-		foreach ( $aTemplates as $sName => $Id ) {
-			$aTemplatesDataSet[] = [
-				'name' => $sName,
-				'value' => $Id
-			];
-		}
-		$oOutputPage->addJsConfigVars(
-			'bsUEModuleBookPDFTemplates',
-			$aTemplatesDataSet
-		);
-		$oOutputPage->addJsConfigVars(
-			'bsUEModuleBookPDFExportTOCOptions',
-			[
-				[
-					'name' => wfMessage( 'bs-uemodulebookpdf-bookexporttoc-only-articles' )->text(),
-					'value' => 'only-articles'
-				],
-				[
-					'name' => wfMessage( 'bs-uemodulebookpdf-bookexporttoc-article-tocs' )->text(),
-					'value' => 'article-tocs'
-				]
-			]
-		);
-		return true;
 	}
 
 	/**

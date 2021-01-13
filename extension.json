@@ -117,7 +117,8 @@
 		"ChameleonSkinTemplateOutputPageBeforeExec": [
 			"BlueSpice\\UEModuleBookPDF\\Hook\\ChameleonSkinTemplateOutputPageBeforeExec\\AddBookExportAction::callback",
 			"BlueSpice\\UEModuleBookPDF\\Hook\\ChameleonSkinTemplateOutputPageBeforeExec\\AddBookExportActionBookPage::callback"
-		]
+		],
+		"BSBookshelfGetBookData": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSBookshelfGetBookData\\AddTemplateMetaData::callback"
 	},
 	"load_composer_autoloader": true,
 	"manifest_version": 2
