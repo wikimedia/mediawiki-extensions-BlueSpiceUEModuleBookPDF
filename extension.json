@@ -115,7 +115,8 @@
 		"SkinTemplateOutputPageBeforeExec": [
 			"BlueSpice\\UEModuleBookPDF\\Hook\\SkinTemplateOutputPageBeforeExec\\AddBookExportAction::callback",
 			"BlueSpice\\UEModuleBookPDF\\Hook\\SkinTemplateOutputPageBeforeExec\\AddBookExportActionBookPage::callback"
-		]
+		],
+		"BSBookshelfGetBookData": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSBookshelfGetBookData\\AddTemplateMetaData::callback"
 	},
 	"load_composer_autoloader": true,
 	"manifest_version": 2
