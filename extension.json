@@ -22,7 +22,7 @@
 		"BlueSpiceFoundation": {
 			"Extensions": {
 				"BlueSpiceUEModuleBookPDF": {
-					"className": "UEModuleBookPDF",
+					"className": "\\BlueSpice\\UEModuleBookPDF\\Extension",
 					"extPath": "/BlueSpiceUEModuleBookPDF",
 					"package": "BlueSpice Pro",
 					"status": "stable",
@@ -66,7 +66,6 @@
 		"BlueSpice\\UEModuleBookPDF\\Test\\": "tests/phpunit/"
 	},
 	"AutoloadClasses": {
-		"UEModuleBookPDF": "UEModuleBookPDF.class.php",
 		"BsBookExportModulePDF": "/includes/BookExportModulePDF.class.php"
 	},
 	"ResourceModules": {
