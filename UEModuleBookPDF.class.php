@@ -30,21 +30,4 @@
  */
 
 class UEModuleBookPDF extends BsExtensionMW {
-
-	protected function initExt() {
-		$this->setHook( 'BSBookshelfBookManager' );
-	}
-
-	/**
-	 * Adds module dependencies for the ExtJS Manager
-	 * @param SpecialBookshelfBookUI $oSpecialPage
-	 * @param OutputPage $oOutputPage
-	 * @param object $oConfig
-	 * @return bool Always true to keep hook running
-	 */
-	public function onBSBookshelfBookManager( $oSpecialPage, $oOutputPage, $oConfig ) {
-		$oConfig->dependencies[] = 'ext.bluespice.ueModuleBookPDF';
-		return true;
-	}
-
 }
