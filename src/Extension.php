@@ -28,6 +28,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GPL-3.0-only
  * @filesource
  */
+namespace BlueSpice\UEModuleBookPDF;
 
-class UEModuleBookPDF extends BsExtensionMW {
+use BlueSpice\Extension as ExtensionBase;
+
+class Extension extends ExtensionBase {
 }
