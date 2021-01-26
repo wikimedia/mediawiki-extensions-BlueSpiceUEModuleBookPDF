@@ -2,7 +2,7 @@
 
 namespace BlueSpice\UEModuleBookPDF\Hook\ChameleonSkinTemplateOutputPageBeforeExec;
 
-use BlueSpice\Calumma\Hook\ChameleonSkinTemplateOutputPageBeforeExec;
+use BlueSpice\Hook\ChameleonSkinTemplateOutputPageBeforeExec;
 use InvalidArgumentException;
 use Message;
 use MWException;
