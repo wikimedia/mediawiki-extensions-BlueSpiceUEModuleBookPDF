@@ -3,11 +3,11 @@
 namespace BlueSpice\UEModuleBookPDF\Hook\ChameleonSkinTemplateOutputPageBeforeExec;
 
 use BlueSpice\Hook\ChameleonSkinTemplateOutputPageBeforeExec;
+use BlueSpice\UniversalExport\ModuleFactory;
 use InvalidArgumentException;
 use Message;
 use MWException;
 use PageHierarchyProvider;
-use SpecialPage;
 
 class AddBookExportAction extends ChameleonSkinTemplateOutputPageBeforeExec {
 	/** @var array */
@@ -46,14 +46,19 @@ class AddBookExportAction extends ChameleonSkinTemplateOutputPageBeforeExec {
 	 * @throws MWException
 	 */
 	protected function doProcess() {
-		$sp = SpecialPage::getTitleFor( 'UniversalExport', $this->toc->articleTitle );
-		$params = [
-			'ue[module]' => 'bookpdf',
+		/** @var ModuleFactory $moduleFactory */
+		$moduleFactory = $this->getServices()->getService(
+			'BSUniversalExportModuleFactory'
+		);
+		$module = $moduleFactory->newFromName( 'bookpdf' );
+		$additional = [
+			'title' => $this->toc->articleTitle,
 			'book_type' => $this->getBookType(),
 		];
+
 		$this->template->data['bs_export_menu'][] = [
 			'id' => 'pdf-subpages',
-			'href' => $sp->getLinkUrl( $params ),
+			'href' => $module->getExportLink( $this->skin->getRequest(), $additional ),
 			'title' => Message::newFromKey( 'bs-bookshelf-action-export-book' )->text(),
 			'text' => Message::newFromKey( 'bs-bookshelf-action-export-book' )->text(),
 			'class' => 'bs-ue-export-link',
