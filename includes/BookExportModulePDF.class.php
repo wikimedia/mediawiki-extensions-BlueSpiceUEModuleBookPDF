@@ -66,7 +66,7 @@ class BsBookExportModulePDF extends ExportModule {
 			];
 		}
 
-		$aTemplate = $this->getTemplate( $oCaller, $aBookPage, $aBookMeta );
+		$aTemplate = $this->getBookTemplate( $oCaller, $aBookPage, $aBookMeta );
 		if ( isset( $aTemplate['title-element'] )
 			&& count( $aTemplate['title-element']->childNodes ) === 0 ) {
 			// <title> not set by template
@@ -390,7 +390,7 @@ class BsBookExportModulePDF extends ExportModule {
 	 * @param array $aBookMeta
 	 * @return array
 	 */
-	public function getTemplate( $oCaller, $aBookPage, $aBookMeta ) {
+	public function getBookTemplate( $oCaller, $aBookPage, $aBookMeta ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
 
@@ -749,5 +749,26 @@ HERE
 			'book_type' => $this->bookType,
 			'content' => $this->content
 		] );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getExportPermission() {
+		return 'uemodulebookpdf-export';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getSubactionHandlers() {
+		return null;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getActionButtonDetails() {
+		return null;
 	}
 }
