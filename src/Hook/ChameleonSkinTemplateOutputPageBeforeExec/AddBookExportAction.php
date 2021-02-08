@@ -10,7 +10,7 @@ use MWException;
 use PageHierarchyProvider;
 
 class AddBookExportAction extends ChameleonSkinTemplateOutputPageBeforeExec {
-	/** @var array */
+	/** @var stdClass */
 	private $toc;
 
 	/**
@@ -57,7 +57,7 @@ class AddBookExportAction extends ChameleonSkinTemplateOutputPageBeforeExec {
 		];
 
 		$this->template->data['bs_export_menu'][] = [
-			'id' => 'pdf-subpages',
+			'id' => 'pdf-book',
 			'href' => $module->getExportLink( $this->skin->getRequest(), $additional ),
 			'title' => Message::newFromKey( 'bs-bookshelf-action-export-book' )->text(),
 			'text' => Message::newFromKey( 'bs-bookshelf-action-export-book' )->text(),
