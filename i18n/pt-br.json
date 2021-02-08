@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Eduardoaddad"
 		]
 	},
 	"bs-uemodulebookpdf-extension-description": "Permite que o BlueSpice exporte coleções hierárquicas de artigos para Adobe&reg; Portable Document Format (PDF).",
