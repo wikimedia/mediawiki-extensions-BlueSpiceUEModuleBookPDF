@@ -10,7 +10,7 @@ use MWException;
 use PageHierarchyProvider;
 
 class AddBookExportAction extends ChameleonSkinTemplateOutputPageBeforeExec {
-	/** @var array */
+	/** @var stdClass */
 	private $toc;
 
 	/**
