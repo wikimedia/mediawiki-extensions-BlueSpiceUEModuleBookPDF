@@ -406,7 +406,12 @@ class BsBookExportModulePDF extends ExportModule {
 
 		if ( isset( $aBookMeta['title'] ) && !empty( $aBookMeta['title'] ) ) {
 			$aBookPage['meta']['title'] = $aBookMeta['title'];
+			unset( $aBookMeta['title'] );
+		} elseif ( isset( $aBookMeta['title'] ) ) {
+			unset( $aBookMeta['title'] );
 		}
+
+		$aBookPage['meta'] = array_merge( $aBookPage['meta'], $aBookMeta );
 
 		$aTemplate = BsPDFTemplateProvider::getTemplate( [
 			'path'     => $config->get( 'UEModuleBookPDFTemplatePath' ),
