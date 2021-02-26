@@ -286,6 +286,9 @@ class BsBookExportModulePDF extends ExportModule {
 					}
 				}
 			}
+			if ( empty( $aLinkMap[$sPathBasename] ) ) {
+				continue;
+			}
 
 			$oAnchor->setAttribute( 'href', $aLinkMap[$sPathBasename] );
 
