@@ -268,6 +268,9 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 					}
 				}
 			}
+			if ( empty( $aLinkMap[$sPathBasename] ) ) {
+				continue;
+			}
 
 			$oAnchor->setAttribute( 'href', $aLinkMap[$sPathBasename] );
 
