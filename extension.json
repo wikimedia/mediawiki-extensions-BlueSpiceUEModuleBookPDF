@@ -25,11 +25,11 @@
 					"className": "\\BlueSpice\\UEModuleBookPDF\\Extension",
 					"extPath": "/BlueSpiceUEModuleBookPDF",
 					"package": "BlueSpice Pro",
-					"status": "stable",
-					"configDefinitions": {
-						"UEModuleBookPDFBookExportTOC": "\\BlueSpice\\UEModuleBookPDF\\ConfigDefinition\\BookExportTOC::getInstance"
-					}
+					"status": "stable"
 				}
+			},
+			"ConfigDefinitionRegistry": {
+				"UEModuleBookPDFBookExportTOC": "\\BlueSpice\\UEModuleBookPDF\\ConfigDefinition\\BookExportTOC::getInstance"
 			},
 			"PermissionRegistry": {
 				"uemodulebookpdf-export": {
