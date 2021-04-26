@@ -2,6 +2,7 @@
 
 use BlueSpice\UEModuleBookPDF\BookmarksXMLBuilder;
 use BlueSpice\UniversalExport\ExportModule;
+use BlueSpice\UniversalExport\ExportSpecification;
 use MediaWiki\MediaWikiServices;
 
 class BsBookExportModulePDF extends ExportModule {
@@ -25,14 +26,18 @@ class BsBookExportModulePDF extends ExportModule {
 	/**
 	 * Implementation of BsUniversalExportModule interface. Uses the
 	 * PdfWebservice BN2PDF-light to create a PDF file.
-	 * @param SpecialUniversalExport &$oCaller
+	 * @param ExportSpecification &$specification
 	 * @return array array(
 	 *     'mime-type' => 'application/pdf',
 	 *     'filename' => 'Filename.pdf',
 	 *     'content' => '8F3BC3025A7...'
 	 * );
+	 * @throws ConfigException
+	 * @throws FatalError
+	 * @throws MWException
+	 * @throws PermissionsError
 	 */
-	public function createExportFile( &$oCaller ) {
+	public function createExportFile( ExportSpecification &$specification ) {
 		// Prepare response
 		$aResponse = [
 			'mime-type' => 'application/pdf',
@@ -40,15 +45,15 @@ class BsBookExportModulePDF extends ExportModule {
 			'content'   => ''
 		];
 
-		$oPHP = $this->getPageHierarchyProvider( $oCaller );
+		$oPHP = $this->getPageHierarchyProvider( $specification );
 		$aBookMeta = $oPHP->getBookMeta();
 
 		// "articles" is legacy naming. Should be 'nodes'
 		$aArticles = [];
-		if ( isset( $oCaller->aParams['articles'] ) ) {
+		if ( $specification->getParam( 'articles' ) ) {
 			// Call from BookEditor
 			$aArticles = FormatJson::decode(
-				$oCaller->aParams['articles'], true
+				$specification->getParam( 'articles' ), true
 			);
 		} else {
 			// Call from Bookmanager or somewhere else
@@ -57,21 +62,21 @@ class BsBookExportModulePDF extends ExportModule {
 
 		try {
 			$aBookPage = BsPDFPageProvider::getPage( [
-				'article-id' => $oCaller->oRequestedTitle->getArticleId(),
+				'article-id' => $specification->getTitle()->getArticleId(),
 				'follow-redirects' => true
 			] );
 		} catch ( Exception $ex ) {
 			$aBookPage = [
-				'meta' => [ 'title' => $oCaller->oRequestedTitle->getPrefixedText() ]
+				'meta' => [ 'title' => $specification->getTitle()->getPrefixedText() ]
 			];
 		}
 
-		$aTemplate = $this->getBookTemplate( $oCaller, $aBookPage, $aBookMeta );
+		$aTemplate = $this->getBookTemplate( $specification, $aBookPage, $aBookMeta );
 		if ( isset( $aTemplate['title-element'] )
 			&& count( $aTemplate['title-element']->childNodes ) === 0 ) {
 			// <title> not set by template
 			$aTemplate['title-element']->appendChild(
-				$aTemplate['dom']->createTextNode( $oCaller->oRequestedTitle->getPrefixedText() )
+				$aTemplate['dom']->createTextNode( $specification->getTitle()->getPrefixedText() )
 			);
 		}
 
@@ -125,7 +130,7 @@ class BsBookExportModulePDF extends ExportModule {
 		foreach ( $aArticles as $aArticle ) {
 			$aArticle['title'] = urldecode( $aArticle['title'] );
 			$aArticle['php'] = [
-				'title' => $oCaller->oRequestedTitle->getPrefixedText(),
+				'title' => $specification->getTitle()->getPrefixedText(),
 				'book_type' => $this->bookType,
 				'content' => $this->content,
 			];
@@ -301,20 +306,22 @@ class BsBookExportModulePDF extends ExportModule {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
 		// Set params for PDF creation
-		$oCaller->aParams['document-token']
-			= md5( $oCaller->oRequestedTitle->getPrefixedText() ) . '-' . $oCaller->aParams['oldid'];
-		$oCaller->aParams['soap-service-url'] = $config->get(
+		$token = md5( $specification->getTitle()->getPrefixedText() ) .
+			'-' . $specification->getParam( 'oldid' );
+		$specification->setParam( 'document-token', $token );
+		$specification->setParam( 'soap-service-url', $config->get(
 			'UEModulePDFPdfServiceURL'
-		);
-		$oCaller->aParams['resources'] = $aTemplate['resources'];
-		$oCaller->aParams['attachments'] = '1';
+		) );
+		$specification->setParam( 'resources', $aTemplate['resources'] );
+		$specification->setParam( 'attachments', '1' );
 
-		$oPdfService = new BsPDFServlet( $oCaller->aParams );
+		$params = $specification->getParams();
+		$oPdfService = new BsPDFServlet( $params );
 		$aResponse['content'] = $oPdfService->createPDF( $aTemplate['dom'] );
 
 		$aResponse['filename'] = sprintf(
 			$aResponse['filename'],
-			$oCaller->oRequestedTitle->getPrefixedText()
+			$specification->getTitle()->getPrefixedText()
 		);
 
 		return $aResponse;
@@ -388,12 +395,12 @@ class BsBookExportModulePDF extends ExportModule {
 
 	/**
 	 *
-	 * @param SpecialUniversalExport $oCaller
+	 * @param ExportSpecification $specs
 	 * @param array $aBookPage
 	 * @param array $aBookMeta
 	 * @return array
 	 */
-	public function getBookTemplate( $oCaller, $aBookPage, $aBookMeta ) {
+	public function getBookTemplate( $specs, $aBookPage, $aBookMeta ) {
 		$config = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
 
@@ -403,8 +410,8 @@ class BsBookExportModulePDF extends ExportModule {
 			$sTemplate = $aBookMeta['template'];
 		}
 
-		if ( isset( $oCaller->aParams['template'] ) && !empty( $oCaller->aParams['template'] ) ) {
-			$sTemplate = $oCaller->aParams['template'];
+		if ( $specs->getParam( 'template' ) && !empty( $specs->getParam( 'template' ) ) ) {
+			$sTemplate = $specs->getParam( 'template' );
 		}
 
 		if ( isset( $aBookMeta['title'] ) && !empty( $aBookMeta['title'] ) ) {
@@ -419,7 +426,7 @@ class BsBookExportModulePDF extends ExportModule {
 		$aTemplate = BsPDFTemplateProvider::getTemplate( [
 			'path'     => $config->get( 'UEModuleBookPDFTemplatePath' ),
 			'template' => $sTemplate,
-			'language' => $oCaller->getUser()->getOption( 'language', 'en' ),
+			'language' => $specs->getUser()->getOption( 'language', 'en' ),
 			'meta'     => $aBookPage['meta']
 		] );
 
@@ -742,18 +749,18 @@ HERE
 	}
 
 	/**
-	 * @param SpecialUniversalExport $ueSpecial
+	 * @param ExportSpecification $specs
 	 * @return DynamicPageHierarchyProvider|PageHierarchyProvider
 	 * @throws MWException
 	 */
-	private function getPageHierarchyProvider( $ueSpecial ) {
-		$this->bookType = $ueSpecial->getRequest()->getText( 'book_type', false );
-		$this->content = $ueSpecial->getRequest()->getText( 'content', false );
+	private function getPageHierarchyProvider( $specs ) {
+		$this->bookType = $specs->getParam( 'book_type', false );
+		$this->content = $specs->getParam( 'content', false );
 		$phpf = MediaWikiServices::getInstance()->getService(
 			'BSBookshelfPageHierarchyProviderFactory'
 		);
 
-		return $phpf->getInstanceFor( $ueSpecial->oRequestedTitle->getPrefixedText(), [
+		return $phpf->getInstanceFor( $specs->getTitle()->getPrefixedText(), [
 			'book_type' => $this->bookType,
 			'content' => $this->content
 		] );
