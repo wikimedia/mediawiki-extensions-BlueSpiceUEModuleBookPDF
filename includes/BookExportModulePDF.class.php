@@ -124,7 +124,7 @@ class BsBookExportModulePDF extends ExportModule {
 
 		$user = $specification->getUser();
 		$pm = MediaWikiServices::getInstance()->getPermissionManager();
-		$config = $config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig(
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig(
 			'bsg'
 		);
 		foreach ( $aArticles as $aArticle ) {
