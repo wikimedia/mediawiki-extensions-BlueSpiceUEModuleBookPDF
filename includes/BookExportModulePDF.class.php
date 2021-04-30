@@ -122,7 +122,7 @@ class BsBookExportModulePDF extends ExportModule {
 
 		$aLinkMap = [];
 
-		$user = $oCaller->getUser();
+		$user = $specification->getUser();
 		$pm = MediaWikiServices::getInstance()->getPermissionManager();
 		$config = $config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig(
 			'bsg'
