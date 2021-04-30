@@ -117,7 +117,7 @@ class BsBookExportModulePDF extends ExportModule {
 
 		$aLinkMap = [];
 
-		$config = $config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig(
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig(
 			'bsg'
 		);
 		foreach ( $aArticles as $aArticle ) {
