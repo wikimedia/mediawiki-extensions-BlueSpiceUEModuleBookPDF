@@ -12,7 +12,7 @@
 	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Encapsuler les tables des matières des articles (pas d’indentation des titres d’articles)",
 	"bs-uemodulebookpdf-overview-title": "Format <em>Portable Document Format</em> (PDF) d’Adobe® pour rayon de livres.",
 	"bs-uemodulebookpdf-overview-description": "Exporte un livre au format Adobe PDF.",
-	"bs-uemodulebookpdf-overview-bodycontent": "Ce module est fourni par l’extension « Bookshelf » et permet l’exportation au format PDF.",
+	"bs-uemodulebookpdf-overview-bodycontent": "Ce module est fourni par l’extension « Bookshelf » et permet l’exportation au format PDF.",
 	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
 	"bs-uemodulebookpdf-template": "Modèle (PDF)",
 	"bs-uemodulebookpdf-bookshelfimage": "Image d’un rayon de livres",

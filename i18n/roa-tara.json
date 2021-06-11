@@ -4,5 +4,17 @@
 			"Joetaras"
 		]
 	},
-	"bs-uemodulebookpdf-table-of-contents-heading": "Tabbelle de le condenute"
+	"bs-uemodulebookpdf-table-of-contents-heading": "Tabbelle de le condenute",
+	"bs-uemodulebookpdf-extension-description": "Abbilite BlueSpice a esportà le collezziune gerarcheche de vôsce a Adobe&reg; Portable Document Format (PDF).",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Tabbelle de le condenute",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Sulamende le titole de le vôsce (idendate pe grade)",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "'Ngapsule 'a TOC d'a vôsce ('u titole d'a vôsce none idendate)",
+	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Portable Document Format (PDF) pu Scaffale",
+	"bs-uemodulebookpdf-overview-description": "Esporte 'nu libbre sus a Adobe PDF.",
+	"bs-uemodulebookpdf-overview-bodycontent": "Stu module jè fatte da l'estenzione &quot;Bookshelf&quot; e abbilite l'esportazione jndr'à 'u PDF.",
+	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
+	"bs-uemodulebookpdf-template": "Template (PDF)",
+	"bs-uemodulebookpdf-bookshelfimage": "Immaggine d'u scaffale",
+	"action-uemodulebookpdf-export": "stoche a esporte 'na pàgene jndr'à 'u PDF cumme 'nu stuèzze de libbre",
+	"right-uemodulebookpdf-export": "Esporte 'na pàgene jndr'à 'u PDF cumme 'nu stuèzze de libbre"
 }
