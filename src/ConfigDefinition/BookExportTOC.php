@@ -34,6 +34,14 @@ class BookExportTOC extends \BlueSpice\ConfigDefinition\ArraySetting {
 
 	/**
 	 *
+	 * @return string
+	 */
+	public function getHelpMessageKey() {
+		return 'bs-uemodulebookpdf-pref-bookexporttoc-help';
+	}
+
+	/**
+	 *
 	 * @return array
 	 */
 	protected function getOptions() {

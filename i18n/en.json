@@ -16,5 +16,6 @@
 	"bs-uemodulebookpdf-bookshelfimage": "Bookshelf image",
 	"action-uemodulebookpdf-export": "exporting a page to PDF as part of a book",
 	"right-uemodulebookpdf-export": "Export a page to PDF as part of a book",
-	"bs-uemodulebookpdf-table-of-contents-heading": "Table of contents"
+	"bs-uemodulebookpdf-table-of-contents-heading": "Table of contents",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Only article titles: Only shows the article titles in the table of contents of the PDF. \nEmbed article TOCs: Shows the table of contents for each article in the table of contents of the PDF."
 }
