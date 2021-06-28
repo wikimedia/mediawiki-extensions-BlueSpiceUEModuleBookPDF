@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Vfc"
 		]
 	},
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Taula de continguts",
 	"bs-uemodulebookpdf-btn-export": "Format de document portàtil (PDF)"
 }
