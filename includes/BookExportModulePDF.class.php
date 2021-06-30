@@ -85,7 +85,8 @@ class BsBookExportModulePDF extends ExportModule {
 			[
 				&$aTemplate,
 				&$aBookPage,
-				&$aArticles
+				&$aArticles,
+				$specification
 			]
 		);
 
@@ -134,6 +135,7 @@ class BsBookExportModulePDF extends ExportModule {
 				'book_type' => $this->bookType,
 				'content' => $this->content,
 			];
+
 			$oCurTitle = Title::newFromText( $aArticle['title'] );
 			if ( $oCurTitle instanceof Title &&
 				!$pm->userCan( 'uemodulebookpdf-export', $user, $oCurTitle )

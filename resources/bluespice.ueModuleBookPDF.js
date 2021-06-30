@@ -1,4 +1,4 @@
-$(document).on('BSUniversalExportMenuItems', function(event, sender, exportMenuItems) {
+$( document ).on('BSUniversalExportMenuItems', function(event, sender, exportMenuItems) {
 
 	exportMenuItems.push(
 		new Ext.menu.Item({
@@ -10,7 +10,7 @@ $(document).on('BSUniversalExportMenuItems', function(event, sender, exportMenuI
 	);
 });
 
-$(document).on('BSBookshelfUIManagerPanelInit', function(event, sender) {
+$( document ).on( 'BSBookshelfUIManagerPanelInit', function(event, sender) {
 	sender.colMainConf.actions.push({
 		iconCls: 'bs-extjs-actioncolumn-icon icon-file-pdf',
 		glyph: true,
@@ -32,16 +32,26 @@ $(document).on('BSBookshelfUIManagerPanelInit', function(event, sender) {
 				params.content = location.getBookPageTextForTitle( title );
 			}
 
-			var url = bs.util.wikiGetlink(
-				params,
-				'Special:UniversalExport/' + title
-			);
-			window.open( url );
-		}
-	});
-});
+			var data = {
+				abort: false,
+				params: params,
+				title: title
+			};
+			mw.hook( 'bs.bookpdf.exporturl' ).fire( data );
+			if ( !data.abort ) {
+				var url = bs.util.wikiGetlink(
+					params,
+					'Special:UniversalExport/' + title
+				);
 
-$(document).on('BSBookshelfUIMetaGridInit', function(event, sender, metaData, metaDataConfig){
+
+				window.open( url );
+			}
+		}
+	} );
+} );
+
+$( document ).on('BSBookshelfUIMetaGridInit', function(event, sender, metaData, metaDataConfig){
 	metaDataConfig.template.editor = Ext.create('BS.UEModuleBookPDF.PDFTemplateCombo', {
 		pdfTemplates: mw.config.get('bsUEModuleBookPDFTemplates')
 	});
