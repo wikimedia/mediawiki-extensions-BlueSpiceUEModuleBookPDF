@@ -82,7 +82,7 @@ class BsBookExportModulePDF extends ExportModule {
 		}
 
 		Hooks::run( 'BSBookshelfExportBeforeArticles',
-			[ &$aTemplate, &$aBookPage, &$aArticles ] );
+			[ &$aTemplate, &$aBookPage, &$aArticles, $specification ] );
 
 		// Prepare TOC Page
 		$oTOCPage = $aTemplate['dom']->createElement( 'div' );
@@ -127,6 +127,7 @@ class BsBookExportModulePDF extends ExportModule {
 				'book_type' => $this->bookType,
 				'content' => $this->content,
 			];
+
 			$oCurTitle = Title::newFromText( $aArticle['title'] );
 			if ( $oCurTitle instanceof Title && !$oCurTitle->userCan( 'uemodulebookpdf-export' ) ) {
 				// allow the PDFExport to export error messages and exceptions such

@@ -3,6 +3,7 @@
 namespace BlueSpice\UEModuleBookPDF\Hook;
 
 use BlueSpice\Hook;
+use BlueSpice\UniversalExport\ExportSpecification;
 use Config;
 use IContextSource;
 
@@ -23,20 +24,25 @@ abstract class BSBookshelfExportBeforeArticles extends Hook {
 	 */
 	protected $articles = null;
 
+	/** @var ExportSpecification  */
+	protected $specification = null;
+
 	/**
 	 * @param array &$template
 	 * @param array &$bookPage
 	 * @param array &$articles
+	 * @param ExportSpecification $specification
 	 * @return bool
 	 */
-	public static function callback( &$template, &$bookPage, &$articles ) {
+	public static function callback( &$template, &$bookPage, &$articles, $specification ) {
 		$className = static::class;
 		$hookHandler = new $className(
 			null,
 			null,
 			$template,
 			$bookPage,
-			$articles
+			$articles,
+			$specification
 		);
 		return $hookHandler->process();
 	}
@@ -47,12 +53,16 @@ abstract class BSBookshelfExportBeforeArticles extends Hook {
 	 * @param array &$template
 	 * @param array &$bookPage
 	 * @param array &$articles
+	 * @param ExportSpecification $specification
 	 */
-	public function __construct( $context, $config, &$template, &$bookPage, &$articles ) {
+	public function __construct(
+		$context, $config, &$template, &$bookPage, &$articles, $specification
+	) {
 		parent::__construct( $context, $config );
 
 		$this->template = &$template;
 		$this->bookPage = &$bookPage;
 		$this->articles = &$articles;
+		$this->specification = $specification;
 	}
 }
