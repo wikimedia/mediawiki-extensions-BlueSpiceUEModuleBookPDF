@@ -309,7 +309,7 @@ class BsBookExportModulePDF extends ExportModule {
 			->makeConfig( 'bsg' );
 		// Set params for PDF creation
 		$token = md5( $specification->getTitle()->getPrefixedText() ) .
-			'-' . $specification->getParam( 'oldid' );
+			'-' . intval( $specification->getParam( 'oldid' ) );
 		$specification->setParam( 'document-token', $token );
 		$specification->setParam( 'soap-service-url', $config->get(
 			'UEModulePDFPdfServiceURL'
