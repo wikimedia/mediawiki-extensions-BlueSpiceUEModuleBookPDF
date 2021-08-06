@@ -265,7 +265,8 @@ class BsBookExportModulePDF implements BsUniversalExportModule {
 			->makeConfig( 'bsg' );
 		// Set params for PDF creation
 		$oCaller->aParams['document-token']
-			= md5( $oCaller->oRequestedTitle->getPrefixedText() ) . '-' . $oCaller->aParams['oldid'];
+			= md5( $oCaller->oRequestedTitle->getPrefixedText() ) . '-' .
+			intval( $oCaller->aParams['oldid'] );
 		$oCaller->aParams['soap-service-url'] = $config->get(
 			'UEModulePDFPdfServiceURL'
 		);
