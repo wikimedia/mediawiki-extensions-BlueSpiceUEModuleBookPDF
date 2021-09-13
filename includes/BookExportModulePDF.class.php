@@ -305,8 +305,8 @@ class BsBookExportModulePDF extends ExportModule {
 			}
 		}
 
-		$config = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'bsg' );
+		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
+		$this->modifyTemplateAfterContents( $aTemplate, $aBookPage, $specification );
 		// Set params for PDF creation
 		$token = md5( $specification->getTitle()->getPrefixedText() ) .
 			'-' . intval( $specification->getParam( 'oldid' ) );
@@ -433,6 +433,20 @@ class BsBookExportModulePDF extends ExportModule {
 		] );
 
 		return $aTemplate;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function modifyTemplateAfterContents( &$template, $page, $specification ) {
+		Hooks::run(
+			'BSUEModulePDFBeforeCreatePDF',
+			[
+				$this,
+				$template['dom'],
+				$specification
+			]
+		);
 	}
 
 	/**
