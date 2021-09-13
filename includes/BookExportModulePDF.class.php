@@ -287,6 +287,7 @@ class BsBookExportModulePDF extends ExportModule {
 			}
 		}
 
+		$this->modifyTemplateAfterContents( $aTemplate, $aBookPage, $specification );
 		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
 		// Set params for PDF creation
@@ -415,6 +416,20 @@ class BsBookExportModulePDF extends ExportModule {
 		] );
 
 		return $aTemplate;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function modifyTemplateAfterContents( &$template, $page, $specification ) {
+		Hooks::run(
+			'BSUEModulePDFBeforeCreatePDF',
+			[
+				$this,
+				$template['dom'],
+				$specification
+			]
+		);
 	}
 
 	/**
