@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-uemodulebookpdf-extension-description": "Permitte a BlueSpice de exportar collectiones hierarchic de articulos in le Formato de Documento Portabile (PDF) de Adobe&reg;.",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Tabula de contento",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Solmente titulos de articulo (indentate per nivello)",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Incorporar tabulas de contento de articulos (sin indentation de titulos)",
+	"bs-uemodulebookpdf-overview-title": "Formato de Documento Portabile (PDF) de Adobe&reg; pro Bookshelf",
+	"bs-uemodulebookpdf-overview-description": "Exporta un libro in PDF de Adobe.",
+	"bs-uemodulebookpdf-overview-bodycontent": "Iste modulo es fornite per le extension &quot;Bookshelf*quot; e permitte le exportation in PDF.",
+	"bs-uemodulebookpdf-btn-export": "Formato de Documento Portabile (PDF)",
+	"bs-uemodulebookpdf-template": "Patrono (PDF)",
+	"bs-uemodulebookpdf-bookshelfimage": "Imagine Bookshelf",
+	"action-uemodulebookpdf-export": "exportar un pagina in PDF como parte de un libro",
+	"right-uemodulebookpdf-export": "Exportar un pagina in PDF como parte de un libro",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Tabula de contento"
+}
