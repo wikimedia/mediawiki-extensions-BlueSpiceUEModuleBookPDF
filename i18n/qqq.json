@@ -17,5 +17,6 @@
 	"bs-uemodulebookpdf-bookshelfimage": "Image display name. Bookshelf is the short name of the BlueSpiceBookshelf extension and should not be translated.\n{{Identical|Bookshelf Image}}",
 	"action-uemodulebookpdf-export": "{{doc-action|uemodulebookpdf-export}}",
 	"right-uemodulebookpdf-export": "{{doc-right|uemodulebookpdf-export}}",
-	"bs-uemodulebookpdf-table-of-contents-heading": "Header for the table of contents section.\n{{Identical|Table of contents}}"
+	"bs-uemodulebookpdf-table-of-contents-heading": "Header for the table of contents section.\n{{Identical|Table of contents}}",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Description for config variable \"UEModuleBookPDFBookExportTOC\""
 }
