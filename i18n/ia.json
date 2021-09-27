@@ -16,5 +16,6 @@
 	"bs-uemodulebookpdf-bookshelfimage": "Imagine Bookshelf",
 	"action-uemodulebookpdf-export": "exportar un pagina in PDF como parte de un libro",
 	"right-uemodulebookpdf-export": "Exportar un pagina in PDF como parte de un libro",
-	"bs-uemodulebookpdf-table-of-contents-heading": "Tabula de contento"
+	"bs-uemodulebookpdf-table-of-contents-heading": "Tabula de contento",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Solmente titulos de articulos: Monstra solmente le titulos de articulos in le tabula de contento del PDF. Incorpora tabulas de contento de articulos: Monstra le tabula de contento pro cata articulo in le tabula de contento del PDF."
 }
