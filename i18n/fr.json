@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Eihel",
+			"Gomoko",
 			"McDutchie",
 			"Thibaut120094",
 			"Verdy p"
@@ -19,5 +20,6 @@
 	"bs-uemodulebookpdf-bookshelfimage": "Image Bookshelf",
 	"action-uemodulebookpdf-export": "exportation d’une page au format PDF dans un livre",
 	"right-uemodulebookpdf-export": "Exporter une page au format PDF dans un livre",
-	"bs-uemodulebookpdf-table-of-contents-heading": "Table des matières"
+	"bs-uemodulebookpdf-table-of-contents-heading": "Table des matières",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Titres d’article seulement : Affiche uniquement les titres d’article dans la table des matières dans le PDF.\nTables de matières des articles inclus : Affiche la table des matières pour chaque article dans la table des matières du PDF."
 }
