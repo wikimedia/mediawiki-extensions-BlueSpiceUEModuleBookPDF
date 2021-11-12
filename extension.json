@@ -110,6 +110,15 @@
 			"value": "BlueSpice Book"
 		}
 	},
+	"HookHandlers": {
+		"skin": {
+			"class": "\\BlueSpice\\UEModuleBookPDF\\HookHandler\\Skin",
+			"services": [ "BSUniversalExportModuleFactory" ]
+		},
+		"discovery-skin": {
+			"class": "\\BlueSpice\\UEModuleBookPDF\\HookHandler\\BlueSpiceDiscovery"
+		}
+	},
 	"Hooks": {
 		"BeforePageDisplay": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BeforePageDisplay\\AddResources::callback",
 		"BSMigrateSettingsFromDeviatingNames": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSMigrateSettingsFromDeviatingNames\\SkipServiceSettings::callback",
@@ -118,7 +127,9 @@
 			"BlueSpice\\UEModuleBookPDF\\Hook\\ChameleonSkinTemplateOutputPageBeforeExec\\AddBookExportActionBookPage::callback"
 		],
 		"BSBookshelfGetBookData": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSBookshelfGetBookData\\AddTemplateMetaData::callback",
-		"BSBookshelfBookManager": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSBookshelfBookManager\\AddDependencies::callback"
+		"BSBookshelfBookManager": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSBookshelfBookManager\\AddDependencies::callback",
+		"SkinTemplateNavigation::Universal": "skin",
+		"BlueSpiceDiscoveryTemplateDataProviderAfterInit": "discovery-skin"
 	},
 	"load_composer_autoloader": true,
 	"manifest_version": 2
