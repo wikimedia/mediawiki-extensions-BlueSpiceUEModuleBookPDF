@@ -10,34 +10,59 @@
 		<!-- This is where additional resources and meta information is appended to -->
 	</head>
 	<body>
-
-	<div class="bs-coverpage">
-	    <div style="position:absolute; top: 14cm; left: 2.5cm; width: 13cm">
-			<div id="bs-booktitle"><bs:meta key="title" /></div>
-			<br />
-			<div id="bs-booksubtitle"><bs:meta key="subtitle" /></div>
-	    </div>
-	</div>
-
-	<div id="bs-runningheaderfix">
-		<!-- <h1><bs:meta key="title" /></h1> <bs:meta key="does-not-exist" /> -->
-	</div>
-
-	<div id="bs-runningfooterleft">
-		<bs:msg key="exportdate" /> <bs:meta key="exportdate" />
-	</div>
-
-	<div id="bs-runningfootercenter">
-		<bs:msg key="disclaimer" /> <bs:msg key="does-not-exist" />
-	</div>
-
-	<div id="bs-runningfooterright">
-		<div style="float:right">
-			<bs:msg key="page" /> <span class="bs-currentpagenumber"></span> <bs:msg key="of" /> <span class="bs-totalpagescount"></span>
+		<div class="bs-coverpage">
+			<div class="bs-coverpage-title">
+				<div id="bs-booktitle"><bs:meta key="title" /></div>
+				<br />
+				<div id="bs-booksubtitle"><bs:meta key="subtitle" /></div>
+			</div>
+			<div class="bs-coverpage-brand">
+				<table>
+					<tr>
+						<td>
+							<bs:msg key="disclaimer" />
+							<bs:msg key="does-not-exist" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="bs-coverpage-logo"></div>
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
-	</div>
-
+		<div id="bs-runningheaderfix">
+			<table>
+				<tr>
+					<td>
+						<div class="bs-runningheader-logo"></div>
+					</td>
+					<td>
+						<h1 class="title">
+							<bs:meta key="title" />
+						</h1>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="bs-runningfooterfix">
+			<table>
+				<tr>
+					<td>
+						<bs:msg key="exportdate" /> <bs:meta key="exportdate" />
+					</td>
+					<td>
+						<bs:msg key="disclaimer" />
+						<bs:msg key="does-not-exist" />
+					</td>
+					<td>
+						<bs:msg key="page" /><span class="bs-currentpagenumber"></span>
+						<bs:msg key="of" /> <span class="bs-totalpagescount"></span>
+					</td>
+				</tr>
+			</table>
+		</div>
 		<bs:content key="content" /> <!-- This is where the content is inserted before -->
-
 	</body>
 </html>

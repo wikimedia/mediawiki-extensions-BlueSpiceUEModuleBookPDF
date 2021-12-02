@@ -41,9 +41,8 @@ return [
 			$sCommonDir . '/fonts/DejaVuSansMono-BoldOblique.ttf'
 		],
 		'IMAGE' => [
-			'images/bs-page-background.png',
-			'images/bs-header.jpg',
-			'images/bs-cover.jpg'
+			'images/bs-logo.png',
+			'images/bs-cover.png'
 		]
 	],
 
