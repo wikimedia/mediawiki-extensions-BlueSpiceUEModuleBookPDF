@@ -1,6 +1,7 @@
 <?php
 
 use BlueSpice\UEModuleBookPDF\BookmarksXMLBuilder;
+use BlueSpice\UEModulePDF\PDFServletHookRunner;
 use BlueSpice\UniversalExport\ExportModule;
 use BlueSpice\UniversalExport\ExportSpecification;
 use MediaWiki\MediaWikiServices;
@@ -318,7 +319,9 @@ class BsBookExportModulePDF extends ExportModule {
 		$specification->setParam( 'attachments', '1' );
 
 		$params = $specification->getParams();
-		$oPdfService = new BsPDFServlet( $params );
+		$hookContainer = $this->getServices()->getHookContainer();
+		$hookRunner = new PDFServletHookRunner( $hookContainer );
+		$oPdfService = new BsPDFServlet( $params, $hookRunner );
 		$aResponse['content'] = $oPdfService->createPDF( $aTemplate['dom'] );
 
 		$aResponse['filename'] = sprintf(
