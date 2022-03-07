@@ -2,12 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Eduardo Addad de Oliveira",
-			"Eduardoaddad"
+			"Eduardoaddad",
+			"Juan90264"
 		]
 	},
+	"bs-uemodulebookpdf-extension-description": "Permite que o BlueSpice exporte coleções hierárquicas de artigos para Adobe&reg; Portable Document Format (PDF).",
 	"bs-uemodulebookpdf-pref-bookexporttoc": "Índice",
 	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Apenas títulos de artigos (recuo por nota)",
 	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Incorporar TOCs de artigo (sem recuo dos títulos dos artigos)",
+	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Formato de documento portátil (PDF) para a estante",
 	"bs-uemodulebookpdf-overview-description": "Exporta um livro para Adobe PDF.",
 	"bs-uemodulebookpdf-overview-bodycontent": "Este 'Módulo' é fornecido pela 'Extensão' &quot;Bookshelf&quot; que permite a exportação para PDF.",
 	"bs-uemodulebookpdf-btn-export": "Formato Portátil de Documento (PDF)",
@@ -16,6 +19,5 @@
 	"action-uemodulebookpdf-export": "exportando uma página para PDF como parte de um livro",
 	"right-uemodulebookpdf-export": "Exportar uma página para PDF como parte de um livro",
 	"bs-uemodulebookpdf-table-of-contents-heading": "Índice",
-	"bs-uemodulebookpdf-extension-description": "Permite que o BlueSpice exporte coleções hierárquicas de artigos para Adobe&reg; Portable Document Format (PDF).",
-	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Formato de documento portátil (PDF) para a estante"
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Apenas títulos de artigos: mostra apenas os títulos de artigos no índice do PDF.\nIncorporar sumários do artigo: mostra o índice de cada artigo no índice do PDF."
 }
