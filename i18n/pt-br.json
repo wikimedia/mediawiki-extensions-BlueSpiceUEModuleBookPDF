@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Eduardo Addad de Oliveira",
-			"Eduardoaddad"
+			"Eduardoaddad",
+			"Juan90264"
 		]
 	},
 	"bs-uemodulebookpdf-pref-bookexporttoc": "Índice",
@@ -17,5 +18,6 @@
 	"right-uemodulebookpdf-export": "Exportar uma página para PDF como parte de um livro",
 	"bs-uemodulebookpdf-table-of-contents-heading": "Índice",
 	"bs-uemodulebookpdf-extension-description": "Permite que o BlueSpice exporte coleções hierárquicas de artigos para Adobe&reg; Portable Document Format (PDF).",
-	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Formato de documento portátil (PDF) para a estante"
+	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Formato de documento portátil (PDF) para a estante",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Apenas títulos de artigos: mostra apenas os títulos de artigos no índice do PDF.\nIncorporar sumários do artigo: mostra o índice de cada artigo no índice do PDF."
 }
