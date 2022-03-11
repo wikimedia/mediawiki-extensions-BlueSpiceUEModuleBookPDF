@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mainframe98"
+			"Mainframe98",
+			"Romaine"
 		]
 	},
 	"bs-uemodulebookpdf-pref-bookexporttoc": "Inhoudsopgave",
 	"bs-uemodulebookpdf-template": "Sjabloon (PDF)",
-	"bs-uemodulebookpdf-table-of-contents-heading": "Inhoudsopgave"
+	"bs-uemodulebookpdf-table-of-contents-heading": "Inhoudsopgave",
+	"bs-uemodulebookpdf-bookshelfimage": "Afbeelding van boekenplank"
 }

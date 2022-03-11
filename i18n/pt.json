@@ -17,5 +17,6 @@
 	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Formato de Documento Portátil (PDF) para a extensão Bookshelf",
 	"bs-uemodulebookpdf-bookshelfimage": "Imagem da extensão Bookshelf",
 	"action-uemodulebookpdf-export": "exportar uma página para PDF como parte de um livro",
-	"right-uemodulebookpdf-export": "Exportar uma página para PDF como parte de um livro"
+	"right-uemodulebookpdf-export": "Exportar uma página para PDF como parte de um livro",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Só títulos de artigos: só mostra os títulos dos artigos no índice do PDF.\nEmbeber índices dos artigos: mostra o índice de cada artigo no índice do PDF."
 }
