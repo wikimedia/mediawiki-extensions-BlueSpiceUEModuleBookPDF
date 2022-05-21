@@ -43,6 +43,11 @@
 		"BlueSpiceUniversalExport": {
 			"ModuleRegistry": {
 				"bookpdf": "\\BsBookExportModulePDF::factory"
+			},
+			"ExportDialogPluginRegistry": {
+				"bookpdf": {
+					"factory": "\\BlueSpice\\UEModuleBookPDF\\ExportDialogPluginBook::factory"
+				}
 			}
 		}
 	},
@@ -88,6 +93,18 @@
 			"dependencies": [
 				"ext.bluespice"
 			]
+		},
+		"ext.bluespice.ueModuleBookPDF.ue-export-dialog-plugin-bookpdf": {
+			"scripts": [
+				"ui/plugin/ExportDialogPlugin.Book.js"
+			],
+			"dependencies": [
+				"ext.bluespice.universalExport.exportDialog"
+			],
+			"messages": [
+				"bs-uemodulebookpdf-export-dialog-label-module-name",
+				"bs-uemodulebookpdf-export-dialog-label-select-template"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -108,26 +125,11 @@
 			"value": "BlueSpice Book"
 		}
 	},
-	"HookHandlers": {
-		"skin": {
-			"class": "\\BlueSpice\\UEModuleBookPDF\\HookHandler\\Skin",
-			"services": [ "BSUniversalExportModuleFactory" ]
-		},
-		"discovery-skin": {
-			"class": "\\BlueSpice\\UEModuleBookPDF\\HookHandler\\BlueSpiceDiscovery"
-		}
-	},
 	"Hooks": {
 		"BeforePageDisplay": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BeforePageDisplay\\AddResources::callback",
 		"BSMigrateSettingsFromDeviatingNames": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSMigrateSettingsFromDeviatingNames\\SkipServiceSettings::callback",
-		"ChameleonSkinTemplateOutputPageBeforeExec": [
-			"BlueSpice\\UEModuleBookPDF\\Hook\\ChameleonSkinTemplateOutputPageBeforeExec\\AddBookExportAction::callback",
-			"BlueSpice\\UEModuleBookPDF\\Hook\\ChameleonSkinTemplateOutputPageBeforeExec\\AddBookExportActionBookPage::callback"
-		],
 		"BSBookshelfGetBookData": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSBookshelfGetBookData\\AddTemplateMetaData::callback",
-		"BSBookshelfBookManager": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSBookshelfBookManager\\AddDependencies::callback",
-		"SkinTemplateNavigation::Universal": "skin",
-		"BlueSpiceDiscoveryTemplateDataProviderAfterInit": "discovery-skin"
+		"BSBookshelfBookManager": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSBookshelfBookManager\\AddDependencies::callback"
 	},
 	"load_composer_autoloader": true,
 	"manifest_version": 2
