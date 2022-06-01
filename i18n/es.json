@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Enly M",
 			"Fitoschido",
 			"Ihojose"
 		]
@@ -14,5 +15,7 @@
 	"bs-uemodulebookpdf-bookshelfimage": "Imagen Bookshelf",
 	"action-uemodulebookpdf-export": "Exportando una página a PDF como parte de un libro",
 	"right-uemodulebookpdf-export": "Exportar una página a PDF como parte de un libro",
-	"bs-uemodulebookpdf-table-of-contents-heading": "Sumario"
+	"bs-uemodulebookpdf-table-of-contents-heading": "Sumario",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "Libro PDF",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Diseño"
 }
