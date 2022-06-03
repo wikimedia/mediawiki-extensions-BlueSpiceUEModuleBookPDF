@@ -21,5 +21,7 @@
 	"action-uemodulebookpdf-export": "exportation d’une page au format PDF dans un livre",
 	"right-uemodulebookpdf-export": "Exporter une page au format PDF dans un livre",
 	"bs-uemodulebookpdf-table-of-contents-heading": "Table des matières",
-	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Titres d’article seulement : affiche uniquement les titres d’article dans la table des matières dans le PDF.\nTables de matières des articles inclus : affiche la table des matières pour chaque article dans la table des matières du PDF."
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Titres d’article seulement : affiche uniquement les titres d’article dans la table des matières dans le PDF.\nTables de matières des articles inclus : affiche la table des matières pour chaque article dans la table des matières du PDF.",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "Livre PDF",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Mise en page"
 }
