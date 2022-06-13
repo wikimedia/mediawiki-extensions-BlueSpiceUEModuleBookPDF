@@ -2,11 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Mainframe98",
-			"Romaine"
+			"Romaine",
+			"Vistaus"
 		]
 	},
 	"bs-uemodulebookpdf-pref-bookexporttoc": "Inhoudsopgave",
 	"bs-uemodulebookpdf-template": "Sjabloon (PDF)",
 	"bs-uemodulebookpdf-table-of-contents-heading": "Inhoudsopgave",
-	"bs-uemodulebookpdf-bookshelfimage": "Afbeelding van boekenplank"
+	"bs-uemodulebookpdf-bookshelfimage": "Afbeelding van boekenplank",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "Pdf-boek",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Indeling"
 }
