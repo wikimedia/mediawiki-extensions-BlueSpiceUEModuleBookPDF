@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Farras"
+		]
+	},
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "Buku PDF",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Tata letak"
+}
