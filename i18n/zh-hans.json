@@ -2,11 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Lakejason0",
+			"Wzl19371",
 			"沈澄心"
 		]
 	},
 	"bs-uemodulebookpdf-pref-bookexporttoc": "目录",
 	"bs-uemodulebookpdf-bookexporttoc-only-articles": "只有文章标题（按等级缩进）",
 	"bs-uemodulebookpdf-template": "模板（PDF）",
-	"bs-uemodulebookpdf-table-of-contents-heading": "目录"
+	"bs-uemodulebookpdf-table-of-contents-heading": "目录",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF书籍",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "布局"
 }
