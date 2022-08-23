@@ -4,7 +4,6 @@ use BlueSpice\UEModuleBookPDF\BookmarksXMLBuilder;
 use BlueSpice\UEModulePDF\PDFServletHookRunner;
 use BlueSpice\UniversalExport\ExportModule;
 use BlueSpice\UniversalExport\ExportSpecification;
-use MediaWiki\MediaWikiServices;
 
 class BsBookExportModulePDF extends ExportModule {
 
@@ -23,6 +22,22 @@ class BsBookExportModulePDF extends ExportModule {
 	 * @var string|bool
 	 */
 	protected $content = false;
+
+	/**
+	 * @var MediaWikiServices
+	 */
+	protected $services = null;
+
+	/**
+	 * @param string $name
+	 * @param MediaWiki\MediaWikiServices $services
+	 * @param Config $config
+	 * @param WebRequest $request
+	 */
+	public function __construct( $name, $services, $config, $request ) {
+		parent::__construct( $name, $services, $config, $request );
+		$this->services = $this->getServices();
+	}
 
 	/**
 	 * Implementation of BsUniversalExportModule interface. Uses the
@@ -81,7 +96,7 @@ class BsBookExportModulePDF extends ExportModule {
 			);
 		}
 
-		MediaWikiServices::getInstance()->getHookContainer()->run(
+		$this->services->getHookContainer()->run(
 			'BSBookshelfExportBeforeArticles',
 			[
 				&$aTemplate,
@@ -125,10 +140,8 @@ class BsBookExportModulePDF extends ExportModule {
 		$aLinkMap = [];
 
 		$user = $specification->getUser();
-		$pm = MediaWikiServices::getInstance()->getPermissionManager();
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig(
-			'bsg'
-		);
+		$pm = $this->services->getPermissionManager();
+		$config = $this->services->getConfigFactory()->makeConfig( 'bsg' );
 		foreach ( $aArticles as $aArticle ) {
 			$aArticle['title'] = urldecode( $aArticle['title'] );
 			$aArticle['php'] = [
@@ -149,9 +162,7 @@ class BsBookExportModulePDF extends ExportModule {
 			}
 
 			if ( isset( $aArticle['is-redirect'] ) && $aArticle['is-redirect'] === true ) {
-				$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection(
-					DB_REPLICA
-				);
+				$dbr = $this->services->getDBLoadBalancer()->getConnection( DB_REPLICA );
 
 				$oRedirectTitle = $this->searchLastRedirect( $aArticle['article-id'], $dbr );
 				if ( $oRedirectTitle !== false ) {
@@ -197,7 +208,7 @@ class BsBookExportModulePDF extends ExportModule {
 					);
 					break;
 				default:
-					MediaWikiServices::getInstance()->getHookContainer()->run(
+					$this->services->getHookContainer()->run(
 						'BSBookshelfExportUnknownNodeType',
 						[
 							$oDOMNode,
@@ -306,7 +317,7 @@ class BsBookExportModulePDF extends ExportModule {
 			}
 		}
 
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
+		$config = $this->services->getConfigFactory()->makeConfig( 'bsg' );
 		$this->modifyTemplateAfterContents( $aTemplate, $aBookPage, $specification );
 		// Set params for PDF creation
 		$token = md5( $specification->getTitle()->getPrefixedText() ) .
@@ -319,7 +330,7 @@ class BsBookExportModulePDF extends ExportModule {
 		$specification->setParam( 'attachments', '1' );
 
 		$params = $specification->getParams();
-		$hookContainer = $this->getServices()->getHookContainer();
+		$hookContainer = $this->services->getHookContainer();
 		$hookRunner = new PDFServletHookRunner( $hookContainer );
 		$oPdfService = new BsPDFServlet( $params, $hookRunner );
 		$aResponse['content'] = $oPdfService->createPDF( $aTemplate['dom'] );
@@ -378,8 +389,8 @@ class BsBookExportModulePDF extends ExportModule {
 	 * @return ViewExportModuleOverview
 	 */
 	public function getOverview() {
-		$UEModulePDF = MediaWikiServices::getInstance()
-			->getService( 'BSUniversalExportModuleFactory' )->newFromName( 'pdf' );
+		$UEModulePDF = $this->services->getService( 'BSUniversalExportModuleFactory' )
+			->newFromName( 'pdf' );
 		$oModuleOverviewView = $UEModulePDF->getOverview();
 
 		$oModuleOverviewView->setOption(
@@ -406,8 +417,7 @@ class BsBookExportModulePDF extends ExportModule {
 	 * @return array
 	 */
 	public function getBookTemplate( $specs, $aBookPage, $aBookMeta ) {
-		$config = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'bsg' );
+		$config = $this->services->getConfigFactory()->makeConfig( 'bsg' );
 
 		$sTemplate = $config->get( 'UEModuleBookPDFDefaultTemplate' );
 
@@ -443,7 +453,8 @@ class BsBookExportModulePDF extends ExportModule {
 	 * @inheritDoc
 	 */
 	protected function modifyTemplateAfterContents( &$template, $page, $specification ) {
-		Hooks::run(
+		$hookContainer = $this->services->getHookContainer();
+		$hookContainer->run(
 			'BSUEModulePDFBeforeCreatePDF',
 			[
 				$this,
@@ -495,8 +506,7 @@ class BsBookExportModulePDF extends ExportModule {
 		// Check wether to include the article's TOC into the book TOC or not
 		$bIncludeArticleTOC = false;
 		if ( $aPage['toc-ul-element'] instanceof DOMNode ) {
-			$config = MediaWikiServices::getInstance()->getConfigFactory()
-				->makeConfig( 'bsg' );
+			$config = $this->services->getConfigFactory()->makeConfig( 'bsg' );
 			if ( $config->get( 'UEModuleBookPDFBookExportTOC' ) == 'article-tocs' ) {
 				$bIncludeArticleTOC = true;
 			}
@@ -546,7 +556,7 @@ class BsBookExportModulePDF extends ExportModule {
 			$aPage['number'] = trim( $aArticle['number'] );
 		}
 
-		MediaWikiServices::getInstance()->getHookContainer()->run(
+		$this->services->getHookContainer()->run(
 			'BSBookshelfExportArticle',
 			[
 				&$aPage,
@@ -715,7 +725,7 @@ HERE
 			'toc-ul-element' => ''
 		];
 
-		MediaWikiServices::getInstance()->getHookContainer()->run( 'BSBookshelfExportTag', [
+		$this->services->getHookContainer()->run( 'BSBookshelfExportTag', [
 			&$aDummyPage,
 			&$aArticle,
 			&$aTemplate,
@@ -776,9 +786,7 @@ HERE
 	private function getPageHierarchyProvider( $specs ) {
 		$this->bookType = $specs->getParam( 'book_type', false );
 		$this->content = $specs->getParam( 'content', false );
-		$phpf = MediaWikiServices::getInstance()->getService(
-			'BSBookshelfPageHierarchyProviderFactory'
-		);
+		$phpf = $this->services->getService( 'BSBookshelfPageHierarchyProviderFactory' );
 
 		return $phpf->getInstanceFor( $specs->getTitle()->getPrefixedText(), [
 			'book_type' => $this->bookType,
