@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Winston Sung",
-			"Xiplus"
+			"Xiplus",
+			"Kly"
 		]
 	},
 	"bs-uemodulebookpdf-extension-description": "讓BlueSpice將階層式條目集合匯出為Adobe&reg;可攜式文件格式（PDF）。",
@@ -17,5 +18,6 @@
 	"bs-uemodulebookpdf-bookshelfimage": "Bookshelf圖片",
 	"action-uemodulebookpdf-export": "將頁面以書籍的一部分匯出為PDF",
 	"right-uemodulebookpdf-export": "將頁面以書籍的一部分匯出為PDF",
-	"bs-uemodulebookpdf-table-of-contents-heading": "目次"
+	"bs-uemodulebookpdf-table-of-contents-heading": "目次",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "僅條目標題：僅顯示 PDF 目錄中的條目標題。 \n嵌入條目目錄：顯示 PDF 目錄中各條目的目錄。"
 }
