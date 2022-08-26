@@ -431,7 +431,8 @@ class BsBookExportModulePDF extends ExportModule {
 		$aTemplate = BsPDFTemplateProvider::getTemplate( [
 			'path'     => $config->get( 'UEModuleBookPDFTemplatePath' ),
 			'template' => $sTemplate,
-			'language' => $specs->getUser()->getOption( 'language', 'en' ),
+			'language' => $this->getServices()->getUserOptionsLookup()
+				->getOption( $specs->getUser(), 'language', 'en' ),
 			'meta'     => $aBookPage['meta']
 		] );
 
