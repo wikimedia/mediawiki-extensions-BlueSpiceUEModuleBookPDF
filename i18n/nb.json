@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jon Harald Søby"
+			"Jon Harald Søby",
+			"EdoAug"
 		]
 	},
 	"bs-uemodulebookpdf-extension-description": "Lar BlueSpice eksportere hierarkiske samlinger av artikler til PDF.",
@@ -17,5 +18,6 @@
 	"action-uemodulebookpdf-export": "eksportere en side til PDF som del av ei bok",
 	"right-uemodulebookpdf-export": "Eksportere ei side til PDF som del av ei bok",
 	"bs-uemodulebookpdf-table-of-contents-heading": "Innholdsfortegnelse",
-	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Kun artikkeltitler: Viser kun artikkeltitlene i innholdsfortegnelsen til PDF-en.\nBygg inn artiklenes innholdsfortegnelser: Viser innholdsfortegnelsen til hver artikkel i PDF-ens innholdsfortegnelse."
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Kun artikkeltitler: Viser kun artikkeltitlene i innholdsfortegnelsen til PDF-en.\nBygg inn artiklenes innholdsfortegnelser: Viser innholdsfortegnelsen til hver artikkel i PDF-ens innholdsfortegnelse.",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF-bok"
 }
