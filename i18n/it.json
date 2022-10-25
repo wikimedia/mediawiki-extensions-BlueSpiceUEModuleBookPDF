@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
+			"GpieroMW",
 			"Stefano"
 		]
 	},
 	"bs-uemodulebookpdf-pref-bookexporttoc": "Indice",
 	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
-	"bs-uemodulebookpdf-table-of-contents-heading": "Indice"
+	"bs-uemodulebookpdf-table-of-contents-heading": "Indice",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "Libro PDF"
 }
