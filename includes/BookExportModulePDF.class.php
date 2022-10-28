@@ -81,6 +81,13 @@ class BsBookExportModulePDF extends ExportModule {
 			);
 		}
 
+		for ( $index = 0; $index < count( $aArticles ); $index++ ) {
+			$title = Title::newFromText( $aArticles[$index]['title'] );
+			if ( $title ) {
+				$aArticles[$index]['display-title'] = $this->getDisplayTitle( $title );
+			}
+		}
+
 		MediaWikiServices::getInstance()->getHookContainer()->run(
 			'BSBookshelfExportBeforeArticles',
 			[
@@ -138,6 +145,7 @@ class BsBookExportModulePDF extends ExportModule {
 			];
 
 			$oCurTitle = Title::newFromText( $aArticle['title'] );
+
 			if ( $oCurTitle instanceof Title &&
 				!$pm->userCan( 'uemodulebookpdf-export', $user, $oCurTitle )
 			) {
@@ -805,5 +813,26 @@ HERE
 	 */
 	public function getActionButtonDetails() {
 		return null;
+	}
+
+	/**
+	 * @param Title $title
+	 * @return string
+	 */
+	private function getDisplayTitle( Title $title ): string {
+		$pageProperties = [];
+		$pageProps = PageProps::getInstance()->getAllProperties( $title );
+
+		$id = $title->getArticleID();
+
+		if ( isset( $pageProps[$id] ) ) {
+			$pageProperties = $pageProps[$id];
+		}
+
+		if ( isset( $pageProperties['displaytitle'] ) ) {
+			return $pageProperties['displaytitle'];
+		}
+
+		return $title->getPrefixedText();
 	}
 }
