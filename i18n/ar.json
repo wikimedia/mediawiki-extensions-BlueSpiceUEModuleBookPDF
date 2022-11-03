@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Asma",
-			"ديفيد"
+			"ديفيد",
+			"Meno25"
 		]
 	},
 	"bs-uemodulebookpdf-extension-description": "يمكن BlueSpice من تصدير مجموعات من المقالات هرميا إلى Adobe&reg; تنسيق المستند المحمول (PDF).",
@@ -18,5 +19,7 @@
 	"action-uemodulebookpdf-export": "تصدير صفحة إلى PDF كجزء من كتاب",
 	"right-uemodulebookpdf-export": "تصدير صفحة إلى PDF كجزء من كتاب",
 	"bs-uemodulebookpdf-table-of-contents-heading": "جدول المحتويات",
-	"bs-uemodulebookpdf-export-dialog-label-module-name": "كتاب PDF"
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "عناوين المقالات فقط: يعرض فقط عناوين المقالات في جدول محتويات ملف PDF. ! N! تضمين بنود جدول المحتويات للمقالة: يعرض جدول المحتويات لكل مقالة في جدول محتويات ملف PDF.",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "كتاب PDF",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "تَخطِيط"
 }
