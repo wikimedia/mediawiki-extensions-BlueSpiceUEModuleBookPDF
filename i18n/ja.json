@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kkairri",
 			"MathXplore"
 		]
 	},
-	"bs-uemodulebookpdf-export-dialog-label-select-template": "レイアウト"
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "レイアウト",
+	"bs-uemodulebookpdf-table-of-contents-heading": "目次"
 }
