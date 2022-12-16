@@ -3,13 +3,14 @@
 		"authors": [
 			"Kly",
 			"Winston Sung",
-			"Xiplus"
+			"Xiplus",
+			"捍粵者"
 		]
 	},
 	"bs-uemodulebookpdf-extension-description": "讓BlueSpice將階層式條目集合匯出為Adobe&reg;可攜式文件格式（PDF）。",
 	"bs-uemodulebookpdf-pref-bookexporttoc": "目次",
 	"bs-uemodulebookpdf-bookexporttoc-only-articles": "只有條目標題（按等級縮進）",
-	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "嵌入文章目錄（條目標題不縮進）",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "嵌入文章目錄（條目標題不縮排）",
 	"bs-uemodulebookpdf-overview-title": "Bookshelf的Adobe&reg;可攜式文件格式（PDF）",
 	"bs-uemodulebookpdf-overview-description": "匯出書籍為Adobe PDF。",
 	"bs-uemodulebookpdf-overview-bodycontent": "此模組由&quot;Bookshelf&quot;擴充功能提供並能夠匯出PDF。",
