@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Sadržaj",
+	"bs-uemodulebookpdf-btn-export": "Prenosivi format dokumenta (PDF)",
+	"bs-uemodulebookpdf-template": "Šablon (PDF)",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Sadržaj",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF knjiga"
+}
