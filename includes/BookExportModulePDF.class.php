@@ -569,9 +569,7 @@ class BsBookExportModulePDF extends ExportModule {
 		$iLevel = $this->buildTOC( $aPage, $aTemplate, $oTOCList, $aArticle, $aBookMeta );
 
 		// Change the headline
-		$sDisplayTitle = isset( $aPage['number'] )
-			? $aPage['number'] . ' ' . $aArticle['display-title']
-			: $aArticle['display-title'];
+		$sDisplayTitle = $aArticle['display-title'];
 
 		$oTitleText = $aPage['firstheading-element']->ownerDocument->createTextNode(
 			$sDisplayTitle
@@ -582,14 +580,21 @@ class BsBookExportModulePDF extends ExportModule {
 			$aPage['firstheading-element']->firstChild
 		);
 
+		$chapterNumber = isset( $aPage['number'] )
+			? $aPage['number']
+			: null;
+
 		$numNode = $aPage['dom']->createElement( 'span' );
 		$numNode->setAttribute( 'class', 'bs-chapter-number' );
+		if ( $chapterNumber ) {
+			$numNode->nodeValue = $chapterNumber . ' ';
 
-		// Prepend
-		$aPage['firstheading-element']->insertBefore(
-			$numNode,
-			$aPage['firstheading-element']->firstChild
-		);
+			// Prepend
+			$aPage['firstheading-element']->insertBefore(
+				$numNode,
+				$aPage['firstheading-element']->firstChild
+			);
+		}
 
 		$aPage['firstheading-element']->setAttribute(
 			'class', $aPage['firstheading-element']->getAttribute( 'class' ) . ' booklevel-' . $iLevel
