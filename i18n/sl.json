@@ -4,7 +4,20 @@
 			"Eleassar"
 		]
 	},
+	"bs-uemodulebookpdf-extension-description": "Omogoča BlueSpiceu izvoz hierarhičnih zbirk člankov v Adobe® Portable Document Format (PDF).",
 	"bs-uemodulebookpdf-pref-bookexporttoc": "Kazalo",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Samo naslovi člankov (zamik po ravneh)",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Vdelaj kazala člankov (brez zamika naslovov člankov)",
+	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Portable Document Format (PDF) za Knjižno polico",
+	"bs-uemodulebookpdf-overview-description": "Izvozi knjigo v Adobe PDF.",
+	"bs-uemodulebookpdf-overview-bodycontent": "Ta modul zagotavlja razširitev &quot;Bookshelf&quot; (Knjižna polica) in omogoča izvoz v PDF.",
+	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
 	"bs-uemodulebookpdf-template": "Predloga (PDF)",
-	"bs-uemodulebookpdf-table-of-contents-heading": "Kazalo"
+	"bs-uemodulebookpdf-bookshelfimage": "Slika za Knjižno polico",
+	"action-uemodulebookpdf-export": "izvoz strani v PDF kot del knjige",
+	"right-uemodulebookpdf-export": "Izvažanje strani v PDF kot del knjige",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Kazalo",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Samo naslovi člankov: V kazalu vsebine PDF-ja naj bodo prikazani samo naslovi člankov.\nVdelaj kazala člankov: Za vsak članek v kazalu vsebine PDF-ja prikaži kazalo vsebine.",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF-knjiga",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Postavitev"
 }
