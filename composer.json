@@ -31,5 +31,10 @@
 	},
 	"extra": {
 		"installer-name": "BlueSpiceUEModuleBookPDF"
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true
+		}
 	}
 }
