@@ -4,5 +4,9 @@
 			"Amire80"
 		]
 	},
-	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)"
+	"bs-uemodulebookpdf-pref-bookexporttoc": "תוכן עניינים",
+	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
+	"bs-uemodulebookpdf-template": "תבנית (PDF)",
+	"bs-uemodulebookpdf-table-of-contents-heading": "תוכן עניינים",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "ספר PDF"
 }
