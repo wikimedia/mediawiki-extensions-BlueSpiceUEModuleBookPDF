@@ -8,5 +8,16 @@
 	"bs-uemodulebookpdf-pref-bookexporttoc": "תוכן עניינים",
 	"bs-uemodulebookpdf-template": "תבנית (PDF)",
 	"bs-uemodulebookpdf-table-of-contents-heading": "תוכן עניינים",
-	"bs-uemodulebookpdf-export-dialog-label-module-name": "ספר PDF"
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "ספר PDF",
+	"bs-uemodulebookpdf-extension-description": "הפעלת יצוא אוספים היררכיים של ערכים ל־Adobe® Portable Document Format (PDF) על־ידי BlueSpice.",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "רק כותרות ערכים (הזחה לפי דרגה)",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "הטמעת תוכן עניינים של מאמר (ללא הזחה של כותרות הערך)",
+	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Portable Document Format (PDF) עבור Bookshelf",
+	"bs-uemodulebookpdf-overview-description": "יצוא ספר ל־Adobe PDF.",
+	"bs-uemodulebookpdf-overview-bodycontent": "המודול הזה מסופק על־ידי הרחבת &quot;Bookshelf&quot; ומאפשר יצוא ל־PDF.",
+	"bs-uemodulebookpdf-bookshelfimage": "תמונת מדף ספרים",
+	"action-uemodulebookpdf-export": "לייצא דף ל־PDF כחלק מספר",
+	"right-uemodulebookpdf-export": "יצוא דף ל־PDF כחלק מספר",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "רק כותרות ערכים: הצגה רק של כותרות הערכים בתוכן העניינים של ה־PDF. \nהטמעת תוכן עניינים של ערך: הצגת תוכן עניינים עבור כל ערך בתוכן העניינים של ה־PDF.",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "עיצוב דף"
 }
