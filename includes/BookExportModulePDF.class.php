@@ -262,6 +262,11 @@ class BsBookExportModulePDF extends ExportModule {
 				continue;
 			}
 
+			if ( in_array( 'media', $aClasses ) ) {
+				// Going on here would break MEDIA: links
+				continue;
+			}
+
 			$aHref = parse_url( $sHref );
 			if ( !isset( $aHref['path'] ) ) {
 				continue;
