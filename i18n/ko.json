@@ -12,5 +12,6 @@
 	"bs-uemodulebookpdf-template": "틀 (PDF)",
 	"bs-uemodulebookpdf-bookshelfimage": "책장 이미지",
 	"right-uemodulebookpdf-export": "책의 일부를 PDF로 페이지를 내보냅니다",
-	"bs-uemodulebookpdf-table-of-contents-heading": "목차"
+	"bs-uemodulebookpdf-table-of-contents-heading": "목차",
+	"action-uemodulebookpdf-export": "책의 일부를 PDF로 페이지를 내보낼"
 }
