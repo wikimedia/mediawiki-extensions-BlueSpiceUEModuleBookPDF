@@ -8,6 +8,7 @@
 	},
 	"bs-uemodulebookpdf-pref-bookexporttoc": "Indice",
 	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
+	"action-uemodulebookpdf-export": "esportare una pagina in PDF come parte di un libro",
 	"bs-uemodulebookpdf-table-of-contents-heading": "Indice",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "Libro PDF"
 }
