@@ -96,10 +96,13 @@ class BsBookExportModulePDF extends ExportModule {
 			);
 		}
 
-		for ( $index = 0; $index < count( $aArticles ); $index++ ) {
-			$title = Title::newFromText( $aArticles[$index]['title'] );
-			if ( $title ) {
-				$aArticles[$index]['display-title'] = $this->getDisplayTitle( $title );
+		$config = $this->services->getConfigFactory()->makeConfig( 'bsg' );
+		if ( !$config->get( 'BookshelfTitleDisplayText' ) ) {
+			for ( $index = 0; $index < count( $aArticles ); $index++ ) {
+				$title = Title::newFromText( $aArticles[$index]['title'] );
+				if ( $title ) {
+					$aArticles[$index]['display-title'] = $this->getDisplayTitle( $title );
+				}
 			}
 		}
 
@@ -148,7 +151,6 @@ class BsBookExportModulePDF extends ExportModule {
 
 		$user = $specification->getUser();
 		$pm = $this->services->getPermissionManager();
-		$config = $this->services->getConfigFactory()->makeConfig( 'bsg' );
 		foreach ( $aArticles as $aArticle ) {
 			$aArticle['title'] = urldecode( $aArticle['title'] );
 			$aArticle['php'] = [
@@ -330,7 +332,6 @@ class BsBookExportModulePDF extends ExportModule {
 			}
 		}
 
-		$config = $this->services->getConfigFactory()->makeConfig( 'bsg' );
 		$this->modifyTemplateAfterContents( $aTemplate, $aBookPage, $specification );
 		// Set params for PDF creation
 		$token = md5( $specification->getTitle()->getPrefixedText() ) .
@@ -503,7 +504,6 @@ class BsBookExportModulePDF extends ExportModule {
 			$aTemplate['dom']->createElement( 'span', $sNumberSpanText )
 		);
 		$oTOCListItemNumberSpan->setAttribute( 'class', 'tocnumber' );
-
 		$oTitleText = $aTemplate['dom']->createTextNode( $aArticle['display-title'] );
 		$oTOCListItemTextSpan = $aTemplate['dom']->createElement( 'span' );
 		$oTOCListItemTextSpan->appendChild( $oTitleText );
