@@ -81,14 +81,17 @@ class BsBookExportModulePDF extends ExportModule {
 			);
 		}
 
-		for ( $index = 0; $index < count( $aArticles ); $index++ ) {
-			$title = Title::newFromText( $aArticles[$index]['title'] );
-			if ( $title ) {
-				$aArticles[$index]['display-title'] = $this->getDisplayTitle( $title );
+		$config = $this->services->getConfigFactory()->makeConfig( 'bsg' );
+		if ( !$config->get( 'BookshelfTitleDisplayText' ) ) {
+			for ( $index = 0; $index < count( $aArticles ); $index++ ) {
+				$title = Title::newFromText( $aArticles[$index]['title'] );
+				if ( $title ) {
+					$aArticles[$index]['display-title'] = $this->getDisplayTitle( $title );
+				}
 			}
 		}
 
-		MediaWikiServices::getInstance()->getHookContainer()->run(
+		$this->services->getHookContainer()->run(
 			'BSBookshelfExportBeforeArticles',
 			[
 				&$aTemplate,
@@ -132,10 +135,7 @@ class BsBookExportModulePDF extends ExportModule {
 		$aLinkMap = [];
 
 		$user = $specification->getUser();
-		$pm = MediaWikiServices::getInstance()->getPermissionManager();
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig(
-			'bsg'
-		);
+		$pm = $this->services->getPermissionManager();
 		foreach ( $aArticles as $aArticle ) {
 			$aArticle['title'] = urldecode( $aArticle['title'] );
 			$aArticle['php'] = [
@@ -157,9 +157,7 @@ class BsBookExportModulePDF extends ExportModule {
 			}
 
 			if ( isset( $aArticle['is-redirect'] ) && $aArticle['is-redirect'] === true ) {
-				$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection(
-					DB_REPLICA
-				);
+				$dbr = $this->services->getDBLoadBalancer()->getConnection( DB_REPLICA );
 
 				$oRedirectTitle = $this->searchLastRedirect( $aArticle['article-id'], $dbr );
 				if ( $oRedirectTitle !== false ) {
@@ -205,7 +203,7 @@ class BsBookExportModulePDF extends ExportModule {
 					);
 					break;
 				default:
-					MediaWikiServices::getInstance()->getHookContainer()->run(
+					$this->services->getHookContainer()->run(
 						'BSBookshelfExportUnknownNodeType',
 						[
 							$oDOMNode,
@@ -319,7 +317,6 @@ class BsBookExportModulePDF extends ExportModule {
 			}
 		}
 
-		$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
 		$this->modifyTemplateAfterContents( $aTemplate, $aBookPage, $specification );
 		// Set params for PDF creation
 		$token = md5( $specification->getTitle()->getPrefixedText() ) .
@@ -492,7 +489,6 @@ class BsBookExportModulePDF extends ExportModule {
 			$aTemplate['dom']->createElement( 'span', $sNumberSpanText )
 		);
 		$oTOCListItemNumberSpan->setAttribute( 'class', 'tocnumber' );
-
 		$oTitleText = $aTemplate['dom']->createTextNode( $aArticle['display-title'] );
 		$oTOCListItemTextSpan = $aTemplate['dom']->createElement( 'span' );
 		$oTOCListItemTextSpan->appendChild( $oTitleText );
