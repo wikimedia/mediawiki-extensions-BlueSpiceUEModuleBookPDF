@@ -839,6 +839,11 @@ HERE
 			return $pageProperties['displaytitle'];
 		}
 
+		$config = $this->services->getConfigFactory()->makeConfig( 'bsg' );
+		if ( $config->get( 'BookshelfSupressBookNS' ) ) {
+			return $title->getText();
+		}
+
 		return $title->getPrefixedText();
 	}
 }
