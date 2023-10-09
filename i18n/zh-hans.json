@@ -3,6 +3,7 @@
 		"authors": [
 			"Lakejason0",
 			"Wzl19371",
+			"Xyb",
 			"沈澄心"
 		]
 	},
@@ -11,5 +12,9 @@
 	"bs-uemodulebookpdf-template": "模板（PDF）",
 	"bs-uemodulebookpdf-table-of-contents-heading": "目录",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF书籍",
-	"bs-uemodulebookpdf-export-dialog-label-select-template": "布局"
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "布局",
+	"bs-uemodulebookpdf-btn-export": "便携文档格式（PDF）",
+	"bs-uemodulebookpdf-bookshelfimage": "书架图片",
+	"action-uemodulebookpdf-export": "将页面导出为 PDF 作为书籍的一部分",
+	"right-uemodulebookpdf-export": "将页面导出为 PDF 作为书籍的一部分"
 }
