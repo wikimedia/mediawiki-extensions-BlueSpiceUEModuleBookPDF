@@ -36,6 +36,7 @@ class ExportDialogPluginBook implements IExportDialogPlugin {
 
 		$defaultTemplate = $config->get( 'UEModuleBookPDFDefaultTemplate' );
 		$defaultTemplatePath = $config->get( 'UEModuleBookPDFTemplatePath' );
+		$excludeList = $config->get( 'UEModuleBookPDFExportDialogExcludeTemplates' );
 
 		$availableTemplates = [];
 		$dir = opendir( $defaultTemplatePath );
@@ -47,6 +48,11 @@ class ExportDialogPluginBook implements IExportDialogPlugin {
 			}
 
 			if ( !is_dir( "{$defaultTemplatePath}/{$subDir}" ) ) {
+				$subDir = readdir( $dir );
+				continue;
+			}
+
+			if ( in_array( $subDir, $excludeList ) ) {
 				$subDir = readdir( $dir );
 				continue;
 			}
