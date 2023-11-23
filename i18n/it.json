@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
-			"Stefano",
-			"GpieroMW"
+			"GpieroMW",
+			"Stefano"
 		]
 	},
 	"bs-uemodulebookpdf-pref-bookexporttoc": "Indice",
 	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
 	"bs-uemodulebookpdf-table-of-contents-heading": "Indice",
-	"bs-uemodulebookpdf-export-dialog-label-module-name": "Libro PDF"
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "Libro PDF",
+	"action-uemodulebookpdf-export": "esportare una pagina in PDF come parte di un libro"
 }
