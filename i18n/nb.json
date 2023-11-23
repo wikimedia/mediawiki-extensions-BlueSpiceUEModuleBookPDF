@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jon Harald Søby",
-			"EdoAug"
+			"EdoAug",
+			"Jon Harald Søby"
 		]
 	},
 	"bs-uemodulebookpdf-extension-description": "Lar BlueSpice eksportere hierarkiske samlinger av artikler til PDF.",
