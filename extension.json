@@ -9,12 +9,12 @@
 	],
 	"descriptionmsg": "bs-uemodulebookpdf-extension-description",
 	"requires": {
-		"MediaWiki": ">= 1.36.0",
+		"MediaWiki": ">= 1.39.0",
 		"extensions": {
-			"BlueSpiceFoundation": ">= 4.1",
-			"BlueSpiceUniversalExport": ">= 4.1",
-			"BlueSpiceBookshelf": ">= 4.1",
-			"BlueSpiceUEModulePDF": ">= 4.1"
+			"BlueSpiceFoundation": ">= 4.3",
+			"BlueSpiceUniversalExport": ">= 4.3",
+			"BlueSpiceBookshelf": ">= 4.3",
+			"BlueSpiceUEModulePDF": ">= 4.3"
 		}
 	},
 	"type": "bluespice",
