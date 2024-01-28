@@ -17,5 +17,7 @@
 	"bs-uemodulebookpdf-bookshelfimage": "Immaggine d'u scaffale",
 	"action-uemodulebookpdf-export": "stoche a esporte 'na pàgene jndr'à 'u PDF cumme 'nu stuèzze de libbre",
 	"right-uemodulebookpdf-export": "Esporte 'na pàgene jndr'à 'u PDF cumme 'nu stuèzze de libbre",
-	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Sulamende le titole de le vôsce: 'ndruche sulamende le titole de le vôsce jndr'à tabbelle de le condenute d'u PDF.\n'A TOC de le vôsce 'ngapsulate: 'ndruche 'a tabbelle de le condenute pe ogne vôsce jndr'à tabbelle de le condenute d'u PDF."
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Sulamende le titole de le vôsce: 'ndruche sulamende le titole de le vôsce jndr'à tabbelle de le condenute d'u PDF.\n'A TOC de le vôsce 'ngapsulate: 'ndruche 'a tabbelle de le condenute pe ogne vôsce jndr'à tabbelle de le condenute d'u PDF.",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "Libbre PDF",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Disposizione"
 }
