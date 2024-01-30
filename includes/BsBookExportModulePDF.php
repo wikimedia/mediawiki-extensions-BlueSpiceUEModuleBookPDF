@@ -854,7 +854,7 @@ HERE
 	 */
 	private function getDisplayTitle( Title $title ): string {
 		$pageProperties = [];
-		$pageProps = PageProps::getInstance()->getAllProperties( $title );
+		$pageProps = $this->services->getPageProps()->getAllProperties( $title );
 
 		$id = $title->getArticleID();
 
