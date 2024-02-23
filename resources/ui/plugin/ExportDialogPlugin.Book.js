@@ -8,7 +8,17 @@ bs.ue.ui.plugin.BookPdf = function ( config ) {
 	var bookshelf = $( '.bs-tag-bookshelf' );
 	if ( bookshelf.length > 0 ) {
 		bookshelf = bookshelf[0];
-		this.title = $ ( bookshelf ).attr( 'data-bs-arg-src' );
+		var localTitle = undefined;
+
+		if ( $( bookshelf ).attr( 'data-bs-arg-src' ) !== undefined ) {
+			localTitle = $( bookshelf ).attr( 'data-bs-arg-src' );
+		} else if ( $( bookshelf ).attr( 'data-bs-arg-book' ) !== undefined ) {
+			localTitle = $( bookshelf ).attr( 'data-bs-arg-book' );
+		}
+
+		if ( localTitle !== undefined ) {
+			this.title = localTitle;
+		}
 	}
 
 	this.template = '';
