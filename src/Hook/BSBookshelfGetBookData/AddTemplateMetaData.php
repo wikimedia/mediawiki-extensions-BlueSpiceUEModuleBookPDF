@@ -8,9 +8,6 @@ use BsPDFTemplateProvider;
 class AddTemplateMetaData extends BSBookshelfGetBookData {
 
 	protected function doProcess() {
-		$this->bookData->bookMetaConfig['bookshelfimage'] = [
-			'displayName' => $this->msg( 'bs-uemodulebookpdf-bookshelfimage' )->text()
-		];
 		$this->bookData->bookMetaConfig['template'] = [
 			'displayName' => $this->msg( 'bs-uemodulebookpdf-template' )->text()
 		];

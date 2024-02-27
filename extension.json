@@ -130,11 +130,18 @@
 			"value": []
 		}
 	},
+	"HookHandlers": {
+		"bs-books-overview-page-actions": {
+			"class": "\\BlueSpice\\UEModuleBookPDF\\HookHandlers\\BSBookshelf",
+			"services": [ "SpecialPageFactory" ]
+		}
+	},
 	"Hooks": {
 		"BeforePageDisplay": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BeforePageDisplay\\AddResources::callback",
 		"BSMigrateSettingsFromDeviatingNames": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSMigrateSettingsFromDeviatingNames\\SkipServiceSettings::callback",
 		"BSBookshelfGetBookData": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSBookshelfGetBookData\\AddTemplateMetaData::callback",
-		"BSBookshelfBookManager": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSBookshelfBookManager\\AddDependencies::callback"
+		"BSBookshelfBookManager": "\\BlueSpice\\UEModuleBookPDF\\Hook\\BSBookshelfBookManager\\AddDependencies::callback",
+		"BSBookshelfBooksOverviewBeforeSetBookActions": "bs-books-overview-page-actions"
 	},
 	"load_composer_autoloader": true,
 	"manifest_version": 2
