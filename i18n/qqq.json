@@ -20,5 +20,7 @@
 	"bs-uemodulebookpdf-table-of-contents-heading": "Header for the table of contents section.\n{{Identical|Table of contents}}",
 	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Description for config variable \"UEModuleBookPDFBookExportTOC\"",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "Label for dropdown select widget to choose export module pdf",
-	"bs-uemodulebookpdf-export-dialog-label-select-template": "Label for dropdown select widget to choose template for pdf export"
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Label for dropdown select widget to choose template for pdf export",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Text for button witch triggers action edit for a page. Used on special page [[Special:Book]].",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Title attribute for button witch triggers action edit for a page. Used on special page [[Special:Book]]."
 }
