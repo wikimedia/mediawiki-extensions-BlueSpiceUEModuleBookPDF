@@ -19,5 +19,7 @@
 	"bs-uemodulebookpdf-table-of-contents-heading": "Kazalo",
 	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Samo naslovi člankov: V kazalu vsebine PDF-ja naj bodo prikazani samo naslovi člankov.\nVdelaj kazala člankov: Za vsak članek v kazalu vsebine PDF-ja prikaži kazalo vsebine.",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF-knjiga",
-	"bs-uemodulebookpdf-export-dialog-label-select-template": "Postavitev"
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Postavitev",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Izvozi",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Izvoz knjige $1"
 }

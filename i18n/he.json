@@ -19,5 +19,7 @@
 	"bs-uemodulebookpdf-table-of-contents-heading": "תוכן עניינים",
 	"bs-uemodulebookpdf-pref-bookexporttoc-help": "רק כותרות ערכים: הצגה רק של כותרות הערכים בתוכן העניינים של ה־PDF. \nהטמעת תוכן עניינים של ערך: הצגת תוכן עניינים עבור כל ערך בתוכן העניינים של ה־PDF.",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "ספר PDF",
-	"bs-uemodulebookpdf-export-dialog-label-select-template": "עיצוב דף"
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "עיצוב דף",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "יצוא",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "יצוא ספר $1"
 }
