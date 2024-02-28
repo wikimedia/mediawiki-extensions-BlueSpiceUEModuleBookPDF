@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
-	"bs-uemodulebookpdf-template": "Schabloun (PDF)"
+	"bs-uemodulebookpdf-template": "Schabloun (PDF)",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Exportéieren",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Buch $1 exportéieren"
 }

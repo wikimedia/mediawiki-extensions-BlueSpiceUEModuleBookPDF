@@ -20,5 +20,7 @@
 	"bs-uemodulebookpdf-table-of-contents-heading": "Innholdsfortegnelse",
 	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Kun artikkeltitler: Viser kun artikkeltitlene i innholdsfortegnelsen til PDF-en.\nBygg inn artiklenes innholdsfortegnelser: Viser innholdsfortegnelsen til hver artikkel i PDF-ens innholdsfortegnelse.",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF-bok",
-	"bs-uemodulebookpdf-export-dialog-label-select-template": "Utseende"
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Utseende",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Eksporter",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Eksporter boka $1"
 }
