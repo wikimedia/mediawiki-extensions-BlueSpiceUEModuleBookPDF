@@ -9,5 +9,7 @@
 	"bs-uemodulebookpdf-btn-export": "Преносиви формат документа (PDF)",
 	"bs-uemodulebookpdf-template": "Шаблон (PDF)",
 	"bs-uemodulebookpdf-table-of-contents-heading": "Садржај",
-	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF књига"
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF књига",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Извоз",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Извези књигу $1"
 }
