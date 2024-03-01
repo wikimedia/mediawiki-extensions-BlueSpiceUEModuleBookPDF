@@ -2,9 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
+			"Lluis Cat",
 			"Vfc"
 		]
 	},
 	"bs-uemodulebookpdf-pref-bookexporttoc": "Taula de continguts",
-	"bs-uemodulebookpdf-btn-export": "Format de document portàtil (PDF)"
+	"bs-uemodulebookpdf-btn-export": "Format de document portàtil (PDF)",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Exporta",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Exporta el llibre $1"
 }
