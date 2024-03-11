@@ -16,7 +16,7 @@
 	"bs-uemodulebookpdf-overview-bodycontent": "Deze module wordt geleverd door de &quot;Bookshelf&quot;-extensie en maakt export naar PDF mogelijk.",
 	"bs-uemodulebookpdf-btn-export": "Overdraagbaar documentformaat (PDF)",
 	"bs-uemodulebookpdf-template": "Sjabloon (PDF)",
-	"bs-uemodulebookpdf-bookshelfimage": "Afbeelding van boekenplank",
+	"bs-uemodulebookpdf-bookshelfimage": "Bookshelf-afbeelding",
 	"action-uemodulebookpdf-export": "een pagina in PDF te exporteren als onderdeel van een boek",
 	"right-uemodulebookpdf-export": "Een pagina in PDF exporteren als onderdeel van een boek",
 	"bs-uemodulebookpdf-table-of-contents-heading": "Inhoudsopgave",
