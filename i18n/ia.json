@@ -19,5 +19,7 @@
 	"bs-uemodulebookpdf-table-of-contents-heading": "Tabula de contento",
 	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Solmente titulos de articulos: Monstra solmente le titulos de articulos in le tabula de contento del PDF. Incorpora tabulas de contento de articulos: Monstra le tabula de contento pro cata articulo in le tabula de contento del PDF.",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "Libro PDF",
-	"bs-uemodulebookpdf-export-dialog-label-select-template": "Disposition"
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Disposition",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Exportar",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Exportar libro $1"
 }
