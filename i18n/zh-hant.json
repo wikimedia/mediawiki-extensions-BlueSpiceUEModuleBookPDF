@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Arielyurusova",
 			"Kly",
 			"Winston Sung",
 			"Xiplus",
@@ -22,5 +23,7 @@
 	"bs-uemodulebookpdf-table-of-contents-heading": "目次",
 	"bs-uemodulebookpdf-pref-bookexporttoc-help": "僅條目標題：僅顯示 PDF 目錄中的條目標題。 \n嵌入條目目錄：顯示 PDF 目錄中各條目的目錄。",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF 書籍",
-	"bs-uemodulebookpdf-export-dialog-label-select-template": "版面編排"
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "版面編排",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "匯出",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "匯出書籍$1"
 }
