@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 class BookmarksXMLBuilderTest extends TestCase {
 
 	/**
-	 * @covers BookmarksXMLBuilder::buildFromFlatBookmarksList
+	 * @covers \BlueSpice\UEModuleBookPDF\BookmarksXMLBuilder::buildFromFlatBookmarksList
 	 * @param DOMElement[] $list
 	 * @param string $expectedXMLString
 	 * @param array $dummyTree
