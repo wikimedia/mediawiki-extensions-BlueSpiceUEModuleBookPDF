@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Yurina Tatiana"
+		]
+	},
+	"bs-uemodulebookpdf-table-of-contents-heading": "Содержание",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF-книга",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Экспорт"
+}
