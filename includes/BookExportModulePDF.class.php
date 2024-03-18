@@ -802,11 +802,16 @@ HERE
 	 * @throws MWException
 	 */
 	private function getPageHierarchyProvider( $specs ) {
+		$title = $specs->getTitle();
+		if ( !$title->inNamespaces( [ NS_USER, NS_BOOK ] ) ) {
+			// Temp book
+			$specs->setParam( 'book_type', 'local_storage' );
+		}
 		$this->bookType = $specs->getParam( 'book_type', false );
 		$this->content = $specs->getParam( 'content', false );
 		$phpf = $this->services->getService( 'BSBookshelfPageHierarchyProviderFactory' );
 
-		return $phpf->getInstanceFor( $specs->getTitle()->getPrefixedText(), [
+		return $phpf->getInstanceFor( $title->getPrefixedText(), [
 			'book_type' => $this->bookType,
 			'content' => $this->content
 		] );
