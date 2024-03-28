@@ -453,7 +453,7 @@ class BsBookExportModulePDF extends ExportModule {
 	 * @inheritDoc
 	 */
 	protected function modifyTemplateAfterContents( &$template, $page, $specification ) {
-		Hooks::run(
+		$this->services->getHookContainer()->run(
 			'BSUEModulePDFBeforeCreatePDF',
 			[
 				$this,
