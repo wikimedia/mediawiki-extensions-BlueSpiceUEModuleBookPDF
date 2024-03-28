@@ -4,6 +4,7 @@ use BlueSpice\UEModuleBookPDF\BookmarksXMLBuilder;
 use BlueSpice\UEModulePDF\PDFServletHookRunner;
 use BlueSpice\UniversalExport\ExportModule;
 use BlueSpice\UniversalExport\ExportSpecification;
+use MediaWiki\MediaWikiServices;
 
 class BsBookExportModulePDF extends ExportModule {
 
@@ -467,8 +468,7 @@ class BsBookExportModulePDF extends ExportModule {
 	 * @inheritDoc
 	 */
 	protected function modifyTemplateAfterContents( &$template, $page, $specification ) {
-		$hookContainer = $this->services->getHookContainer();
-		$hookContainer->run(
+		$this->services->getHookContainer()->run(
 			'BSUEModulePDFBeforeCreatePDF',
 			[
 				$this,
