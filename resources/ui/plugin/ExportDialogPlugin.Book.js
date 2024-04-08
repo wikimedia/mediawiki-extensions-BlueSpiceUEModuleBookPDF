@@ -46,6 +46,7 @@ bs.ue.ui.plugin.BookPdf.prototype.getLabel = function () {
 bs.ue.ui.plugin.BookPdf.prototype.getPanel = function () {
 	this.defaultTemplate = mw.config.get( 'bsUEModuleBookPDFDefaultTemplate' );
 	var availableTemplates = mw.config.get( 'bsUEModuleBookPDFAvailableTemplates' );
+	availableTemplates.sort();
 
 	var templates = [];
 	for ( var index = 0; index < availableTemplates.length; index++ ) {
