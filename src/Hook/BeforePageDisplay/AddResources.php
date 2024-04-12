@@ -4,12 +4,19 @@ namespace BlueSpice\UEModuleBookPDF\Hook\BeforePageDisplay;
 
 class AddResources extends \BlueSpice\Hook\BeforePageDisplay {
 
+	protected function skipProcessing() {
+		if ( !$this->out->getTitle() ) {
+			return true;
+		}
+	}
+
 	protected function doProcess() {
 		$this->out->addModules( 'ext.bluespice.ueModuleBookPDF.contextMenu' );
 
-		$isContentModel = $this->out->getTitle()->getContentModel() === 'book';
-		$onBookUI = $this->out->getTitle()->isSpecial( 'BookshelfBookEditor' );
-		$onBookManager = $this->out->getTitle()->isSpecial( 'BookshelfBookManager' );
+		$title = $this->out->getTitle();
+		$isContentModel = $title->getContentModel() === 'book';
+		$onBookUI = $title->isSpecial( 'BookshelfBookEditor' );
+		$onBookManager = $title->isSpecial( 'BookshelfBookManager' );
 
 		if ( $isContentModel || $onBookUI || $onBookManager ) {
 			$this->out->addModules( 'ext.bluespice.ueModuleBookPDF' );
