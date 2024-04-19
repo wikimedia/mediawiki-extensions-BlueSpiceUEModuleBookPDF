@@ -89,6 +89,9 @@ class Export implements IBooksOverviewAction {
 	 */
 	public function getHref(): string {
 		$universalExport = $this->specialPageFactory->getPage( 'UniversalExport' );
+		if ( !$universalExport ) {
+			return '';
+		}
 		$queryParams['ue[module]'] = 'bookpdf';
 
 		return $universalExport->getPageTitle( $this->book->getPrefixedText() )
