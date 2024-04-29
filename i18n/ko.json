@@ -5,13 +5,13 @@
 			"Ykhwong"
 		]
 	},
-	"bs-uemodulebookpdf-pref-bookexporttoc": "목차",
-	"bs-uemodulebookpdf-overview-description": "어도비 PDF로 책을 내보냅니다.",
-	"bs-uemodulebookpdf-overview-bodycontent": "이 모듈은 &quot;Bookshelf&quot; 확장 기능에 의해 제공되며 PDF로 내보내기를 활성화합니다.",
-	"bs-uemodulebookpdf-btn-export": "이동 가능 문서 형식 (PDF)",
-	"bs-uemodulebookpdf-template": "틀 (PDF)",
-	"bs-uemodulebookpdf-bookshelfimage": "책장 이미지",
-	"right-uemodulebookpdf-export": "책의 일부를 PDF로 페이지를 내보냅니다",
-	"bs-uemodulebookpdf-table-of-contents-heading": "목차",
-	"action-uemodulebookpdf-export": "책의 일부를 PDF로 페이지를 내보낼"
+	"bs-uemodulebookpdf-pref-bookexporttoc": "\ubaa9\ucc28",
+	"bs-uemodulebookpdf-overview-description": "\uc5b4\ub3c4\ube44 PDF\ub85c \ucc45\uc744 \ub0b4\ubcf4\ub0c5\ub2c8\ub2e4.",
+	"bs-uemodulebookpdf-overview-bodycontent": "\uc774 \ubaa8\ub4c8\uc740 &quot;Bookshelf&quot; \ud655\uc7a5 \uae30\ub2a5\uc5d0 \uc758\ud574 \uc81c\uacf5\ub418\uba70 PDF\ub85c \ub0b4\ubcf4\ub0b4\uae30\ub97c \ud65c\uc131\ud654\ud569\ub2c8\ub2e4.",
+	"bs-uemodulebookpdf-btn-export": "\uc774\ub3d9 \uac00\ub2a5 \ubb38\uc11c \ud615\uc2dd (PDF)",
+	"bs-uemodulebookpdf-template": "\ud2c0 (PDF)",
+	"bs-uemodulebookpdf-bookshelfimage": "\ucc45\uc7a5 \uc774\ubbf8\uc9c0",
+	"right-uemodulebookpdf-export": "\ucc45\uc758 \uc77c\ubd80\ub97c PDF\ub85c \ud398\uc774\uc9c0\ub97c \ub0b4\ubcf4\ub0c5\ub2c8\ub2e4",
+	"bs-uemodulebookpdf-table-of-contents-heading": "\ubaa9\ucc28",
+	"action-uemodulebookpdf-export": "\ucc45\uc758 \uc77c\ubd80\ub97c PDF\ub85c \ud398\uc774\uc9c0\ub97c \ub0b4\ubcf4\ub0bc"
 }

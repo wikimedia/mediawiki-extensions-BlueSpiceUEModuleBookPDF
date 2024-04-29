@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Alien333",
 			"Eihel",
 			"Gomoko",
 			"McDutchie",
@@ -8,20 +9,22 @@
 			"Verdy p"
 		]
 	},
-	"bs-uemodulebookpdf-extension-description": "Permet à BlueSpice d’exporter des collections hiérarchiques d’articles au format <em>Portable Document Format</em> (PDF) d’Adobe®.",
-	"bs-uemodulebookpdf-pref-bookexporttoc": "Table des matières",
-	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Seulement les titres d’articles (indenter par niveau)",
-	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Encapsuler les tables des matières des articles (pas d’indentation des titres d’articles)",
-	"bs-uemodulebookpdf-overview-title": "Format <em>Portable Document Format</em> (PDF) d’Adobe® pour rayon de livres.",
+	"bs-uemodulebookpdf-extension-description": "Permet \u00e0 BlueSpice d\u2019exporter des collections hi\u00e9rarchiques d\u2019articles au format <em>Portable Document Format<\/em> (PDF) d\u2019Adobe\u00ae.",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Table des mati\u00e8res",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Seulement les titres d\u2019articles (indenter par niveau)",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Encapsuler les tables des mati\u00e8res des articles (pas d\u2019indentation des titres d\u2019articles)",
+	"bs-uemodulebookpdf-overview-title": "Format <em>Portable Document Format<\/em> (PDF) d\u2019Adobe\u00ae pour rayon de livres.",
 	"bs-uemodulebookpdf-overview-description": "Exporte un livre au format Adobe PDF.",
-	"bs-uemodulebookpdf-overview-bodycontent": "Ce module est fourni par l’extension « Bookshelf » et permet l’exportation au format PDF.",
+	"bs-uemodulebookpdf-overview-bodycontent": "Ce module est fourni par l\u2019extension \u00ab\u202fBookshelf\u202f\u00bb et permet l\u2019exportation au format PDF.",
 	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
-	"bs-uemodulebookpdf-template": "Modèle (PDF)",
+	"bs-uemodulebookpdf-template": "Mod\u00e8le (PDF)",
 	"bs-uemodulebookpdf-bookshelfimage": "Image pour Bookshelf",
-	"action-uemodulebookpdf-export": "exportation d’une page au format PDF dans un livre",
+	"action-uemodulebookpdf-export": "exportation d\u2019une page au format PDF dans un livre",
 	"right-uemodulebookpdf-export": "Exporter une page au format PDF dans un livre",
-	"bs-uemodulebookpdf-table-of-contents-heading": "Table des matières",
-	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Titres d’article seulement : affiche uniquement les titres d’article dans la table des matières dans le PDF.\nTables de matières des articles inclus : affiche la table des matières pour chaque article dans la table des matières du PDF.",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Table des mati\u00e8res",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Titres d\u2019article seulement\u202f: affiche uniquement les titres d\u2019article dans la table des mati\u00e8res dans le PDF.\nTables de mati\u00e8res des articles inclus\u202f: affiche la table des mati\u00e8res pour chaque article dans la table des mati\u00e8res du PDF.",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "Livre PDF",
-	"bs-uemodulebookpdf-export-dialog-label-select-template": "Mise en page"
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Mise en page",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Exporter",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Exporter le livre $1"
 }
