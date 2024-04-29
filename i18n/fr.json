@@ -5,7 +5,8 @@
 			"Gomoko",
 			"McDutchie",
 			"Thibaut120094",
-			"Verdy p"
+			"Verdy p",
+			"Alien333"
 		]
 	},
 	"bs-uemodulebookpdf-extension-description": "Permet à BlueSpice d’exporter des collections hiérarchiques d’articles au format <em>Portable Document Format</em> (PDF) d’Adobe®.",
@@ -23,5 +24,7 @@
 	"bs-uemodulebookpdf-table-of-contents-heading": "Table des matières",
 	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Titres d’article seulement : affiche uniquement les titres d’article dans la table des matières dans le PDF.\nTables de matières des articles inclus : affiche la table des matières pour chaque article dans la table des matières du PDF.",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "Livre PDF",
-	"bs-uemodulebookpdf-export-dialog-label-select-template": "Mise en page"
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Mise en page",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Exporter",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Exporter le livre $1"
 }
