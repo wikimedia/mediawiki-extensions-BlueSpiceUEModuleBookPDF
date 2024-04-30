@@ -4,17 +4,17 @@
 			"Lakejason0",
 			"Wzl19371",
 			"Xyb",
-			"\u6c88\u6f84\u5fc3"
+			"沈澄心"
 		]
 	},
-	"bs-uemodulebookpdf-pref-bookexporttoc": "\u76ee\u5f55",
-	"bs-uemodulebookpdf-bookexporttoc-only-articles": "\u53ea\u6709\u6587\u7ae0\u6807\u9898\uff08\u6309\u7b49\u7ea7\u7f29\u8fdb\uff09",
-	"bs-uemodulebookpdf-btn-export": "\u4fbf\u643a\u6587\u6863\u683c\u5f0f\uff08PDF\uff09",
-	"bs-uemodulebookpdf-template": "\u6a21\u677f\uff08PDF\uff09",
-	"bs-uemodulebookpdf-bookshelfimage": "\u4e66\u67b6\u56fe\u7247",
-	"right-uemodulebookpdf-export": "\u5c06\u9875\u9762\u5bfc\u51fa\u4e3a PDF \u4f5c\u4e3a\u4e66\u7c4d\u7684\u4e00\u90e8\u5206",
-	"bs-uemodulebookpdf-table-of-contents-heading": "\u76ee\u5f55",
-	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF\u4e66\u7c4d",
-	"bs-uemodulebookpdf-export-dialog-label-select-template": "\u5e03\u5c40",
-	"action-uemodulebookpdf-export": "\u5c06\u9875\u9762\u5bfc\u51fa\u4e3a PDF \u4f5c\u4e3a\u4e66\u7c4d\u7684\u4e00\u90e8\u5206"
+	"bs-uemodulebookpdf-pref-bookexporttoc": "目录",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "只有文章标题（按等级缩进）",
+	"bs-uemodulebookpdf-btn-export": "便携文档格式（PDF）",
+	"bs-uemodulebookpdf-template": "模板（PDF）",
+	"bs-uemodulebookpdf-bookshelfimage": "书架图片",
+	"right-uemodulebookpdf-export": "将页面导出为 PDF 作为书籍的一部分",
+	"bs-uemodulebookpdf-table-of-contents-heading": "目录",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF书籍",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "布局",
+	"action-uemodulebookpdf-export": "将页面导出为 PDF 作为书籍的一部分"
 }
