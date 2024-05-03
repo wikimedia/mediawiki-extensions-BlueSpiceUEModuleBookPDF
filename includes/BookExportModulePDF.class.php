@@ -1,5 +1,9 @@
 <?php
 
+use BlueSpice\Bookshelf\BookContextProviderFactory;
+use BlueSpice\Bookshelf\BookLookup;
+use BlueSpice\Bookshelf\BookMetaLookup;
+use BlueSpice\Bookshelf\ChapterLookup;
 use BlueSpice\UEModuleBookPDF\BookmarksXMLBuilder;
 use BlueSpice\UEModulePDF\PDFServletHookRunner;
 use BlueSpice\UniversalExport\ExportModule;
@@ -25,22 +29,6 @@ class BsBookExportModulePDF extends ExportModule {
 	protected $content = false;
 
 	/**
-	 * @var MediaWikiServices
-	 */
-	protected $services = null;
-
-	/**
-	 * @param string $name
-	 * @param MediaWiki\MediaWikiServices $services
-	 * @param Config $config
-	 * @param WebRequest $request
-	 */
-	public function __construct( $name, $services, $config, $request ) {
-		parent::__construct( $name, $services, $config, $request );
-		$this->services = $this->getServices();
-	}
-
-	/**
 	 * Implementation of BsUniversalExportModule interface. Uses the
 	 * PdfWebservice BN2PDF-light to create a PDF file.
 	 * @param ExportSpecification &$specification
@@ -62,8 +50,8 @@ class BsBookExportModulePDF extends ExportModule {
 			'content'   => ''
 		];
 
-		$oPHP = $this->getPageHierarchyProvider( $specification );
-		$aBookMeta = $oPHP->getBookMeta();
+		$this->bookType = $specification->getParam( 'book_type', false );
+		$this->content = $specification->getParam( 'content', false );
 
 		// "articles" is legacy naming. Should be 'nodes'
 		$aArticles = [];
@@ -74,12 +62,48 @@ class BsBookExportModulePDF extends ExportModule {
 			);
 		} else {
 			// Call from Bookmanager or somewhere else
-			$aArticles = $oPHP->getExtendedTOCArray();
+
+			$title = $specification->getTitle();
+
+			/** @var BookContextProviderFactory */
+			$bookContextProviderFactory = $this->services->getService( 'BSBookshelfBookContextProviderFactory' );
+			$bookContextProvider = $bookContextProviderFactory->getProvider( $title );
+
+			$activeBook = $bookContextProvider->getActiveBook();
+			if ( $activeBook instanceof Title === false ) {
+				throw new MWException( 'No valid active book found' );
+			}
+
+			/** @var ChapterLookup */
+			$bookChapterLookup = $this->services->getService( 'BSBookshelfBookChapterLookup' );
+			$chapters = $bookChapterLookup->getChaptersOfBook( $activeBook );
+
+			/** @var TitleFactory */
+			$titleFactory = $this->services->getTitleFactory();
+
+			foreach ( $chapters as $chapter ) {
+				$articleTitle = $titleFactory->makeTitle( $chapter->getNamespace(), $chapter->getTitle() );
+				$type = 'text';
+				if ( $chapter->getType() === 'wikilink-with-alias' ) {
+					$type = 'wikipage';
+				}
+				$aArticles[] = [
+					'type' => $type,
+					'title' => $articleTitle->getPrefixedText(),
+					'article-id' => $articleTitle->getArticleId(),
+					'display-title' => $chapter->getName(),
+					'number' => $chapter->getNumber()
+				];
+			}
 		}
+
+		/** @var BookMetaLookup */
+		$bookMetaLookup = $this->services->getService( 'BSBookshelfBookMetaLookup' );
+		$aBookMeta = $bookMetaLookup->getMetaForBook( $activeBook );
 
 		try {
 			$aBookPage = BsPDFPageProvider::getPage( [
-				'article-id' => $specification->getTitle()->getArticleId(),
+				'article-id' => $activeBook->getArticleId(),
 				'follow-redirects' => true
 			] );
 		} catch ( Exception $ex ) {
@@ -155,12 +179,12 @@ class BsBookExportModulePDF extends ExportModule {
 		foreach ( $aArticles as $aArticle ) {
 			$aArticle['title'] = urldecode( $aArticle['title'] );
 			$aArticle['php'] = [
-				'title' => $specification->getTitle()->getPrefixedText(),
+				'title' => $aArticle['title'],
 				'book_type' => $this->bookType,
 				'content' => $this->content,
 			];
 
-			$oCurTitle = Title::newFromText( $aArticle['title'] );
+			$oCurTitle = $titleFactory->newFromText( $aArticle['title'] );
 
 			if ( $oCurTitle instanceof Title &&
 				!$pm->userCan( 'uemodulebookpdf-export', $user, $oCurTitle )
@@ -187,7 +211,7 @@ class BsBookExportModulePDF extends ExportModule {
 			}
 
 			$oDOMNode = null;
-			switch ( $aArticle['bookshelf']['type'] ) {
+			switch ( $aArticle['type'] ) {
 				case 'wikipage':
 					$oDOMNode = $this->getDOMNodeForWikiPage(
 						$aArticle,
@@ -200,16 +224,6 @@ class BsBookExportModulePDF extends ExportModule {
 					break;
 				case 'text':
 					$oDOMNode = $this->getDOMNodeForText(
-						$aArticle,
-						$aTemplate,
-						$oTOCList,
-						$aBookMeta,
-						$aLinkMap,
-						$aBookPage
-					);
-					break;
-				case 'tag':
-					$oDOMNode = $this->getDOMNodeForTag(
 						$aArticle,
 						$aTemplate,
 						$oTOCList,
@@ -257,7 +271,14 @@ class BsBookExportModulePDF extends ExportModule {
 			$oNode->parentNode->removeChild( $oNode );
 		}
 
-		$this->replaceBookmarksElement( $aTemplate, $oPHP );
+		/** @var BookLookup */
+		$bookLookup = $this->services->getService( 'BSBookshelfBookLookup' );
+		$tree = $bookLookup->getBookHierarchy( $activeBook );
+		$normalizedTree = [];
+		foreach ( $tree as $item ) {
+			$this->normalizeTreeItem( $item, $normalizedTree );
+		}
+		$this->replaceBookmarksElement( $aTemplate, $normalizedTree );
 
 		// Modify internal links
 		$oAnchors = $aTemplate['dom']->getElementsByTagName( 'a' );
@@ -345,7 +366,7 @@ class BsBookExportModulePDF extends ExportModule {
 		$specification->setParam( 'attachments', '1' );
 
 		$params = $specification->getParams();
-		$hookContainer = $this->services->getHookContainer();
+		$hookContainer = $this->getServices()->getHookContainer();
 		$hookRunner = new PDFServletHookRunner( $hookContainer );
 		$oPdfService = new BsPDFServlet( $params, $hookRunner );
 		$aResponse['content'] = $oPdfService->createPDF( $aTemplate['dom'] );
@@ -356,6 +377,28 @@ class BsBookExportModulePDF extends ExportModule {
 		);
 
 		return $aResponse;
+	}
+
+	/**
+	 * @param array $item
+	 * @param array &$data
+	 */
+	private function normalizeTreeItem( array $item, array &$data ): void {
+		$itemData = [];
+
+		$itemData['name'] = $item['chapter_name'];
+		$itemData['number'] = $item['chapter_number'];
+
+		if ( isset( $item['chapter_children'] ) && !empty( $item['chapter_children'] ) ) {
+			foreach ( $item['chapter_children'] as $children ) {
+				$itemData['children'] = [];
+				$this->normalizeTreeItem( $children, $itemData['children'] );
+			}
+		}
+
+		if ( !empty( $itemData ) ) {
+			$data[] = $itemData;
+		}
 	}
 
 	/**
@@ -404,8 +447,8 @@ class BsBookExportModulePDF extends ExportModule {
 	 * @return ViewExportModuleOverview
 	 */
 	public function getOverview() {
-		$UEModulePDF = $this->services->getService( 'BSUniversalExportModuleFactory' )
-			->newFromName( 'pdf' );
+		$UEModulePDF = MediaWikiServices::getInstance()
+			->getService( 'BSUniversalExportModuleFactory' )->newFromName( 'pdf' );
 		$oModuleOverviewView = $UEModulePDF->getOverview();
 
 		$oModuleOverviewView->setOption(
@@ -432,7 +475,8 @@ class BsBookExportModulePDF extends ExportModule {
 	 * @return array
 	 */
 	public function getBookTemplate( $specs, $aBookPage, $aBookMeta ) {
-		$config = $this->services->getConfigFactory()->makeConfig( 'bsg' );
+		$config = MediaWikiServices::getInstance()->getConfigFactory()
+			->makeConfig( 'bsg' );
 
 		$sTemplate = $config->get( 'UEModuleBookPDFDefaultTemplate' );
 
@@ -468,7 +512,7 @@ class BsBookExportModulePDF extends ExportModule {
 	 * @inheritDoc
 	 */
 	protected function modifyTemplateAfterContents( &$template, $page, $specification ) {
-		$this->services->getHookContainer()->run(
+		Hooks::run(
 			'BSUEModulePDFBeforeCreatePDF',
 			[
 				$this,
@@ -519,7 +563,8 @@ class BsBookExportModulePDF extends ExportModule {
 		// Check wether to include the article's TOC into the book TOC or not
 		$bIncludeArticleTOC = false;
 		if ( $aPage['toc-ul-element'] instanceof DOMNode ) {
-			$config = $this->services->getConfigFactory()->makeConfig( 'bsg' );
+			$config = MediaWikiServices::getInstance()->getConfigFactory()
+				->makeConfig( 'bsg' );
 			if ( $config->get( 'UEModuleBookPDFBookExportTOC' ) == 'article-tocs' ) {
 				$bIncludeArticleTOC = true;
 			}
@@ -569,7 +614,11 @@ class BsBookExportModulePDF extends ExportModule {
 			$aPage['number'] = trim( $aArticle['number'] );
 		}
 
-		$this->services->getHookContainer()->run(
+		if ( !isset( $aPage['display-title'] ) ) {
+			$aPage['display-title'] = $aArticle['display-title'];
+		}
+
+		MediaWikiServices::getInstance()->getHookContainer()->run(
 			'BSBookshelfExportArticle',
 			[
 				&$aPage,
@@ -581,6 +630,8 @@ class BsBookExportModulePDF extends ExportModule {
 
 		// Save jumplink to article for later link re-writing
 		$aLinkMap[$aArticle['title']] = $aPage['bookmark-element']->getAttribute( 'href' );
+
+		$aPage['bookmark-element']->setAttribute( 'name', $aPage['number'] . ' ' . $aPage['display-title'] );
 
 		$iLevel = $this->buildTOC( $aPage, $aTemplate, $oTOCList, $aArticle, $aBookMeta );
 
@@ -637,8 +688,10 @@ class BsBookExportModulePDF extends ExportModule {
 	 * @param array &$aBookPage
 	 * @return DOMElement
 	 */
-	public function getDOMNodeForText( $aArticle, &$aTemplate, $oTOCList, $aBookMeta,
-		&$aLinkMap, &$aBookPage ) {
+	public function getDOMNodeForText(
+		$aArticle, &$aTemplate, $oTOCList, $aBookMeta,
+		&$aLinkMap, &$aBookPage
+	) {
 		$sDisplayTitle = $aArticle['display-title'];
 		$sNumber = '';
 		if ( isset( $aArticle['number'] ) ) {
@@ -686,93 +739,12 @@ HERE
 	}
 
 	/**
-	 *
-	 * @param array $aArticle
-	 * @param array &$aTemplate
-	 * @param DOMElement $oTOCList
-	 * @param array $aBookMeta
-	 * @param array &$aLinkMap
-	 * @param array &$aBookPage
-	 * @return DOMElement
-	 */
-	public function getDOMNodeForTag( $aArticle, &$aTemplate, $oTOCList, $aBookMeta,
-		&$aLinkMap, &$aBookPage ) {
-		$sDisplayTitle = $aArticle['display-title'];
-		$sNumber = '';
-		if ( isset( $aArticle['number'] ) ) {
-			$sDisplayTitle = trim( $aArticle['number'] ) . ' ' . $aArticle['display-title'];
-			$sNumber = trim( $aArticle['number'] ) . ' ';
-		}
-
-		$sId = md5( $sDisplayTitle );
-		$oDOM = new DOMDocument();
-		$oDOM->loadXML( <<<HERE
-<xml>
-	<div class="bs-section bs-tag-content">
-		<a name="bs-ue-jumpmark-$sId" id="bs-ue-jumpmark-$sId" />
-		<h1 class="firstHeading">
-			<span class="bs-chapter-number">$sNumber</span>{$aArticle['display-title']}
-		</h1>
-		<div class="bodyContent">
-		</div>
-	</div>
-</xml>
-HERE
-		);
-
-		$oBooksmarksDOM = new DOMDocument();
-		$oBooksmarksDOM->loadXML( <<<HERE
-<bookmarks>
-	<bookmark name="$sDisplayTitle" href="#bs-ue-jumpmark-$sId"/>
-</bookmarks>
-HERE
-		);
-
-		$oDOMXPath = new DOMXPath( $oDOM );
-		$oFirstHeading = $oDOMXPath->query( "//*[contains(@class, 'firstHeading')]" )->item( 0 );
-		$oBodyContent  = $oDOMXPath->query( "//*[contains(@class, 'bodyContent')]" )->item( 0 );
-
-		// See class PDFPageProvider for details
-		$aDummyPage = [
-			'number' => trim( $aArticle['number'] ),
-			'dom' => $oDOM,
-			'firstheading-element' => $oFirstHeading,
-			'bodycontent-element'  => $oBodyContent,
-			'bookmarks-dom' => $oBooksmarksDOM,
-			'bookmark-element' => $oBooksmarksDOM->getElementsByTagName( 'bookmark' )->item( 0 ),
-			'toc-ul-element' => ''
-		];
-
-		$this->services->getHookContainer()->run( 'BSBookshelfExportTag', [
-			&$aDummyPage,
-			&$aArticle,
-			&$aTemplate,
-			$oTOCList,
-			$aBookMeta,
-			&$aLinkMap,
-			&$aBookPage,
-			$oDOMXPath
-		] );
-
-		$iLevel = $this->buildTOC( $aDummyPage, $aTemplate, $oTOCList, $aArticle, $aBookMeta );
-		$oFirstHeading->setAttribute( 'class', 'booklevel-' . $iLevel );
-
-		$this->addBooklevelToSection( $oDOM, $iLevel );
-
-		return $aDummyPage['dom']->documentElement;
-	}
-
-	/**
 	 * Replaces the default <bookmarks /> element from \PdfTemplateProvider with the one containing
 	 * the current contents references
 	 * @param array $aTemplate
-	 * @param PageHierarchyProvider $oPHP
+	 * @param array $tree
 	 */
-	private function replaceBookmarksElement( $aTemplate, $oPHP ) {
-		$tree = FormatJson::decode(
-			FormatJson::encode( $oPHP->getExtendedTOCJSON() ),
-			true
-		);
+	private function replaceBookmarksElement( $aTemplate, $tree ) {
 		$bookmarksXMLBuilder = new BookmarksXMLBuilder( $tree );
 		$bookmarksElement = $bookmarksXMLBuilder->buildFromFlatBookmarksList(
 			$this->flatBookmarksList
@@ -794,27 +766,6 @@ HERE
 		$section->setAttribute(
 			'class', $section->getAttribute( 'class' ) . ' booklevel-' . $level
 		);
-	}
-
-	/**
-	 * @param ExportSpecification $specs
-	 * @return DynamicPageHierarchyProvider|PageHierarchyProvider
-	 * @throws MWException
-	 */
-	private function getPageHierarchyProvider( $specs ) {
-		$title = $specs->getTitle();
-		if ( !$title->inNamespaces( [ NS_USER, NS_BOOK ] ) ) {
-			// Temp book
-			$specs->setParam( 'book_type', 'local_storage' );
-		}
-		$this->bookType = $specs->getParam( 'book_type', false );
-		$this->content = $specs->getParam( 'content', false );
-		$phpf = $this->services->getService( 'BSBookshelfPageHierarchyProviderFactory' );
-
-		return $phpf->getInstanceFor( $title->getPrefixedText(), [
-			'book_type' => $this->bookType,
-			'content' => $this->content
-		] );
 	}
 
 	/**
