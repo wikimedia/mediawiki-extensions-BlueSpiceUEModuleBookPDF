@@ -8,7 +8,6 @@ use BlueSpice\UEModuleBookPDF\BookmarksXMLBuilder;
 use BlueSpice\UEModulePDF\PDFServletHookRunner;
 use BlueSpice\UniversalExport\ExportModule;
 use BlueSpice\UniversalExport\ExportSpecification;
-use MediaWiki\MediaWikiServices;
 
 class BsBookExportModulePDF extends ExportModule {
 
@@ -179,7 +178,7 @@ class BsBookExportModulePDF extends ExportModule {
 		foreach ( $aArticles as $aArticle ) {
 			$aArticle['title'] = urldecode( $aArticle['title'] );
 			$aArticle['php'] = [
-				'title' => $aArticle['title'],
+				'title' => $specification->getTitle()->getPrefixedText(),
 				'book_type' => $this->bookType,
 				'content' => $this->content,
 			];
@@ -447,8 +446,7 @@ class BsBookExportModulePDF extends ExportModule {
 	 * @return ViewExportModuleOverview
 	 */
 	public function getOverview() {
-		$UEModulePDF = MediaWikiServices::getInstance()
-			->getService( 'BSUniversalExportModuleFactory' )->newFromName( 'pdf' );
+		$UEModulePDF = $this->services->getService( 'BSUniversalExportModuleFactory' )->newFromName( 'pdf' );
 		$oModuleOverviewView = $UEModulePDF->getOverview();
 
 		$oModuleOverviewView->setOption(
@@ -475,8 +473,7 @@ class BsBookExportModulePDF extends ExportModule {
 	 * @return array
 	 */
 	public function getBookTemplate( $specs, $aBookPage, $aBookMeta ) {
-		$config = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'bsg' );
+		$config = $this->services->getConfigFactory()->makeConfig( 'bsg' );
 
 		$sTemplate = $config->get( 'UEModuleBookPDFDefaultTemplate' );
 
@@ -563,8 +560,7 @@ class BsBookExportModulePDF extends ExportModule {
 		// Check wether to include the article's TOC into the book TOC or not
 		$bIncludeArticleTOC = false;
 		if ( $aPage['toc-ul-element'] instanceof DOMNode ) {
-			$config = MediaWikiServices::getInstance()->getConfigFactory()
-				->makeConfig( 'bsg' );
+			$config = $this->services->getConfigFactory()->makeConfig( 'bsg' );
 			if ( $config->get( 'UEModuleBookPDFBookExportTOC' ) == 'article-tocs' ) {
 				$bIncludeArticleTOC = true;
 			}
@@ -618,7 +614,7 @@ class BsBookExportModulePDF extends ExportModule {
 			$aPage['display-title'] = $aArticle['display-title'];
 		}
 
-		MediaWikiServices::getInstance()->getHookContainer()->run(
+		$this->services->getHookContainer()->run(
 			'BSBookshelfExportArticle',
 			[
 				&$aPage,
