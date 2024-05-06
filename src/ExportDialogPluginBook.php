@@ -2,14 +2,25 @@
 
 namespace BlueSpice\UEModuleBookPDF;
 
+use BlueSpice\Bookshelf\BookLookup;
 use BlueSpice\UniversalExport\IExportDialogPlugin;
 use IContextSource;
-use InvalidArgumentException;
 use MediaWiki\MediaWikiServices;
-use PageHierarchyProvider;
 use Title;
 
 class ExportDialogPluginBook implements IExportDialogPlugin {
+
+	/** @var Config */
+	private $config = null;
+
+	/** @var BookLookup */
+	private $bookLookup = null;
+
+	public function __construct() {
+		$services = MediaWikiServices::getInstance();
+		$this->config = $services->getConfigFactory()->makeConfig( 'bsg' );
+		$this->bookLookup = $services->getService( 'BSBookshelfBookLookup' );
+	}
 
 	/**
 	 * @return void
@@ -31,12 +42,9 @@ class ExportDialogPluginBook implements IExportDialogPlugin {
 	 * @return array
 	 */
 	public function getJsConfigVars(): array {
-		$services = MediaWikiServices::getInstance();
-		$config = $services->getConfigFactory()->makeConfig( 'bsg' );
-
-		$defaultTemplate = $config->get( 'UEModuleBookPDFDefaultTemplate' );
-		$defaultTemplatePath = $config->get( 'UEModuleBookPDFTemplatePath' );
-		$excludeList = $config->get( 'UEModuleBookPDFExportDialogExcludeTemplates' );
+		$defaultTemplate = $this->config->get( 'UEModuleBookPDFDefaultTemplate' );
+		$defaultTemplatePath = $this->config->get( 'UEModuleBookPDFTemplatePath' );
+		$excludeList = $this->config->get( 'UEModuleBookPDFExportDialogExcludeTemplates' );
 
 		$availableTemplates = [];
 		$dir = opendir( $defaultTemplatePath );
@@ -97,16 +105,8 @@ class ExportDialogPluginBook implements IExportDialogPlugin {
 			return true;
 		}
 
-		$toc = null;
-		try {
-			$php = PageHierarchyProvider::getInstanceForArticle(
-				$title->getPrefixedText()
-			);
-			$toc = $php->getExtendedTOCJSON();
-		} catch ( InvalidArgumentException $ex ) {
-		}
-
-		if ( !is_object( $toc ) || !property_exists( $toc, 'articleTitle' ) ) {
+		$books = $this->bookLookup->getBooksForPage( $title );
+		if ( empty( $books ) ) {
 			return true;
 		}
 
