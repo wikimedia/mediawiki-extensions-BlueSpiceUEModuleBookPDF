@@ -49,6 +49,13 @@
 					"factory": "\\BlueSpice\\UEModuleBookPDF\\ExportDialogPluginBook::factory"
 				}
 			}
+		},
+		"BlueSpiceBookshelf": {
+			"MetaData": {
+				"template": {
+					"class": "BlueSpice\\UEModuleBookPDF\\MetaData\\Template"
+				}
+			}
 		}
 	},
 	"GroupPermissions": {
@@ -106,6 +113,18 @@
 			"messages": [
 				"bs-uemodulebookpdf-export-dialog-label-module-name",
 				"bs-uemodulebookpdf-export-dialog-label-select-template"
+			]
+		},
+		"ext.bluespice.ueModuleBookPDF.meta.template": {
+			"packageFiles": [
+				"ui/pages/TemplateMetaDataPage.js",
+				{
+					"name": "ui/pages/templatedata.json",
+					"callback": "\\BlueSpice\\UEModuleBookPDF\\ClientConfig::getBookTemplates"
+				}
+			],
+			"messages": [
+				"bs-uemodulebookpdf-template"
 			]
 		}
 	},
