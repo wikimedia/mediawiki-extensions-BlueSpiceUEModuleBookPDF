@@ -55,7 +55,7 @@
 	};
 
 	bs.ue.ui.pages.TemplateMeta.prototype.getValue = function () {
-		return this.inputWidget.getValue();
+		return this.inputWidget.getMenu().findSelectedItem().getData();
 	};
 
 	bs.ue.ui.pages.TemplateMeta.prototype.setValue = function ( value ) {
