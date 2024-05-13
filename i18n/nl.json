@@ -22,5 +22,7 @@
 	"bs-uemodulebookpdf-table-of-contents-heading": "Inhoudsopgave",
 	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Alleen artikeltitels: toont alleen de artikeltitels in de inhoudsopgave van de PDF. \nInhoudsopgaven artikelen insluiten: toont de inhoudsopgave van elk artikel in de inhoudsopgave van de PDF.",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "Pdf-boek",
-	"bs-uemodulebookpdf-export-dialog-label-select-template": "Indeling"
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Indeling",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Exporteren",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Boek $1 exporteren"
 }
