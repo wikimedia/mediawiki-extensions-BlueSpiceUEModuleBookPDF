@@ -10,7 +10,7 @@
 	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Embed article TOCs (No indent of article titles)",
 	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Portable Document Format (PDF) for Bookshelf",
 	"bs-uemodulebookpdf-overview-description": "Exports a book to Adobe PDF.",
-	"bs-uemodulebookpdf-overview-bodycontent": "This Module is provided by the  &quot;Bookshelf&quot; Extension and enables export to PDF.",
+	"bs-uemodulebookpdf-overview-bodycontent": "This module is provided by the Bookshelf extension and enables export to PDF.",
 	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
 	"bs-uemodulebookpdf-template": "Template (PDF)",
 	"bs-uemodulebookpdf-bookshelfimage": "Bookshelf image",
