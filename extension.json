@@ -54,6 +54,9 @@
 			"MetaData": {
 				"template": {
 					"class": "BlueSpice\\UEModuleBookPDF\\MetaData\\Template"
+				},
+				"bookpdf-export-toc": {
+					"class": "BlueSpice\\UEModuleBookPDF\\MetaData\\TableOfContent"
 				}
 			}
 		}
@@ -125,6 +128,20 @@
 			],
 			"messages": [
 				"bs-uemodulebookpdf-template"
+			]
+		},
+		"ext.bluespice.ueModuleBookPDF.meta.toc": {
+			"packageFiles": [
+				"ui/pages/TableOfContentMetaDataPage.js",
+				{
+					"name": "ui/pages/tocoptions.json",
+					"callback": "\\BlueSpice\\UEModuleBookPDF\\ClientConfig::getTOCOptions"
+				}
+			],
+			"messages": [
+				"bs-uemodulebookpdf-pref-bookexporttoc",
+				"bs-uemodulebookpdf-bookexporttoc-only-articles",
+				"bs-uemodulebookpdf-bookexporttoc-article-tocs"
 			]
 		}
 	},
