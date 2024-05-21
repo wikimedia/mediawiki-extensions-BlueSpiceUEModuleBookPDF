@@ -52,4 +52,19 @@ class ClientConfig {
 			'availableTemplates' => $availableTemplates
 		];
 	}
+
+	/**
+	 *
+	 * @return array
+	 */
+	public static function getTOCOptions() {
+		return [
+			[
+				'value' => 'only-articles'
+			],
+			[
+				'value' => 'article-tocs'
+			]
+		];
+	}
 }
