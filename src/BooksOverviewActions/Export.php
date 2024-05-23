@@ -101,4 +101,11 @@ class Export implements IBooksOverviewAction {
 	public function getRequiredPermission(): string {
 		return 'uemodulebookpdf-export';
 	}
+
+	/**
+	 * @return array
+	 */
+	public function getRLModules(): array {
+		return [];
+	}
 }
