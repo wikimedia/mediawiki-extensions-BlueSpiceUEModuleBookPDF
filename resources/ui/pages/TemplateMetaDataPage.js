@@ -21,14 +21,14 @@
 		if ( availableTemplates.length > 1 ) {
 			for ( var entry in availableTemplates ) {
 				var item = new OO.ui.MenuOptionWidget( {
-					data: encodeURI( availableTemplates[ entry ] ),
+					data: availableTemplates[ entry ],
 					label: availableTemplates[ entry ]
 				} );
 				options.push( item );
 			}
 		} else {
 			var item = new OO.ui.MenuOptionWidget( {
-				data: encodeURI( defaultTemplate ),
+				data: defaultTemplate,
 				label: defaultTemplate
 			} );
 			options.push( item );
