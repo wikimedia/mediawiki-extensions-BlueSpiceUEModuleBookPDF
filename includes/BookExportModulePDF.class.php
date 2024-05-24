@@ -1,6 +1,5 @@
 <?php
 
-use BlueSpice\Bookshelf\BookContextProviderFactory;
 use BlueSpice\Bookshelf\BookLookup;
 use BlueSpice\Bookshelf\BookMetaLookup;
 use BlueSpice\Bookshelf\ChapterLookup;
@@ -52,47 +51,62 @@ class BsBookExportModulePDF extends ExportModule {
 		$this->bookType = $specification->getParam( 'book_type', false );
 		$this->content = $specification->getParam( 'content', false );
 
+		$activeBook = $specification->getTitle();
+		if ( $activeBook instanceof Title === false ) {
+			throw new MWException( 'No valid active book found' );
+		}
+
+		/** @var TitleFactory */
+		$titleFactory = $this->services->getTitleFactory();
+
 		// "articles" is legacy naming. Should be 'nodes'
 		$aArticles = [];
 		if ( $specification->getParam( 'articles' ) ) {
 			// Call from BookEditor
-			$aArticles = FormatJson::decode(
+			$chapters = FormatJson::decode(
 				$specification->getParam( 'articles' ), true
 			);
+
+			foreach ( $chapters as $chapter ) {
+				$article = [
+					'type' => 'text',
+					'title' => null,
+					'display-title' => $chapter['name'],
+					'number' => $chapter['number']
+				];
+
+				if ( $chapter['type'] === 'wikilink-with-alias' ) {
+					$articleTitle = $titleFactory->makeTitle( $chapter['namespace'], $chapter['title'] );
+					$article['title'] = $articleTitle->getPrefixedText();
+					$article['article-id'] = $articleTitle->getArticleId();
+				}
+
+				$aArticles[] = $article;
+			}
+
 		} else {
 			// Call from Bookmanager or somewhere else
-
 			$title = $specification->getTitle();
-
-			/** @var BookContextProviderFactory */
-			$bookContextProviderFactory = $this->services->getService( 'BSBookshelfBookContextProviderFactory' );
-			$bookContextProvider = $bookContextProviderFactory->getProvider( $title );
-
-			$activeBook = $bookContextProvider->getActiveBook();
-			if ( $activeBook instanceof Title === false ) {
-				throw new MWException( 'No valid active book found' );
-			}
 
 			/** @var ChapterLookup */
 			$bookChapterLookup = $this->services->getService( 'BSBookshelfBookChapterLookup' );
 			$chapters = $bookChapterLookup->getChaptersOfBook( $activeBook );
 
-			/** @var TitleFactory */
-			$titleFactory = $this->services->getTitleFactory();
-
 			foreach ( $chapters as $chapter ) {
-				$articleTitle = $titleFactory->makeTitle( $chapter->getNamespace(), $chapter->getTitle() );
-				$type = 'text';
-				if ( $chapter->getType() === 'wikilink-with-alias' ) {
-					$type = 'wikipage';
-				}
-				$aArticles[] = [
-					'type' => $type,
-					'title' => $articleTitle->getPrefixedText(),
-					'article-id' => $articleTitle->getArticleId(),
+				$article = [
+					'type' => 'text',
+					'title' => null,
 					'display-title' => $chapter->getName(),
 					'number' => $chapter->getNumber()
 				];
+
+				if ( $chapter->getType() === 'wikilink-with-alias' ) {
+					$articleTitle = $titleFactory->makeTitle( $chapter->getNamespace(), $chapter->getTitle() );
+					$article['title'] = $articleTitle->getPrefixedText();
+					$article['article-id'] = $articleTitle->getArticleId();
+				}
+
+				$aArticles[] = $article;
 			}
 		}
 

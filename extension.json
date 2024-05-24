@@ -58,6 +58,11 @@
 				"bookpdf-export-toc": {
 					"class": "BlueSpice\\UEModuleBookPDF\\MetaData\\TableOfContent"
 				}
+			},
+			"BookViewTools": {
+				"book-pdf": {
+					"class": "BlueSpice\\UEModuleBookPDF\\Integration\\Bookshelf\\ExportBook"
+				}
 			}
 		}
 	},
@@ -86,14 +91,11 @@
 	"ResourceModules": {
 		"ext.bluespice.ueModuleBookPDF": {
 			"scripts": [
-				"bluespice.ueModuleBookPDF.js"
+				"bluespice.ueModuleBookPDF.bookhelf.view.tool.js"
 			],
-			"messages": [
-				"bs-uemodulebookpdf-btn-export"
-			],
-			"dependencies": [
-				"ext.bluespice.bookshelf.storageLocation"
-			]
+			"styles": {
+				"bluespice.ueModuleBookPDF.bookshelf.view.tool.css": {}
+			}
 		},
 		"ext.bluespice.ueModuleBookPDF.contextMenu": {
 			"scripts": [
