@@ -5,7 +5,7 @@
 		]
 	},
 	"bs-uemodulebookpdf-extension-description": "Enables BlueSpice export hierarchical collections of articles to Adobe&reg; Portable Document Format (PDF).",
-	"bs-uemodulebookpdf-pref-bookexporttoc": "Table of contents",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Table of contents (PDF)",
 	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Only article titles (indent by grade)",
 	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Embed article TOCs (No indent of article titles)",
 	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Portable Document Format (PDF) for Bookshelf",
