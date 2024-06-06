@@ -1,8 +1,12 @@
-.vuejsplus-toolbar-items .bookshelf-view-tool-uemodule-bookpdf {
-    padding-left: 2.5em;
-    background-image: url('../../BlueSpiceBookshelf/resources/images/page_white_acrobat.png');
-    background-repeat: no-repeat;
-    background-size: 2em;
-    background-position-x: left;
-    background-position-y: center;
+.vuejsplus-toolbar-items .bookshelf-view-tool-uemodule-bookpdf::before {
+    padding: 0 0.5em 0 1em;
+    content: "\f392";
+    font-family: bootstrap-icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    font-size: 1.5em;
+    vertical-align: bottom;
 }
