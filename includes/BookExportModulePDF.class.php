@@ -61,13 +61,12 @@ class BsBookExportModulePDF extends ExportModule {
 
 		// "articles" is legacy naming. Should be 'nodes'
 		$aArticles = [];
-		if ( $specification->getParam( 'articles' ) ) {
-			// Call from BookEditor
-			$chapters = FormatJson::decode(
-				$specification->getParam( 'articles' ), true
-			);
-
-			foreach ( $chapters as $chapter ) {
+		$chaptersFromSpec = FormatJson::decode(
+			$specification->getParam( 'articles', '[]' ), true
+		);
+		if ( !empty( $chaptersFromSpec ) ) {
+			// Articles are passed in URL (e.g. from Book partial export)
+			foreach ( $chaptersFromSpec as $chapter ) {
 				$article = [
 					'type' => 'text',
 					'title' => null,
@@ -79,14 +78,14 @@ class BsBookExportModulePDF extends ExportModule {
 					$articleTitle = $titleFactory->makeTitle( $chapter['namespace'], $chapter['title'] );
 					$article['title'] = $articleTitle->getPrefixedText();
 					$article['article-id'] = $articleTitle->getArticleId();
+					$article['type'] = 'wikipage';
 				}
 
 				$aArticles[] = $article;
 			}
 
 		} else {
-			// Call from Bookmanager or somewhere else
-			$title = $specification->getTitle();
+			// Entire book export call
 
 			/** @var ChapterLookup */
 			$bookChapterLookup = $this->services->getService( 'BSBookshelfBookChapterLookup' );
@@ -104,6 +103,7 @@ class BsBookExportModulePDF extends ExportModule {
 					$articleTitle = $titleFactory->makeTitle( $chapter->getNamespace(), $chapter->getTitle() );
 					$article['title'] = $articleTitle->getPrefixedText();
 					$article['article-id'] = $articleTitle->getArticleId();
+					$article['type'] = 'wikipage';
 				}
 
 				$aArticles[] = $article;
