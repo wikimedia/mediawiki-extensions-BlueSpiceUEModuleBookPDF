@@ -86,7 +86,7 @@
 		"BlueSpice\\UEModuleBookPDF\\Test\\": "tests/phpunit/"
 	},
 	"AutoloadClasses": {
-		"BsBookExportModulePDF": "/includes/BookExportModulePDF.class.php"
+		"BsBookExportModulePDF": "/includes/BsBookExportModulePDF.php"
 	},
 	"ResourceModules": {
 		"ext.bluespice.ueModuleBookPDF": {

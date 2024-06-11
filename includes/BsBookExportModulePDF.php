@@ -1,5 +1,6 @@
 <?php
 
+use BlueSpice\Bookshelf\BookContextProviderFactory;
 use BlueSpice\Bookshelf\BookLookup;
 use BlueSpice\Bookshelf\BookMetaLookup;
 use BlueSpice\Bookshelf\ChapterLookup;
@@ -51,7 +52,16 @@ class BsBookExportModulePDF extends ExportModule {
 		$this->bookType = $specification->getParam( 'book_type', false );
 		$this->content = $specification->getParam( 'content', false );
 
-		$activeBook = $specification->getTitle();
+		if ( $specification->getTitle()->getNamespace() === NS_BOOK ) {
+			// If we are on a book page
+			$activeBook = $specification->getTitle();
+		} else {
+			// If we are on a page included in a book
+			/** @var BookContextProviderFactory $bookContextProviderFactory */
+			$bookContextProviderFactory = $this->services->getService( 'BSBookshelfBookContextProviderFactory' );
+			$bookContextProvider = $bookContextProviderFactory->getProvider( $specification->getTitle() );
+			$activeBook = $bookContextProvider->getActiveBook();
+		}
 		if ( $activeBook instanceof Title === false ) {
 			throw new MWException( 'No valid active book found' );
 		}
