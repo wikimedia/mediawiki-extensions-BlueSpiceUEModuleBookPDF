@@ -8,8 +8,17 @@ use BlueSpice\UEModuleBookPDF\BookmarksXMLBuilder;
 use BlueSpice\UEModulePDF\PDFServletHookRunner;
 use BlueSpice\UniversalExport\ExportModule;
 use BlueSpice\UniversalExport\ExportSpecification;
+use BlueSpice\UniversalExport\IExportModule;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Session\Session;
+use MediaWiki\Session\SessionManager;
 
 class BsBookExportModulePDF extends ExportModule {
+
+	/**
+	 * @var Session
+	 */
+	private $session;
 
 	/**
 	 *
@@ -26,6 +35,36 @@ class BsBookExportModulePDF extends ExportModule {
 	 * @var string|bool
 	 */
 	protected $content = false;
+
+	/**
+	 * @param string $name
+	 * @param MediaWikiServices $services
+	 * @param Config $config
+	 * @param WebRequest|null $request
+	 * @return IExportModule
+	 */
+	public static function factory(
+		$name, MediaWikiServices $services, Config $config, $request = null
+	) {
+		if ( !$request ) {
+			$request = RequestContext::getMain()->getRequest();
+		}
+		return new static( $name, $services, $config, $request, SessionManager::getGlobalSession() );
+	}
+
+	/**
+	 * @param string $name
+	 * @param MediaWikiServices $services
+	 * @param Config $config
+	 * @param WebRequest $request
+	 * @param Session $session
+	 */
+	protected function __construct(
+		$name, MediaWikiServices $services, Config $config, WebRequest $request, Session $session
+	) {
+		parent::__construct( $name, $services, $config, $request );
+		$this->session = $session;
+	}
 
 	/**
 	 * Implementation of BsUniversalExportModule interface. Uses the
@@ -51,18 +90,17 @@ class BsBookExportModulePDF extends ExportModule {
 
 		$this->bookType = $specification->getParam( 'book_type', false );
 		$this->content = $specification->getParam( 'content', false );
-
 		if ( $specification->getTitle()->getNamespace() === NS_BOOK ) {
-			// If we are on a book page
-			$activeBook = $specification->getTitle();
-		} else {
-			// If we are on a page included in a book
-			/** @var BookContextProviderFactory $bookContextProviderFactory */
-			$bookContextProviderFactory = $this->services->getService( 'BSBookshelfBookContextProviderFactory' );
-			$bookContextProvider = $bookContextProviderFactory->getProvider( $specification->getTitle() );
-			$activeBook = $bookContextProvider->getActiveBook();
+			$this->session->set( 'forced_book', $specification->getTitle()->getPrefixedDBkey() );
 		}
+		// If we are on a page included in a book
+		/** @var BookContextProviderFactory $bookContextProviderFactory */
+		$bookContextProviderFactory = $this->services->getService( 'BSBookshelfBookContextProviderFactory' );
+		$bookContextProvider = $bookContextProviderFactory->getProvider( $specification->getTitle() );
+		$activeBook = $bookContextProvider->getActiveBook();
+
 		if ( $activeBook instanceof Title === false ) {
+			$this->session->remove( 'forced_book' );
 			throw new MWException( 'No valid active book found' );
 		}
 
@@ -399,6 +437,7 @@ class BsBookExportModulePDF extends ExportModule {
 			$specification->getTitle()->getPrefixedText()
 		);
 
+		$this->session->remove( 'forced_book' );
 		return $aResponse;
 	}
 
