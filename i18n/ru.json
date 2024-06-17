@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Yurina Tatiana"
+			"Yurina Tatiana",
+			"Dirruw'o"
 		]
 	},
-	"bs-uemodulebookpdf-pref-bookexporttoc": "Содержание",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Оглавление (PDF)",
 	"bs-uemodulebookpdf-template": "Шаблон (PDF)",
 	"bs-uemodulebookpdf-bookshelfimage": "Изображение книжной полки",
 	"action-uemodulebookpdf-export": "экспортировать страницу в PDF как часть книги",

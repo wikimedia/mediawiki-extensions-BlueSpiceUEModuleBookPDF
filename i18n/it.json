@@ -6,11 +6,11 @@
 			"Stefano"
 		]
 	},
-	"bs-uemodulebookpdf-pref-bookexporttoc": "Indice",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Indice (PDF)",
 	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
+	"action-uemodulebookpdf-export": "esportare una pagina in PDF come parte di un libro",
 	"bs-uemodulebookpdf-table-of-contents-heading": "Indice",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "Libro PDF",
-	"action-uemodulebookpdf-export": "esportare una pagina in PDF come parte di un libro",
 	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Esporta",
 	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Esporta libro $1"
 }
