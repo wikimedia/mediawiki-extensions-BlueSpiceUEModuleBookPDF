@@ -1,5 +1,5 @@
 .vuejsplus-toolbar-items .bookshelf-view-tool-uemodule-bookpdf::before {
-    padding: 0 0.5em 0 1em;
+    padding: 0 0.5em 0 0;
     content: "\f392";
     font-family: bootstrap-icons !important;
     font-style: normal;
