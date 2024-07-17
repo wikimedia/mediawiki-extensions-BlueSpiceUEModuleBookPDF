@@ -1,10 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dirruw'o",
 			"Yurina Tatiana"
 		]
 	},
 	"bs-uemodulebookpdf-table-of-contents-heading": "Содержание",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF-книга",
-	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Экспорт"
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Экспорт",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Оглавление (PDF)",
+	"bs-uemodulebookpdf-template": "Шаблон (PDF)",
+	"bs-uemodulebookpdf-bookshelfimage": "Изображение книжной полки",
+	"action-uemodulebookpdf-export": "экспортировать страницу в PDF как часть книги",
+	"right-uemodulebookpdf-export": "Экспорт страницы в PDF как часть книги",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Экспортировать книгу $1"
 }
