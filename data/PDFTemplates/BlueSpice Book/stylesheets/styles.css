@@ -178,12 +178,18 @@
 }
 
 /* toc */
+div.bs-tableofcontentspage .toc > ul > li ul li { margin-left: 2em; }
 div.bs-tableofcontentspage .toc > ul > li.toclevel-1 { margin-left: 0em; }
 div.bs-tableofcontentspage .toc > ul > li.toclevel-2 { margin-left: 2em; }
 div.bs-tableofcontentspage .toc > ul > li.toclevel-3 { margin-left: 4em; }
 div.bs-tableofcontentspage .toc > ul > li.toclevel-4 { margin-left: 6em; }
 div.bs-tableofcontentspage .toc > ul > li.toclevel-5 { margin-left: 8em; }
 div.bs-tableofcontentspage .toc > ul > li.toclevel-6 { margin-left: 10em; }
+
+.tocnumber.hidden,
+.mw-headline-number.hidden {
+	display: none;
+}
 
 /* misc */
 td.bs-wiki-article-ancestors-table-left,
