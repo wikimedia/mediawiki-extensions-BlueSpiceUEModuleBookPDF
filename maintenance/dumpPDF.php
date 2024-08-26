@@ -105,6 +105,7 @@ class DumpPDF extends BSMaintenance {
 	 * and split them.
 	 *
 	 * @return void
+	 * @throws MWException
 	 */
 	private function exportContentPages() {
 		/** @var IMaintainableDatabase */
@@ -355,6 +356,7 @@ class DumpPDF extends BSMaintenance {
 			$file = $module->createExportFile( $specs );
 			$module->invokeExportTarget( $file, $specs );
 		} catch ( Exception $e ) {
+			$this->error( "Export failed:" . $e->getMessage() );
 			return false;
 		}
 
@@ -377,17 +379,11 @@ class DumpPDF extends BSMaintenance {
 	 */
 	private function makeArticleData( Title $title, int $chapterNumber ): array {
 		return [
-			'title' => $title->getPrefixedDBkey(),
-			'display-title' => $title->getPrefixedText(),
-			'is-redirect' => $title->isRedirect(),
-			'number' => $chapterNumber . '.',
-			'bookshelf' => [
-				'type' => 'wikipage',
-				'page_id' => $title->getArticleID(),
-				'page_namespace' => $title->getNamespace(),
-				'page_title' => $title->getPrefixedText(),
-				'number' => $chapterNumber . '.'
-			]
+			'namespace' => $title->getNamespace(),
+			'title' => $title->getDBkey(),
+			'name' => $title->getPrefixedText(),
+			'number' => $chapterNumber,
+			'type' => 'wikilink-with-alias',
 		];
 	}
 
