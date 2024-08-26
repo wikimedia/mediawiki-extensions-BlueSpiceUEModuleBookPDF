@@ -93,13 +93,16 @@ class BsBookExportModulePDF extends ExportModule {
 		if ( $specification->getTitle()->getNamespace() === NS_BOOK ) {
 			$this->session->set( 'forced_book', $specification->getTitle()->getPrefixedDBkey() );
 		}
+		$chaptersFromSpec = FormatJson::decode(
+			$specification->getParam( 'articles', '[]' ), true
+		);
 		// If we are on a page included in a book
 		/** @var BookContextProviderFactory $bookContextProviderFactory */
 		$bookContextProviderFactory = $this->services->getService( 'BSBookshelfBookContextProviderFactory' );
 		$bookContextProvider = $bookContextProviderFactory->getProvider( $specification->getTitle() );
 		$activeBook = $bookContextProvider->getActiveBook();
-
-		if ( $activeBook instanceof Title === false ) {
+		if ( $activeBook instanceof Title === false && empty( $chaptersFromSpec ) ) {
+			// No active book and no explicit chapters to export - bail out
 			$this->session->remove( 'forced_book' );
 			throw new MWException( 'No valid active book found' );
 		}
@@ -109,9 +112,7 @@ class BsBookExportModulePDF extends ExportModule {
 
 		// "articles" is legacy naming. Should be 'nodes'
 		$aArticles = [];
-		$chaptersFromSpec = FormatJson::decode(
-			$specification->getParam( 'articles', '[]' ), true
-		);
+
 		if ( !empty( $chaptersFromSpec ) ) {
 			// Articles are passed in URL (e.g. from Book partial export)
 			foreach ( $chaptersFromSpec as $chapter ) {
@@ -131,7 +132,6 @@ class BsBookExportModulePDF extends ExportModule {
 
 				$aArticles[] = $article;
 			}
-
 		} else {
 			// Entire book export call
 
@@ -158,19 +158,22 @@ class BsBookExportModulePDF extends ExportModule {
 			}
 		}
 
-		/** @var BookMetaLookup */
-		$bookMetaLookup = $this->services->getService( 'BSBookshelfBookMetaLookup' );
-		$aBookMeta = $bookMetaLookup->getMetaForBook( $activeBook );
-
-		try {
-			$aBookPage = BsPDFPageProvider::getPage( [
-				'article-id' => $activeBook->getArticleId(),
-				'follow-redirects' => true
-			] );
-		} catch ( Exception $ex ) {
-			$aBookPage = [
-				'meta' => [ 'title' => $specification->getTitle()->getPrefixedText() ]
-			];
+		$aBookMeta = [];
+		$aBookPage = [
+			'meta' => [ 'title' => $specification->getTitle()->getPrefixedText() ]
+		];
+		if ( $activeBook ) {
+			/** @var BookMetaLookup */
+			$bookMetaLookup = $this->services->getService( 'BSBookshelfBookMetaLookup' );
+			$aBookMeta = $bookMetaLookup->getMetaForBook( $activeBook );
+			try {
+				$aBookPage = BsPDFPageProvider::getPage( [
+					'article-id' => $activeBook->getArticleId(),
+					'follow-redirects' => true
+				] );
+			} catch ( Exception $ex ) {
+				// Fall back to defaults
+			}
 		}
 
 		$aTemplate = $this->getBookTemplate( $specification, $aBookPage, $aBookMeta );
@@ -332,6 +335,42 @@ class BsBookExportModulePDF extends ExportModule {
 			$oNode->parentNode->removeChild( $oNode );
 		}
 
+		if ( $activeBook ) {
+			$this->modifyTOC( $activeBook, $aTemplate, $aLinkMap );
+		}
+		$this->modifyTemplateAfterContents( $aTemplate, $aBookPage, $specification );
+		// Set params for PDF creation
+		$token = md5( $specification->getTitle()->getPrefixedText() ) .
+			'-' . intval( $specification->getParam( 'oldid' ) );
+		$specification->setParam( 'document-token', $token );
+		$specification->setParam( 'soap-service-url', $config->get(
+			'UEModulePDFPdfServiceURL'
+		) );
+		$specification->setParam( 'resources', $aTemplate['resources'] );
+		$specification->setParam( 'attachments', '1' );
+
+		$params = $specification->getParams();
+		$hookContainer = $this->getServices()->getHookContainer();
+		$hookRunner = new PDFServletHookRunner( $hookContainer );
+		$oPdfService = new BsPDFServlet( $params, $hookRunner );
+		$aResponse['content'] = $oPdfService->createPDF( $aTemplate['dom'] );
+
+		$aResponse['filename'] = sprintf(
+			$aResponse['filename'],
+			$specification->getTitle()->getPrefixedText()
+		);
+
+		$this->session->remove( 'forced_book' );
+		return $aResponse;
+	}
+
+	/**
+	 * @param Title $activeBook
+	 * @param array $aTemplate
+	 * @param array $aLinkMap
+	 * @return void
+	 */
+	private function modifyTOC( Title $activeBook, array $aTemplate, array $aLinkMap ) {
 		/** @var BookLookup */
 		$bookLookup = $this->services->getService( 'BSBookshelfBookLookup' );
 		$tree = $bookLookup->getBookHierarchy( $activeBook );
@@ -414,31 +453,6 @@ class BsBookExportModulePDF extends ExportModule {
 				$oAnchor->setAttribute( 'href', $otherPageJumpmark );
 			}
 		}
-
-		$this->modifyTemplateAfterContents( $aTemplate, $aBookPage, $specification );
-		// Set params for PDF creation
-		$token = md5( $specification->getTitle()->getPrefixedText() ) .
-			'-' . intval( $specification->getParam( 'oldid' ) );
-		$specification->setParam( 'document-token', $token );
-		$specification->setParam( 'soap-service-url', $config->get(
-			'UEModulePDFPdfServiceURL'
-		) );
-		$specification->setParam( 'resources', $aTemplate['resources'] );
-		$specification->setParam( 'attachments', '1' );
-
-		$params = $specification->getParams();
-		$hookContainer = $this->getServices()->getHookContainer();
-		$hookRunner = new PDFServletHookRunner( $hookContainer );
-		$oPdfService = new BsPDFServlet( $params, $hookRunner );
-		$aResponse['content'] = $oPdfService->createPDF( $aTemplate['dom'] );
-
-		$aResponse['filename'] = sprintf(
-			$aResponse['filename'],
-			$specification->getTitle()->getPrefixedText()
-		);
-
-		$this->session->remove( 'forced_book' );
-		return $aResponse;
 	}
 
 	/**
@@ -661,11 +675,15 @@ class BsBookExportModulePDF extends ExportModule {
 	 * @param array $aBookMeta
 	 * @param array &$aLinkMap
 	 * @param array &$aBookPage
-	 * @return DOMElement
+	 * @return DOMElement|null
 	 */
 	public function getDOMNodeForWikiPage( $aArticle, &$aTemplate, $oTOCList, $aBookMeta,
 		&$aLinkMap, &$aBookPage ) {
-		$aPage = BsPDFPageProvider::getPage( $aArticle );
+		try {
+			$aPage = BsPDFPageProvider::getPage( $aArticle );
+		} catch ( Throwable $ex ) {
+			return null;
+		}
 
 		// If there is a number set in the data from the client, it overrides
 		// the saved one. This can still be overridden by the hook
