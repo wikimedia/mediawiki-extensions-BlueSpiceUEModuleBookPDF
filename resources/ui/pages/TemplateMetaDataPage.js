@@ -41,11 +41,18 @@
 			$overlay: true
 		} );
 
-		if ( availableTemplates.length === 1 ) {
-			this.inputWidget.getMenu().selectItemByData( options[0].data );
+		if ( availableTemplates.length > 0 ) {
+			if ( availableTemplates.length === 1 ) {
+				this.inputWidget.getMenu().selectItemByData( options[0].data );
+				this.inputWidget.setDisabled( true );
+			} else {
+				if ( this.value ) {
+					this.inputWidget.getMenu().selectItemByData( this.value );
+				}
+			}
+		} else {
 			this.inputWidget.setDisabled( true );
 		}
-
 		var fieldLayout = new OO.ui.FieldLayout( this.inputWidget, {
 			align: 'top',
 			label: mw.message( 'bs-uemodulebookpdf-template' ).text()
@@ -55,6 +62,9 @@
 	};
 
 	bs.ue.ui.pages.TemplateMeta.prototype.getValue = function () {
+		if ( !this.inputWidget.getMenu().findSelectedItem() ) {
+			return '';
+		}
 		return this.inputWidget.getMenu().findSelectedItem().getData();
 	};
 
