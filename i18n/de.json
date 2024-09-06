@@ -1,24 +1,25 @@
 {
 	"@metadata": {
 		"authors": [
+			"Justman10000",
 			"Mglaser",
 			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
 	"bs-uemodulebookpdf-extension-description": "Ermöglicht das Exportieren von hierarchisch gegliederten Artikelsammlungen in das Adobe&reg; Portable Document Format (PDF).",
-	"bs-uemodulebookpdf-pref-bookexporttoc": "Inhaltsverzeichnis",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Inhaltsverzeichnis (PDF)",
 	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Nur Artikelüberschriften (entsprechend Nummerierung eingerückt)",
 	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Inhaltsverzeichnisse der Artikel einbetten (Keine Einrückung der Artikelüberschriften)",
 	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Portable Document Format (PDF) für Bookshelf",
 	"bs-uemodulebookpdf-overview-description": "Exportiert ein Buch nach Adobe PDF.",
-	"bs-uemodulebookpdf-overview-bodycontent": "Dieses Modul wird von der &quot;Bookshelf&quot; Erweiterung zur Verfügung gestellt um Bücher als PDF ausgeben zu können.",
+	"bs-uemodulebookpdf-overview-bodycontent": "Dieses Modul wird von der Bookshelf-Erweiterung bereitgestellt und ermöglicht den Export in PDF.",
 	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
 	"bs-uemodulebookpdf-template": "Vorlage (PDF)",
 	"bs-uemodulebookpdf-bookshelfimage": "Bookshelf Bild",
 	"action-uemodulebookpdf-export": "eine Seite als Teil eines PDF-Buchs zu exportieren",
 	"right-uemodulebookpdf-export": "Eine Seite als Teil eines PDF-Buchs exportieren",
 	"bs-uemodulebookpdf-table-of-contents-heading": "Inhaltsverzeichnis",
-	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Nur Artikelüberschriften: Zeigt nur die Artikeltitel, aber nicht das Inhaltsverzeichnis der Seite im PDF-Inhaltsverzeichnis an. \nInhaltsverzeichnisse der Artikel einbetten: Zeigt das Inhaltsverzeichnis jeder Seite unter jedem Seitentitel im PDF-Inhaltsverzeichnis an.",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Nur Artikelüberschriften: Zeigt nur die Artikeltitel, doch nicht das Inhaltsverzeichnis der Seite im PDF-Inhaltsverzeichnis an. \nInhaltsverzeichnisse der Artikel einbetten: Zeigt das Inhaltsverzeichnis jeder Seite unter jedem Seitentitel im PDF-Inhaltsverzeichnis an.",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF Buch",
 	"bs-uemodulebookpdf-export-dialog-label-select-template": "Layout",
 	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Exportieren",
