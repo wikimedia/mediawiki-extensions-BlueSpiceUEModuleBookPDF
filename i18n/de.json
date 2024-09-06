@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Justman10000",
 			"Mglaser",
-			"Stephan Muggli <muggli@hallowelt.biz>",
-			"Justman10000"
+			"Stephan Muggli <muggli@hallowelt.biz>"
 		]
 	},
 	"bs-uemodulebookpdf-extension-description": "Ermöglicht das Exportieren von hierarchisch gegliederten Artikelsammlungen in das Adobe&reg; Portable Document Format (PDF).",
