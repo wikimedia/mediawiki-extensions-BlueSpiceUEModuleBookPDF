@@ -3,6 +3,7 @@ bs.ue.ui.plugin.BookPdf = function ( config ) {
 
 	this.config = config || {};
 	this.config.title = config.title || '';
+	this.dialog = config.dialog || null;
 
 	this.title = this.config.title;
 	var bookshelf = $( '.bs-tag-bookshelf' );
@@ -70,7 +71,7 @@ bs.ue.ui.plugin.BookPdf.prototype.getPanel = function () {
 	/* Select template */
 	this.templateSelect = new OO.ui.DropdownInputWidget( {
 		options: templates,
-		$overlay: true
+		$overlay: this.dialog ? this.dialog.$overlay : true
 	} );
 
 	if ( templates.length > 0 ) {
