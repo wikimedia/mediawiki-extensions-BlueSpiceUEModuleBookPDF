@@ -6,6 +6,7 @@ use BlueSpice\Bookshelf\BookLookup;
 use BlueSpice\UniversalExport\IExportDialogPlugin;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Permissions\PermissionManager;
 use Title;
 
 class ExportDialogPluginBook implements IExportDialogPlugin {
@@ -16,10 +17,18 @@ class ExportDialogPluginBook implements IExportDialogPlugin {
 	/** @var BookLookup */
 	private $bookLookup = null;
 
+	/** @var PermissionManager */
+	private $permissionManager = null;
+
+	/** @var TitelFactory */
+	private $titleFactory = null;
+
 	public function __construct() {
 		$services = MediaWikiServices::getInstance();
 		$this->config = $services->getConfigFactory()->makeConfig( 'bsg' );
 		$this->bookLookup = $services->getService( 'BSBookshelfBookLookup' );
+		$this->permissionManager = $services->getPermissionManager();
+		$this->titleFactory = $services->getTitleFactory();
 	}
 
 	/**
@@ -101,12 +110,26 @@ class ExportDialogPluginBook implements IExportDialogPlugin {
 			return true;
 		}
 
+		if ( !$this->permissionManager->userCan( 'uemodulebookpdf-export', $context->getUser(), $title ) ) {
+			return true;
+		}
+
 		if ( $title->getContentModel() !== CONTENT_MODEL_WIKITEXT ) {
 			return true;
 		}
 
 		$books = $this->bookLookup->getBooksForPage( $title );
 		if ( empty( $books ) ) {
+			return true;
+		}
+
+		// Using one book as example to check user read permission in book namespace.
+		$exampleBook = $this->titleFactory->newFromText(
+			'dummyBook',
+			NS_BOOK
+		);
+
+		if ( !$this->permissionManager->userCan( 'read', $context->getUser(), $exampleBook ) ) {
 			return true;
 		}
 
