@@ -93,7 +93,7 @@ class Export implements IBooksOverviewAction {
 			return '';
 		}
 		$queryParams['ue[module]'] = 'bookpdf';
-		$queryParams['oldid'] = $this->book->getLatestRevID();
+
 		return $universalExport->getPageTitle( $this->book->getPrefixedText() )
 			->getLinkURL( array_merge( $queryParams, [] ) );
 	}
