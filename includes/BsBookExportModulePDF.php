@@ -96,7 +96,7 @@ class BsBookExportModulePDF extends ExportModule {
 
 		$this->bookType = $specification->getParam( 'book_type', false );
 		$this->content = $specification->getParam( 'content', false );
-		$this->oldId = $specification->getParam( 'oldid', 0 );
+		$this->oldId = $specification->getParam( 'oldid', null );
 		if ( $specification->getTitle()->getNamespace() === NS_BOOK ) {
 			$this->session->set( 'forced_book', $specification->getTitle()->getPrefixedDBkey() );
 		}
@@ -141,7 +141,7 @@ class BsBookExportModulePDF extends ExportModule {
 			}
 		} else {
 			// Entire book export call
-			if ( $this->oldId != 0 ) {
+			if ( $this->oldId !== null ) {
 				$revLookup = $this->services->getRevisionLookup();
 				$revisionRecord = $revLookup->getRevisionById( $this->oldId, 0, $activeBook );
 				if ( !$revisionRecord ) {
