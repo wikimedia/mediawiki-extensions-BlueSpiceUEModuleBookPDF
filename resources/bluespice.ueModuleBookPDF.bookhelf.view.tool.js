@@ -12,8 +12,7 @@
 		let params = {
 			'ue[module]': 'bookpdf',
 			'ue[articles]': JSON.stringify( articles ),
-			'book_type': 'ns_book',
-			'oldid': mw.config.get( 'wgRevisionId' )
+			'book_type': 'ns_book'
 		};
 
 		let exportPage = mw.Title.newFromText( 'Special:UniversalExport/'+currentBook );
