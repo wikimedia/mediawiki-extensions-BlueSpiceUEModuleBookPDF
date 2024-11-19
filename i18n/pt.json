@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Hamilton Abreu",
-			"Mansil"
+			"Mansil",
+			"Mbs262"
 		]
 	},
 	"bs-uemodulebookpdf-extension-description": "Permite que o BlueSpice exporte coleções hierárquicas de artigos para Adobe&reg; Formato de Documento Portátil (PDF).",
-	"bs-uemodulebookpdf-pref-bookexporttoc": "Índice",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Índice (PDF)",
 	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Apenas títulos de artigo (indentação por nível)",
 	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Incorporar índices dos artigos (sem indentação dos títulos dos artigos)",
 	"bs-uemodulebookpdf-overview-title": "Adobe&reg; Formato de Documento Portátil (PDF) para a extensão Bookshelf",
