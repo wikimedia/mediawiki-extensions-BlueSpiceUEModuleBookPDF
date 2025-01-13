@@ -22,5 +22,7 @@
 	"bs-uemodulebookpdf-table-of-contents-heading": "جدول المحتويات",
 	"bs-uemodulebookpdf-pref-bookexporttoc-help": "عناوين المقالات فقط: يعرض عناوين المقالات فقط في جدول محتويات ملف PDF. \nتضمين جداول محتويات المقالات: يعرض جدول محتويات كل مقال في جدول محتويات ملف PDF.",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "كتاب PDF",
-	"bs-uemodulebookpdf-export-dialog-label-select-template": "تَخطِيط"
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "تَخطِيط",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "تصدير",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "تصدير الكتاب $1"
 }
