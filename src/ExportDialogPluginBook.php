@@ -7,7 +7,7 @@ use BlueSpice\UniversalExport\IExportDialogPlugin;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\PermissionManager;
-use Title;
+use MediaWiki\Title\Title;
 
 class ExportDialogPluginBook implements IExportDialogPlugin {
 

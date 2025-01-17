@@ -5,7 +5,7 @@ namespace BlueSpice\UEModuleBookPDF\HookHandlers;
 use BlueSpice\Bookshelf\Hook\BSBookshelfBooksOverviewBeforeSetBookActions;
 use BlueSpice\UEModuleBookPDF\BooksOverviewActions\Export;
 use MediaWiki\SpecialPage\SpecialPageFactory;
-use Title;
+use MediaWiki\Title\Title;
 
 class BSBookshelf implements BSBookshelfBooksOverviewBeforeSetBookActions {
 

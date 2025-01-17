@@ -12,6 +12,7 @@ use BlueSpice\UniversalExport\IExportModule;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Session\Session;
 use MediaWiki\Session\SessionManager;
+use MediaWiki\Title\Title;
 
 class BsBookExportModulePDF extends ExportModule {
 
