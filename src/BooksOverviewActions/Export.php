@@ -4,8 +4,8 @@ namespace BlueSpice\UEModuleBookPDF\BooksOverviewActions;
 
 use BlueSpice\Bookshelf\IBooksOverviewAction;
 use MediaWiki\SpecialPage\SpecialPageFactory;
+use MediaWiki\Title\Title;
 use Message;
-use Title;
 
 class Export implements IBooksOverviewAction {
 

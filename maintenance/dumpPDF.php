@@ -8,6 +8,7 @@
 use BlueSpice\UniversalExport\ExportModule;
 use BlueSpice\UniversalExport\ExportSpecification;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use Wikimedia\Rdbms\IMaintainableDatabase;
 
 require_once dirname( dirname( __DIR__ ) ) . "/BlueSpiceFoundation/maintenance/BSMaintenance.php";
