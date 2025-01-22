@@ -3,7 +3,7 @@
 namespace BlueSpice\UEModuleBookPDF\MetaData;
 
 use BlueSpice\Bookshelf\IMetaDataDescription;
-use Message;
+use MediaWiki\Message\Message;
 
 class Template implements IMetaDataDescription {
 
