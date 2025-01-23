@@ -4,8 +4,8 @@ namespace BlueSpice\UEModuleBookPDF\Hook;
 
 use BlueSpice\Hook;
 use BlueSpice\UniversalExport\ExportSpecification;
-use Config;
 use IContextSource;
+use MediaWiki\Config\Config;
 
 abstract class BSBookshelfExportBeforeArticles extends Hook {
 	/**
