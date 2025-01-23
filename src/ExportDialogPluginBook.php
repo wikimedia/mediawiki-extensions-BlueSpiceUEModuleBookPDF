@@ -4,8 +4,8 @@ namespace BlueSpice\UEModuleBookPDF;
 
 use BlueSpice\Bookshelf\BookLookup;
 use BlueSpice\UniversalExport\IExportDialogPlugin;
-use IContextSource;
 use MediaWiki\Config\Config;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\Title;
