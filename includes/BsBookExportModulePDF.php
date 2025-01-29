@@ -10,6 +10,7 @@ use BlueSpice\UniversalExport\ExportModule;
 use BlueSpice\UniversalExport\ExportSpecification;
 use BlueSpice\UniversalExport\IExportModule;
 use MediaWiki\Config\Config;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Session\Session;
 use MediaWiki\Session\SessionManager;
