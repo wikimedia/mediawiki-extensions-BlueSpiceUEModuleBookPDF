@@ -5,5 +5,7 @@
 		]
 	},
 	"bs-uemodulebookpdf-overview-description": "Exportuje knihu do PDF.",
+	"bs-uemodulebookpdf-template": "Šablona (PDF)",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Rozložení",
 	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Exportovat"
 }
