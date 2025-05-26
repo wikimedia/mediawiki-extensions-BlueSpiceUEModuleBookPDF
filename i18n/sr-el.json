@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": []
 	},
-	"bs-uemodulebookpdf-pref-bookexporttoc": "Sadržaj",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Sadržaj (PDF)",
 	"bs-uemodulebookpdf-btn-export": "Prenosivi format dokumenta (PDF)",
 	"bs-uemodulebookpdf-template": "Šablon (PDF)",
 	"bs-uemodulebookpdf-table-of-contents-heading": "Sadržaj",
-	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF knjiga"
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF knjiga",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Izvoz",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Izvezi knjigu $1"
 }
