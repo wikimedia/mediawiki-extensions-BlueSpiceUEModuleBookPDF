@@ -4,5 +4,12 @@
 			"Умар"
 		]
 	},
-	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF жайна"
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF жайна",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Чулацам (PDF)",
+	"bs-uemodulebookpdf-template": "Кеп (PDF)",
+	"bs-uemodulebookpdf-bookshelfimage": "Жайнин терхин сурт",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Чулацам",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Макет",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Экспорт",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Жайна экспортде $1"
 }
