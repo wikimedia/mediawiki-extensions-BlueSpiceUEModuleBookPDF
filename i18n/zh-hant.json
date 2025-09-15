@@ -9,12 +9,12 @@
 		]
 	},
 	"bs-uemodulebookpdf-extension-description": "讓BlueSpice將階層式條目集合匯出為Adobe&reg;可攜式文件格式（PDF）。",
-	"bs-uemodulebookpdf-pref-bookexporttoc": "目次",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "目次（PDF）",
 	"bs-uemodulebookpdf-bookexporttoc-only-articles": "只有條目標題（按等級縮進）",
 	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "嵌入文章目錄（條目標題不縮排）",
 	"bs-uemodulebookpdf-overview-title": "Bookshelf的Adobe&reg;可攜式文件格式（PDF）",
 	"bs-uemodulebookpdf-overview-description": "匯出書籍為Adobe PDF。",
-	"bs-uemodulebookpdf-overview-bodycontent": "此模組由&quot;Bookshelf&quot;擴充功能提供並能夠匯出PDF。",
+	"bs-uemodulebookpdf-overview-bodycontent": "此模組由 Bookshelf 擴充功能提供，可匯出成 PDF。",
 	"bs-uemodulebookpdf-btn-export": "可攜式文件格式（PDF）",
 	"bs-uemodulebookpdf-template": "模板（PDF）",
 	"bs-uemodulebookpdf-bookshelfimage": "Bookshelf圖片",
@@ -23,5 +23,7 @@
 	"bs-uemodulebookpdf-table-of-contents-heading": "目次",
 	"bs-uemodulebookpdf-pref-bookexporttoc-help": "僅條目標題：僅顯示 PDF 目錄中的條目標題。 \n嵌入條目目錄：顯示 PDF 目錄中各條目的目錄。",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF 書籍",
-	"bs-uemodulebookpdf-export-dialog-label-select-template": "版面編排"
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "版面編排",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "匯出",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "匯出書籍$1"
 }
