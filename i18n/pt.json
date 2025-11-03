@@ -3,6 +3,7 @@
 		"authors": [
 			"Hamilton Abreu",
 			"Mansil",
+			"Mansil alfalb",
 			"Mbs262"
 		]
 	},
@@ -21,5 +22,7 @@
 	"bs-uemodulebookpdf-table-of-contents-heading": "Índice",
 	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Só títulos de artigos: só mostra os títulos dos artigos no índice do PDF.\nEmbeber índices dos artigos: mostra o índice de cada artigo no índice do PDF.",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "Livro PDF",
-	"bs-uemodulebookpdf-export-dialog-label-select-template": "Modelo"
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Modelo",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Exportar",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Exportar livro $1"
 }
