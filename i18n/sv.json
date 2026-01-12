@@ -1,14 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
+			"Stefan2255",
 			"WikiPhoenix"
 		]
 	},
-	"bs-uemodulebookpdf-pref-bookexporttoc": "Innehållsförteckning",
+	"bs-uemodulebookpdf-extension-description": "Möjliggör export av hierarkiska artikelsamlingar till Adobe® Portable Document Format (PDF) med BlueSpice.",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Innehållsförteckning (PDF)",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Endast artikeltitlar (indrag efter årskurs)",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Bädda in artikelns innehållsförteckning (inget indrag i artikeltitlar)",
+	"bs-uemodulebookpdf-overview-title": "Adobe® Portable Document Format (PDF) för bokhylla",
 	"bs-uemodulebookpdf-overview-description": "Exporterar en bok till Adobe PDF.",
-	"bs-uemodulebookpdf-overview-bodycontent": "Denna modul tillhandahålls av tillägget &quot;Bookshelf&quot; och gör det möjligt att exportera till PDF.",
+	"bs-uemodulebookpdf-overview-bodycontent": "Den här modulen tillhandahålls av Bookshelf-tillägget och möjliggör export till PDF.",
 	"bs-uemodulebookpdf-btn-export": "Portable Document Format (PDF)",
 	"bs-uemodulebookpdf-template": "Mall (PDF)",
+	"bs-uemodulebookpdf-bookshelfimage": "Bild på bokhyllan",
+	"action-uemodulebookpdf-export": "exportera en sida till PDF som en del av en bok",
 	"right-uemodulebookpdf-export": "Exportera en sida till PDF som del av en bok",
-	"bs-uemodulebookpdf-table-of-contents-heading": "Innehållsförteckning"
+	"bs-uemodulebookpdf-table-of-contents-heading": "Innehållsförteckning",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Endast artikeltitlar: Visar endast artikeltitlarna i innehållsförteckningen i PDF-filen. \nBädda in artikelns innehållsförteckning: Visar innehållsförteckningen för varje artikel i PDF-filens innehållsförteckning.",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF-bok",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Layout",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Exportera",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Exportera bok $1"
 }
