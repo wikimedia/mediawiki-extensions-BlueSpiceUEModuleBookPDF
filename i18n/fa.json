@@ -4,5 +4,7 @@
 			"Jeeputer"
 		]
 	},
-	"bs-uemodulebookpdf-table-of-contents-heading": "محتویات"
+	"bs-uemodulebookpdf-table-of-contents-heading": "محتویات",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "برون‌بری",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "برون‌بری کتاب $1"
 }

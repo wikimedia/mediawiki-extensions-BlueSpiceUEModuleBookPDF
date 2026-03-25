@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"bs-uemodulebookpdf-extension-description": "Permite que BlueSpice exporte coleccións xerárquicas de artigos a formato de documento portable de Adobe&reg; (PDF).",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Índice (PDF)",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Só os títulos dos artigos (sangrado por nivel)",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Incrustar os índices dos artigos (sen sangrado nos títulos dos artigos)",
+	"bs-uemodulebookpdf-overview-title": "Formato de documento portable de Adobe&reg; (PDF) para Bookshelf",
+	"bs-uemodulebookpdf-overview-description": "Exporta un libro a Adobe PDF.",
+	"bs-uemodulebookpdf-overview-bodycontent": "A extensión Bookshelf proporciona este módulo e permite a exportación a PDF.",
+	"bs-uemodulebookpdf-btn-export": "Formato de documento portable (PDF)",
+	"bs-uemodulebookpdf-template": "Modelo (PDF)",
+	"bs-uemodulebookpdf-bookshelfimage": "Imaxe de Bookshelf",
+	"action-uemodulebookpdf-export": "exportar unha páxina a PDF como parte dun libro",
+	"right-uemodulebookpdf-export": "Exportar unha páxina a PDF como parte dun libro",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Índice",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Só os títulos dos artigos: mostra unicamente os títulos dos artigos no índice do PDF.\nIncrustar os índices dos artigos: mostra o índice de cada artigo no índice do PDF.",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "Libro en PDF",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Maquetación",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Exportar",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Exportar o libro «$1»"
+}

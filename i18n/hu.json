@@ -1,8 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hanna Tardos"
+			"Hanna Tardos",
+			"Krisztina"
 		]
 	},
-	"action-uemodulebookpdf-export": "oldal PDF-be exportálása, egy könyv részeként"
+	"action-uemodulebookpdf-export": "oldal PDF-be exportálása, egy könyv részeként",
+	"bs-uemodulebookpdf-extension-description": "Lehetővé teszi a BlueSpice számára a szócikkek hierarchikus gyűjteményeinek Adobe® Portable Document Format (PDF) formátumba exportálását.",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "Tartalomjegyzék (PDF)",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "Csak a szócikkek címei (Többszintű lista behúzással)",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "Szócikkek tartalomjegyzékének beágyazása (A szócikkek címei behúzás nélkül)",
+	"bs-uemodulebookpdf-overview-title": "Adobe&reg; PDF formátum a könyvespolc részére",
+	"bs-uemodulebookpdf-overview-description": "Könyvet exportál Adobe PDF formátumba.",
+	"bs-uemodulebookpdf-overview-bodycontent": "Ez a modul a Könyvespolc bővítmény része, és lehetővé teszi az exportálást PDF formátumba.",
+	"bs-uemodulebookpdf-btn-export": "PDF formátum",
+	"bs-uemodulebookpdf-template": "Sablon (PDF)",
+	"bs-uemodulebookpdf-bookshelfimage": "Könyvespolc kép",
+	"right-uemodulebookpdf-export": "Lap exportálása PDF-be egy könyv részeként",
+	"bs-uemodulebookpdf-table-of-contents-heading": "Tartalomjegyzék",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Csak a szócikkek címe: Csak a szócikkek címeit jeleníti meg a PDF tartalomjegyzékben.\nSzócikkek tartalomjegyzékének beágyazása: Minden szócikk tartalomjegyzékét megjeleníti a PDF tartalomjegyzékében",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF könyv",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "Megjelenítés",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Exportálás",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "$1 könyv exportálása"
 }
