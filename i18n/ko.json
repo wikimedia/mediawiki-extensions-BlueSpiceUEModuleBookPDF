@@ -13,7 +13,11 @@
 	"bs-uemodulebookpdf-btn-export": "이동 가능 문서 형식 (PDF)",
 	"bs-uemodulebookpdf-template": "틀 (PDF)",
 	"bs-uemodulebookpdf-bookshelfimage": "책장 이미지",
-	"right-uemodulebookpdf-export": "책의 일부를 PDF로 페이지를 내보냅니다",
+	"right-uemodulebookpdf-export": "책의 일부로써 문서를 PDF로 내보내기",
 	"bs-uemodulebookpdf-table-of-contents-heading": "목차",
-	"action-uemodulebookpdf-export": "책의 일부를 PDF로 페이지를 내보낼"
+	"action-uemodulebookpdf-export": "책의 일부로써 문서를 PDF로 내보내기",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF 책",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "레이아웃",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "내보내기",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "책 $1 내보내기"
 }
