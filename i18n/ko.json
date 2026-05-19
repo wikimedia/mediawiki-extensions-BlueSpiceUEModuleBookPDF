@@ -7,6 +7,7 @@
 			"Ykhwong"
 		]
 	},
+	"bs-uemodulebookpdf-extension-description": "블루스파이스에서 계층 구조로 된 문서 모음을 Adobe&reg; 휴대용 문서 형식(PDF)으로 내보낼 수 있습니다.",
 	"bs-uemodulebookpdf-pref-bookexporttoc": "목차 (PDF)",
 	"bs-uemodulebookpdf-overview-description": "어도비 PDF로 책을 내보냅니다.",
 	"bs-uemodulebookpdf-overview-bodycontent": "이 모듈은 Bookshelf 확장 기능에 의해 제공되며 PDF로 내보내기를 활성화합니다.",
