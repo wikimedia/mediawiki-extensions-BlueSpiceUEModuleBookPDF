@@ -4,6 +4,7 @@
 			"Mainframe98",
 			"McDutchie",
 			"Romaine",
+			"Siebrand",
 			"Vistaus"
 		]
 	},
@@ -20,7 +21,7 @@
 	"action-uemodulebookpdf-export": "een pagina in PDF te exporteren als onderdeel van een boek",
 	"right-uemodulebookpdf-export": "Een pagina in PDF exporteren als onderdeel van een boek",
 	"bs-uemodulebookpdf-table-of-contents-heading": "Inhoudsopgave",
-	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Alleen artikeltitels: toont alleen de artikeltitels in de inhoudsopgave van de PDF. \nInhoudsopgaven artikelen insluiten: toont de inhoudsopgave van elk artikel in de inhoudsopgave van de PDF.",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "Alleen paginatitels: geeft alleen de paginatitels weer in de inhoudsopgave van de PDF. \nInhoudsopgaven pagina's insluiten: geeft de inhoudsopgave weer van elke pagina in de inhoudsopgave van de PDF.",
 	"bs-uemodulebookpdf-export-dialog-label-module-name": "Pdf-boek",
 	"bs-uemodulebookpdf-export-dialog-label-select-template": "Indeling",
 	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Exporteren",
