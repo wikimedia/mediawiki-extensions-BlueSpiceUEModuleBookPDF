@@ -7,13 +7,22 @@
 			"Tensama0415"
 		]
 	},
+	"bs-uemodulebookpdf-extension-description": "블루스파이스에서 계층 구조로 된 문서 모음을 Adobe&reg; 휴대용 문서 형식(PDF)으로 내보낼 수 있습니다.",
 	"bs-uemodulebookpdf-pref-bookexporttoc": "목차 (PDF)",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "문서 제목만 표시 (단계별 들여쓰기)",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "문서 목차를 삽입 (문서 제목 들여쓰기 없음)",
+	"bs-uemodulebookpdf-overview-title": "Bookshelf용 Adobee\n&reg; 휴대용 문서 형식(PDF)",
 	"bs-uemodulebookpdf-overview-description": "어도비 PDF로 책을 내보냅니다.",
 	"bs-uemodulebookpdf-overview-bodycontent": "이 모듈은 Bookshelf 확장 기능에 의해 제공되며 PDF로 내보내기를 활성화합니다.",
 	"bs-uemodulebookpdf-btn-export": "이동 가능 문서 형식 (PDF)",
 	"bs-uemodulebookpdf-template": "틀 (PDF)",
 	"bs-uemodulebookpdf-bookshelfimage": "책장 이미지",
-	"action-uemodulebookpdf-export": "책의 일부를 PDF로 페이지를 내보낼",
-	"right-uemodulebookpdf-export": "책의 일부를 PDF로 페이지를 내보냅니다",
-	"bs-uemodulebookpdf-table-of-contents-heading": "목차"
+	"action-uemodulebookpdf-export": "책의 일부로써 문서를 PDF로 내보내기",
+	"right-uemodulebookpdf-export": "책의 일부로써 문서를 PDF로 내보내기",
+	"bs-uemodulebookpdf-table-of-contents-heading": "목차",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "문서 제목만 표시: PDF 목차에 문서 제목만 표시합니다.\n문서 목차를 삽입: PDF 목차에 각 문서의 목차를 표시합니다.",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF 책",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "레이아웃",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "내보내기",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "책 $1 내보내기"
 }
