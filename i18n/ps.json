@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"bs-uemodulebookpdf-extension-description": "BlueSpice ته د ليکنو سلسله لرونکې ټولگې د Adobe&reg؛ لېږدوړ  لاسوند بڼې (پې‌ډي‌اېف) ته د بهرلېږلو وړتيا ورکوي.",
+	"bs-uemodulebookpdf-pref-bookexporttoc": "نیوليک (پي‌ډي‌اېف)",
+	"bs-uemodulebookpdf-bookexporttoc-only-articles": "يوازې د ليکنې سرليکونه (د درجې له مخې کوږوالی)",
+	"bs-uemodulebookpdf-bookexporttoc-article-tocs": "د ليکنې نيوليک ځای‌پرځای‌کول (د ليکنې سرليکونه هېڅ کوږووږوالی نلري)",
+	"bs-uemodulebookpdf-overview-title": "د کتاب‌المارۍ لپاره د Adobe\n&reg؛ لېږدوړ لاسوند بڼه (پي‌ډي‌اېف)",
+	"bs-uemodulebookpdf-overview-description": "اډوبي پي‌ډي‌اېف ته د يو کتاب بهرلېږل.",
+	"bs-uemodulebookpdf-overview-bodycontent": "دا چلنوال د کتاب‌المارۍ په شاتاړي کې چمتو شوی او پي‌ډي‌اېف ته بهرلېږنه چارنوي.",
+	"bs-uemodulebookpdf-btn-export": "لېږدووړ لاسوند بڼه (پي‌ډي‌اېف)",
+	"bs-uemodulebookpdf-template": "کينډۍ (پي‌ډي‌اېف)",
+	"bs-uemodulebookpdf-bookshelfimage": "د کتاب‌المارۍ انځور",
+	"action-uemodulebookpdf-export": "يو مخ د کتاب د يوې برخې په توگه پي‌ډي‌اېف ته بهرلېږل",
+	"right-uemodulebookpdf-export": "يو مخ د کتاب د يوې برخې په توگه پي‌ډي‌اېف ته بهرلېږل",
+	"bs-uemodulebookpdf-table-of-contents-heading": "نيوليک",
+	"bs-uemodulebookpdf-pref-bookexporttoc-help": "يوازې د ليکنې سرليکونه. پي‌ډي‌اېف نيوليک کې يوازې د ليکنې سرليکونه ښيي. د ليکنې نيوليک ځای‌پرځای کړئ:  پي‌ډي‌اېف نيوليک کې د هرې ليکنې لپاره نيوليک ښيي.",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "پي‌ډي‌اېف کتاب",
+	"bs-uemodulebookpdf-export-dialog-label-select-template": "هډوانه",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "بهرلېږل",
+	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "$1 کتاب بهرلېږل"
+}
