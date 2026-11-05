@@ -8,6 +8,7 @@
 	"bs-uemodulebookpdf-pref-bookexporttoc": "Inhaltsverzeechnes (PDF)",
 	"bs-uemodulebookpdf-template": "Schabloun (PDF)",
 	"bs-uemodulebookpdf-table-of-contents-heading": "Inhaltsverzeechnes",
+	"bs-uemodulebookpdf-export-dialog-label-module-name": "PDF-Buch",
 	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-text": "Exportéieren",
 	"bs-uemodulebookpdf-books-overview-page-book-action-export-book-title": "Buch $1 exportéieren"
 }
